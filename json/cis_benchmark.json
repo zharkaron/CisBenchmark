@@ -184,6 +184,14 @@
                     "mount_point": "/var",
                     "mount_option": "nodev",
                     "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.4.3",
+                    "description": "Ensure nosuid option is set on /var partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var",
+                    "mount_option": "nosuid",
+                    "expected_state": "present"
                   }
                 ]
               }
