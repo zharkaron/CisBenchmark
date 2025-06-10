@@ -138,6 +138,18 @@
                     "expected_state": "present"
                   }
                 ]
+              },
+              {
+                "id": "1.1.2.3",
+                "description": "Configure /home",
+                "children": [
+                  {
+                    "id": "1.1.2.3.1",
+                    "description": "Ensure separte partition exists for /home",
+                    "check_type": "partition",
+                    "mount_point": "/home"
+                  }
+                ]
               }
             ]
           }
