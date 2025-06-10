@@ -176,6 +176,14 @@
                     "description": "Ensure separate partition exists for /var",
                     "check_type": "partition",
                     "mount_point": "/var"
+                  },
+                  {
+                    "id": "1.1.2.4.2",
+                    "description": "Ensure nodev option is set on /var partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var",
+                    "mount_option": "nodev",
+                    "expected_state": "present"
                   }
                 ]
               }
