@@ -128,6 +128,14 @@
                     "mount_point": "/dev/shm",
                     "mount_option": "nosuid",
                     "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.2.4",
+                    "description": "Ensure noexec option set on /dev/shm partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "noexec",
+                    "expected_state": "present"
                   }
                 ]
               }
