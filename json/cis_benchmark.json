@@ -112,6 +112,14 @@
                     "description": "Verify /dev/shm is mounted as a separate partition",
                     "check_type": "partition",
                     "mount_point": "/dev/shm"
+                  },
+                  {
+                    "id": "1.1.2.2.2",
+                    "description": "Ensure /dev/shm is a separate partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "nodev",
+                    "expected_state": "present"
                   }
                 ]
               }
