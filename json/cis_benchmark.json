@@ -201,7 +201,7 @@
                 "children": [
                   {
                     "id": "1.1.2.5.1",
-                    "description": "Ensure separate partition exists for /var/tmp",
+                    "description": "Ensure /var/tmp is mounted as a separate partition",
                     "check_type": "partition",
                     "mount_point": "/var/tmp"
                   },
