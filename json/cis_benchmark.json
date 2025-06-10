@@ -115,10 +115,18 @@
                   },
                   {
                     "id": "1.1.2.2.2",
-                    "description": "Ensure /dev/shm is a separate partition",
+                    "description": "Ensure nodev option is set on /dev/shm partition",
                     "check_type": "mount_option",
                     "mount_point": "/dev/shm",
                     "mount_option": "nodev",
+                    "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.2.3",
+                    "description": "Ensure nosuid option is set on /dev/shm partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "nosuid",
                     "expected_state": "present"
                   }
                 ]
