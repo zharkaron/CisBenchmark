@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "description": "Initial Setup",
+    "children": [
+      {
+        "id": "1.1",
+        "description": "Configure Filesystems Kernel Modules",
+        "children": [
+          {
+            "id": "1.1.1",
+            "description": "Configure Filesystem Kernel Modules",
+            "script": "./scripts/Kernel_Modules.sh",
+					  "children": [
+						  {
+							  "id": "1.1.1.1",
+                "name": "cramfs",
+                "type": "fs",
+							  "description": "Ensure cramfs kernel module is not available"
+              }
+            ]
+				  }
+			  ]
+		  }
+	  ]
+  },
+  {
+    "id": "2",
+    "description": "Services",
+    "children": [
+      {
+        "id": "2.1",
+        "description": "Configure Server Services"
+      }
+    ]
+  }
+]
+
