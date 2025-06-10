@@ -102,6 +102,18 @@
                     "expected_state": "present"
                   }
                 ]
+              },
+              {
+                "id": "1.1.2.2",
+                "description": "Configure /dev/shm",
+                "children": [
+                  {
+                    "id": "1.1.2.2.1",
+                    "description": "Verify /dev/shm is mounted as a separate partition",
+                    "check_type": "partition",
+                    "mount_point": "/dev/shm"
+                  }
+                ]
               }
             ]
           }
