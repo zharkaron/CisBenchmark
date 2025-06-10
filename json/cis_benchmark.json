@@ -145,7 +145,7 @@
                 "children": [
                   {
                     "id": "1.1.2.3.1",
-                    "description": "Ensure separte partition exists for /home",
+                    "description": "Ensure separate partition exists for /home",
                     "check_type": "partition",
                     "mount_point": "/home"
                   },
@@ -159,7 +159,7 @@
                   },
                   {
                     "id": "1.1.2.3.3",
-                    "description": "Ensure nosuid option set on /home partition",
+                    "description": "Ensure nosuid option is set on /home partition",
                     "check_type": "mount_option",
                     "mount_point": "/home",
                     "mount_option": "nosuid",
@@ -191,6 +191,42 @@
                     "check_type": "mount_option",
                     "mount_point": "/var",
                     "mount_option": "nosuid",
+                    "expected_state": "present"
+                  }
+                ]
+              },
+              {
+                "id": "1.1.2.5",
+                "description": "Configure /var/tmp",
+                "children": [
+                  {
+                    "id": "1.1.2.5.1",
+                    "description": "Ensure separate partition exists for /var/tmp",
+                    "check_type": "partition",
+                    "mount_point": "/var/tmp"
+                  },
+                  {
+                    "id": "1.1.2.5.2",
+                    "description": "Ensure nodev option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "nodev",
+                    "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.5.3",
+                    "description": "Ensure nosuid option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "nosuid",
+                    "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.5.4",
+                    "description": "Ensure noexec option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "noexec",
                     "expected_state": "present"
                   }
                 ]
