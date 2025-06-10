@@ -166,6 +166,18 @@
                     "expected_state": "present"
                   }
                 ]
+              },
+              {
+                "id": "1.1.2.4",
+                "description": "Configure /var",
+                "children": [
+                  {
+                    "id": "1.1.2.4.1",
+                    "description": "Ensure separate partition exists for /var",
+                    "check_type": "partition",
+                    "mount_point": "/var"
+                  }
+                ]
               }
             ]
           }
