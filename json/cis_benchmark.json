@@ -156,6 +156,14 @@
                     "mount_point": "/home",
                     "mount_option": "nodev",
                     "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.3.3",
+                    "description": "Ensure nosuid option set on /home partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/home",
+                    "mount_option": "nosuid",
+                    "expected_state": "present"
                   }
                 ]
               }
