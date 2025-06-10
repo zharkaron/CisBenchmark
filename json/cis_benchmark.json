@@ -92,6 +92,14 @@
                     "mount_point": "/tmp",
                     "mount_option": "nosuid",
                     "expected_state": "present"
+                  },
+                  {
+                    "id": "1.1.2.1.4",
+                    "description": "Ensure noexec option is set on /tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/tmp",
+                    "mount_option": "noexec",
+                    "expected_state": "present"
                   }
                 ]
               }
