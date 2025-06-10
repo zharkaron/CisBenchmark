@@ -5,66 +5,85 @@
     "children": [
       {
         "id": "1.1",
-        "description": "Configure Filesystems Kernel Modules",
+        "description": "Configure System Settings",
         "children": [
           {
             "id": "1.1.1",
-            "description": "Configure Filesystem Kernel Modules",
+            "description": "Ensure specific filesystem kernel modules are not available",
             "script": "./scripts/Kernel_Modules.sh",
-					  "children": [
-						  {
-							  "id": "1.1.1.1",
-                "name": "cramfs",
-                "type": "fs",
-							  "description": "Ensure cramfs kernel module is not available"
-						  },
+            "children": [
+              {
+                "id": "1.1.1.1",
+                "description": "Ensure cramfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "cramfs"
+              },
               {
                 "id": "1.1.1.2",
-                "name": "freevxfs",
-                "type": "fs",
-                "description": "Ensure freevxfs kernel module is not available"
+                "description": "Ensure freevxfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "freevxfs"
               },
               {
                 "id": "1.1.1.3",
-                "name": "hfs",
-                "type": "fs",
-                "description": "Ensure hfs kernel module is not available"
+                "description": "Ensure hfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "hfs"
               },
               {
                 "id": "1.1.1.4",
-                "name": "hfsplus",
-                "type": "fs",
-                "description": "Ensure hfsplus kernel module is not available"
+                "description": "Ensure hfsplus kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "hfsplus"
               },
               {
                 "id": "1.1.1.5",
-                "name": "jffs2",
-                "type": "fs",
-                "description": "Ensure jffs2 kernel module is not available"
+                "description": "Ensure jffs2 kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "jffs2"
               },
               {
                 "id": "1.1.1.6",
-                "name": "squashfs",
-                "type": "fs",
-                "description": "Ensure squashfs kernel module is not available"
+                "description": "Ensure squashfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "squashfs"
               },
               {
                 "id": "1.1.1.7",
-                "name": "udf",
-                "type": "fs",
-                "description": "Ensure udf kernel module is not available"
+                "description": "Ensure udf kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "udf"
               },
               {
                 "id": "1.1.1.8",
-                "name": "usb-storage",
-                "type": "driver",
-                "description": "Ensure usb-storage kernel module is not available"
+                "description": "Ensure usb-storage kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "usb-storage"
               }
             ]
-				  }
-			  ]
-		  }
-	  ]
+          },
+          {
+            "id": "1.1.2",
+            "description": "Configure Filesystem Partitions",
+            "script": "./scripts/FSPartitions.sh",
+            "children": [
+              {
+                "id": "1.1.2.1",
+                "description": "Configure /tmp partition details",
+                "children": [
+                  {
+                    "id": "1.1.2.1.1",
+                    "description": "Verify /tmp is mounted as a separate partition",
+                    "check_type": "partition",
+                    "mount_point": "/tmp"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "2",
@@ -72,9 +91,10 @@
     "children": [
       {
         "id": "2.1",
-        "description": "Configure Server Services"
+        "description": "Configure Server Services",
+        "children": [
+        ]
       }
     ]
   }
 ]
-
