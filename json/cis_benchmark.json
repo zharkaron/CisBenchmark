@@ -35,6 +35,12 @@
                 "name": "hfsplus",
                 "type": "fs",
                 "description": "Ensure hfsplus kernel module is not available"
+              },
+              {
+                "id": "1.1.1.5",
+                "name": "jffs2",
+                "type": "fs",
+                "description": "Ensure jffs2 kernel module is not available"
               }
             ]
 				  }
