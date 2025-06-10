@@ -41,6 +41,12 @@
                 "name": "jffs2",
                 "type": "fs",
                 "description": "Ensure jffs2 kernel module is not available"
+              },
+              {
+                "id": "1.1.1.6",
+                "name": "squashfs",
+                "type": "fs",
+                "description": "Ensure squashfs kernel module is not available"
               }
             ]
 				  }
