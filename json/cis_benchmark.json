@@ -47,6 +47,12 @@
                 "name": "squashfs",
                 "type": "fs",
                 "description": "Ensure squashfs kernel module is not available"
+              },
+              {
+                "id": "1.1.1.7",
+                "name": "udf",
+                "type": "fs",
+                "description": "Ensure udf kernel module is not available"
               }
             ]
 				  }
