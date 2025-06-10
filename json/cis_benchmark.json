@@ -29,6 +29,12 @@
                 "name": "hfs",
                 "type": "fs",
                 "description": "Ensure hfs kernel module is not available"
+              },
+              {
+                "id": "1.1.1.4",
+                "name": "hfsplus",
+                "type": "fs",
+                "description": "Ensure hfsplus kernel module is not available"
               }
             ]
 				  }
