@@ -17,6 +17,12 @@
                 "name": "cramfs",
                 "type": "fs",
 							  "description": "Ensure cramfs kernel module is not available"
+						  },
+              {
+                "id": "1.1.1.2",
+                "name": "freevxfs",
+                "type": "fs",
+                "description": "Ensure freevxfs kernel module is not available"
               }
             ]
 				  }
