@@ -148,6 +148,14 @@
                     "description": "Ensure separte partition exists for /home",
                     "check_type": "partition",
                     "mount_point": "/home"
+                  },
+                  {
+                    "id": "1.1.2.3.2",
+                    "description": "Ensure nodev option set on /home partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/home",
+                    "mount_option": "nodev",
+                    "expected_state": "present"
                   }
                 ]
               }
