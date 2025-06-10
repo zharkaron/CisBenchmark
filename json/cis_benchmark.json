@@ -53,6 +53,12 @@
                 "name": "udf",
                 "type": "fs",
                 "description": "Ensure udf kernel module is not available"
+              },
+              {
+                "id": "1.1.1.8",
+                "name": "usb-storage",
+                "type": "driver",
+                "description": "Ensure usb-storage kernel module is not available"
               }
             ]
 				  }
