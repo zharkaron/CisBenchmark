@@ -8,7 +8,7 @@ COLOR_CYAN="\033[36m"
 COLOR_GREEN="\033[32m"
 COLOR_RED="\033[31m"
 
-declare -g ALL_COLLECTED_RESULTS=()
+
 
 get_result() {
     local id="$1"
