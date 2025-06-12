@@ -236,6 +236,14 @@
                       "description": "Ensure separate partition exists for /var/log",
                       "check_type": "partition",
                       "mount_point": "/var/log"
+                  },
+                  {
+                      "id": "1.1.2.6.2",
+                      "description": "Ensure nodev option is set on /var/log partition",
+                      "check_type": "mount_option",
+                      "mount_point": "/var/log",
+                      "mount_option": "nodev",
+                      "expected_state": "present"
                   }
                 ]
               }
