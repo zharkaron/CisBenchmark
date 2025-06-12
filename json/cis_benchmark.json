@@ -252,6 +252,14 @@
                       "mount_point": "/var/log",
                       "mount_option": "nosuid",
                       "expected_state": "preset"
+                  },
+                  {
+                      "id": "1.1.2.6.4",
+                      "description": "Ensure noexec option is set on /var/log partition",
+                      "check_type": "mount_option",
+                      "mount_point": "/var/log",
+                      "mount_option": "noexec",
+                      "expected_state": "present"
                   }
                 ]
               }
