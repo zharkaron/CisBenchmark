@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": "1",
     "description": "Initial Setup",
     "children": [
@@ -12,54 +12,70 @@
             "description": "Configure Filesystem Kernel Modules",
             "script": "./scripts/Kernel_Modules.sh",
             "children": [
-                {
-                    "id": "1.1.1.1",
-                    "description": "Ensure cramfs kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "cramfs"
-                },
-                {
-                    "id": "1.1.1.2", 
-                    "description": "Ensure freevxfs kernel module is not available", 
-                    "check_type": "kernel_module", 
-                    "module_name": "freevxfs"
-                },
-                {
-                    "id": "1.1.1.3",
-                    "description": "Ensure hfs kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "hfs"
-                },
-                {
-                    "id": "1.1.1.4",
-                    "description": "Ensure hfsplus kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "hfsplus"
-                },
-                {
-                    "id": "1.1.1.5",
-                    "description": "Ensure jffs2 kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "jffs2"
-                },
-                {
-                    "id": "1.1.1.6",
-                    "description": "Ensure squashfs kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "squashfs"
-                },
-                {
-                    "id": "1.1.1.7",
-                    "description": "Ensure udf kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "udf"
-                },
-                {
-                    "id": "1.1.1.8",
-                    "description": "Ensure usb-storage kernel module is not available",
-                    "check_type": "kernel_module",
-                    "module_name": "usb-storage"
-                }
+              {
+                "id": "1.1.1.1",
+                "description": "Ensure cramfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "cramfs",
+                "server": "Level 1",
+                "workstation": "Level 1"
+              },
+              {
+                "id": "1.1.1.2",
+                "description": "Ensure freevxfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "freevxfs",
+                "server": "Level 1",
+                "workstation": "Level 1"
+              },
+              {
+                "id": "1.1.1.3",
+                "description": "Ensure hfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "hfs",
+                "server": "Level 1",
+                "workstation": "Level 1"
+              },
+              {
+                "id": "1.1.1.4",
+                "description": "Ensure hfsplus kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "hfsplus",
+                "server": "Level 1",
+                "workstation": "Level 1"
+              },
+              {
+                "id": "1.1.1.5",
+                "description": "Ensure jffs2 kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "jffs2",
+                "server": "Level 1",
+                "workstation": "Level 1"
+              },
+              {
+                "id": "1.1.1.6",
+                "description": "Ensure squashfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "squashfs",
+                "server": "Level 2",
+                "workstation": "Level 2"
+              },
+              {
+                "id": "1.1.1.7",
+                "description": "Ensure udf kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "udf",
+                "server": "Level 2",
+                "workstation": "Level 2"
+              },
+              {
+                "id": "1.1.1.8",
+                "description": "Ensure usb-storage kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "usb-storage",
+                "server": "Level 1",
+                "workstation": "Level 2"
+              }
             ]
           },
           {
@@ -71,33 +87,43 @@
                 "id": "1.1.2.1",
                 "description": "Configure /tmp",
                 "children": [
-                    {
-                        "id": "1.1.2.1.1",
-                        "description": "Ensure /tmp is separate partition",
-                        "check_type": "partition",
-                        "mount_point": "/tmp"
-                    },
                   {
-                      "id": "1.1.2.1.2",
-                      "description": "Ensure nodev option set on /tmp partition",
-                      "check_type": "mount_option", "mount_point": "/tmp", 
-                      "mount_option": "nodev",
-                      "expected_state": "present"
-                  },
-                  {"id": "1.1.2.1.3",
-                      "description": "Ensure nosuid option is set on /tmp partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/tmp",
-                      "mount_option": "nosuid",
-                      "expected_state": "present"
+                    "id": "1.1.2.1.1",
+                    "description": "Ensure /tmp is separate partition",
+                    "check_type": "partition",
+                    "mount_point": "/tmp",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.1.4",
-                      "description": "Ensure noexec option is set on /tmp partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/tmp",
-                      "mount_option": "noexec",
-                      "expected_state": "present"
+                    "id": "1.1.2.1.2",
+                    "description": "Ensure nodev option set on /tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/tmp",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
+                  },
+                  {
+                    "id": "1.1.2.1.3",
+                    "description": "Ensure nosuid option is set on /tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/tmp",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
+                  },
+                  {
+                    "id": "1.1.2.1.4",
+                    "description": "Ensure noexec option is set on /tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/tmp",
+                    "mount_option": "noexec",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   }
                 ]
               },
@@ -105,34 +131,43 @@
                 "id": "1.1.2.2",
                 "description": "Configure /dev/shm",
                 "children": [
-                  {"id": "1.1.2.2.1",
-                      "description": "Verify /dev/shm is mounted as a separate partition",
-                      "check_type": "partition",
-                      "mount_point": "/dev/shm"
+                  {
+                    "id": "1.1.2.2.1",
+                    "description": "Verify /dev/shm is mounted as a separate partition",
+                    "check_type": "partition",
+                    "mount_point": "/dev/shm",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.2.2",
-                      "description": "Ensure nodev option is set on /dev/shm partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/dev/shm",
-                      "mount_option": "nodev",
-                      "expected_state": "present"
+                    "id": "1.1.2.2.2",
+                    "description": "Ensure nodev option is set on /dev/shm partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.2.3",
-                      "description": "Ensure nosuid option is set on /dev/shm partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/dev/shm",
-                      "mount_option": "nosuid",
-                      "expected_state": "present"
+                    "id": "1.1.2.2.3",
+                    "description": "Ensure nosuid option is set on /dev/shm partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.2.4",
-                      "description": "Ensure noexec option set on /dev/shm partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/dev/shm",
-                      "mount_option": "noexec",
-                      "expected_state": "present"
+                    "id": "1.1.2.2.4",
+                    "description": "Ensure noexec option set on /dev/shm partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/dev/shm",
+                    "mount_option": "noexec",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   }
                 ]
               },
@@ -141,26 +176,32 @@
                 "description": "Configure /home",
                 "children": [
                   {
-                      "id": "1.1.2.3.1",
-                      "description": "Ensure separate partition exists for /home",
-                      "check_type": "partition",
-                      "mount_point": "/home"
+                    "id": "1.1.2.3.1",
+                    "description": "Ensure separate partition exists for /home",
+                    "check_type": "partition",
+                    "mount_point": "/home",
+                    "server": "Level 2",
+                    "workstation": "Level 2"
                   },
                   {
-                      "id": "1.1.2.3.2",
-                      "description": "Ensure nodev option set on /home partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/home",
-                      "mount_option": "nodev",
-                      "expected_state": "present"
+                    "id": "1.1.2.3.2",
+                    "description": "Ensure nodev option set on /home partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/home",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.3.3",
-                      "description": "Ensure nosuid option is set on /home partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/home",
-                      "mount_option": "nosuid",
-                      "expected_state": "present"
+                    "id": "1.1.2.3.3",
+                    "description": "Ensure nosuid option is set on /home partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/home",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   }
                 ]
               },
@@ -169,26 +210,32 @@
                 "description": "Configure /var",
                 "children": [
                   {
-                      "id": "1.1.2.4.1",
-                      "description": "Ensure separate partition exists for /var",
-                      "check_type": "partition",
-                      "mount_point": "/var"
+                    "id": "1.1.2.4.1",
+                    "description": "Ensure separate partition exists for /var",
+                    "check_type": "partition",
+                    "mount_point": "/var",
+                    "server": "Level 2",
+                    "workstation": "Level 2"
                   },
                   {
-                      "id": "1.1.2.4.2",
-                      "description": "Ensure nodev option is set on /var partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var",
-                      "mount_option": "nodev",
-                      "expected_state": "present"
+                    "id": "1.1.2.4.2",
+                    "description": "Ensure nodev option is set on /var partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.4.3",
-                      "description": "Ensure nosuid option is set on /var partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var",
-                      "mount_option": "nosuid",
-                      "expected_state": "present"
+                    "id": "1.1.2.4.3",
+                    "description": "Ensure nosuid option is set on /var partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   }
                 ]
               },
@@ -197,34 +244,43 @@
                 "description": "Configure /var/tmp",
                 "children": [
                   {
-                      "id": "1.1.2.5.1",
-                      "description": "Ensure /var/tmp is mounted as a separate partition",
-                      "check_type": "partition",
-                      "mount_point": "/var/tmp"
+                    "id": "1.1.2.5.1",
+                    "description": "Ensure /var/tmp is mounted as a separate partition",
+                    "check_type": "partition",
+                    "mount_point": "/var/tmp",
+                    "server": "Level 2",
+                    "workstation": "Level 2"
                   },
                   {
-                      "id": "1.1.2.5.2",
-                      "description": "Ensure nodev option is set on /var/tmp partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/tmp",
-                      "mount_option": "nodev",
-                      "expected_state": "present"
+                    "id": "1.1.2.5.2",
+                    "description": "Ensure nodev option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.5.3",
-                      "description": "Ensure nosuid option is set on /var/tmp partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/tmp",
-                      "mount_option": "nosuid",
-                      "expected_state": "present"
+                    "id": "1.1.2.5.3",
+                    "description": "Ensure nosuid option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.5.4",
-                      "description": "Ensure noexec option is set on /var/tmp partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/tmp",
-                      "mount_option": "noexec",
-                      "expected_state": "present"}
+                    "id": "1.1.2.5.4",
+                    "description": "Ensure noexec option is set on /var/tmp partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/tmp",
+                    "mount_option": "noexec",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
+                  }
                 ]
               },
               {
@@ -232,40 +288,47 @@
                 "description": "Configure /var/log",
                 "children": [
                   {
-                      "id": "1.1.2.6.1",
-                      "description": "Ensure separate partition exists for /var/log",
-                      "check_type": "partition",
-                      "mount_point": "/var/log"
+                    "id": "1.1.2.6.1",
+                    "description": "Ensure separate partition exists for /var/log",
+                    "check_type": "partition",
+                    "mount_point": "/var/log",
+                    "server": "Level 2",
+                    "workstation": "Level 2"
                   },
                   {
-                      "id": "1.1.2.6.2",
-                      "description": "Ensure nodev option is set on /var/log partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/log",
-                      "mount_option": "nodev",
-                      "expected_state": "present"
+                    "id": "1.1.2.6.2",
+                    "description": "Ensure nodev option is set on /var/log partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.6.3",
-                      "description": "Ensure nosuid option is set on /var/log partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/log",
-                      "mount_option": "nosuid",
-                      "expected_state": "preset"
+                    "id": "1.1.2.6.3",
+                    "description": "Ensure nosuid option is set on /var/log partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log",
+                    "mount_option": "nosuid",
+                    "expected_state": "preset",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   },
                   {
-                      "id": "1.1.2.6.4",
-                      "description": "Ensure noexec option is set on /var/log partition",
-                      "check_type": "mount_option",
-                      "mount_point": "/var/log",
-                      "mount_option": "noexec",
-                      "expected_state": "present"
+                    "id": "1.1.2.6.4",
+                    "description": "Ensure noexec option is set on /var/log partition",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log",
+                    "mount_option": "noexec",
+                    "expected_state": "present",
+                    "server": "Level 1",
+                    "workstation": "Level 1"
                   }
                 ]
               }
             ]
           }
-
         ]
       }
     ]
@@ -281,6 +344,4 @@
       }
     ]
   }
-
 ]
-
