@@ -2,15 +2,18 @@
   {
     "id": "1",
     "description": "Initial Setup",
+    "status": "todo",
     "children": [
       {
         "id": "1.1",
         "description": "Filesystem",
+        "status": "todo",
         "children": [
           {
             "id": "1.1.1",
             "description": "Configure Filesystem Kernel Modules",
             "script": "./scripts/Kernel_Modules.sh",
+            "status": "done",
             "children": [
               {
                 "id": "1.1.1.1",
@@ -18,7 +21,8 @@
                 "check_type": "kernel_module",
                 "module_name": "cramfs",
                 "server": "Level 1",
-                "workstation": "Level 1"
+                "workstation": "Level 1",
+                "status": "done"
               },
               {
                 "id": "1.1.1.2",
@@ -26,7 +30,8 @@
                 "check_type": "kernel_module",
                 "module_name": "freevxfs",
                 "server": "Level 1",
-                "workstation": "Level 1"
+                "workstation": "Level 1",
+                "status": "done"
               },
               {
                 "id": "1.1.1.3",
@@ -34,7 +39,8 @@
                 "check_type": "kernel_module",
                 "module_name": "hfs",
                 "server": "Level 1",
-                "workstation": "Level 1"
+                "workstation": "Level 1",
+                "status": "done"
               },
               {
                 "id": "1.1.1.4",
@@ -42,7 +48,8 @@
                 "check_type": "kernel_module",
                 "module_name": "hfsplus",
                 "server": "Level 1",
-                "workstation": "Level 1"
+                "workstation": "Level 1",
+                "status": "done"
               },
               {
                 "id": "1.1.1.5",
@@ -50,7 +57,8 @@
                 "check_type": "kernel_module",
                 "module_name": "jffs2",
                 "server": "Level 1",
-                "workstation": "Level 1"
+                "workstation": "Level 1",
+                "status": "done"
               },
               {
                 "id": "1.1.1.6",
@@ -58,7 +66,8 @@
                 "check_type": "kernel_module",
                 "module_name": "squashfs",
                 "server": "Level 2",
-                "workstation": "Level 2"
+                "workstation": "Level 2",
+                "status": "done"
               },
               {
                 "id": "1.1.1.7",
@@ -66,7 +75,8 @@
                 "check_type": "kernel_module",
                 "module_name": "udf",
                 "server": "Level 2",
-                "workstation": "Level 2"
+                "workstation": "Level 2",
+                "status": "done"
               },
               {
                 "id": "1.1.1.8",
@@ -74,7 +84,8 @@
                 "check_type": "kernel_module",
                 "module_name": "usb-storage",
                 "server": "Level 1",
-                "workstation": "Level 2"
+                "workstation": "Level 2",
+                "status": "done"
               }
             ]
           },
@@ -82,10 +93,12 @@
             "id": "1.1.2",
             "description": "Configure Filesystem Partitions",
             "script": "./scripts/FSPartitions.sh",
+            "status": "todo",
             "children": [
               {
                 "id": "1.1.2.1",
                 "description": "Configure /tmp",
+                "status": "done",
                 "children": [
                   {
                     "id": "1.1.2.1.1",
@@ -93,7 +106,8 @@
                     "check_type": "partition",
                     "mount_point": "/tmp",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.1.2",
@@ -103,7 +117,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.1.3",
@@ -113,7 +128,8 @@
                     "mount_option": "nosuid",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.1.4",
@@ -123,7 +139,8 @@
                     "mount_option": "noexec",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               },
@@ -137,7 +154,8 @@
                     "check_type": "partition",
                     "mount_point": "/dev/shm",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.2.2",
@@ -147,7 +165,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.2.3",
@@ -157,7 +176,8 @@
                     "mount_option": "nosuid",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.2.4",
@@ -167,7 +187,8 @@
                     "mount_option": "noexec",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               },
@@ -175,13 +196,15 @@
                 "id": "1.1.2.3",
                 "description": "Configure /home",
                 "children": [
+                    "status": "done",
                   {
                     "id": "1.1.2.3.1",
                     "description": "Ensure separate partition exists for /home",
                     "check_type": "partition",
                     "mount_point": "/home",
                     "server": "Level 2",
-                    "workstation": "Level 2"
+                    "workstation": "Level 2",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.3.2",
@@ -191,7 +214,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.3.3",
@@ -201,13 +225,15 @@
                     "mount_option": "nosuid",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               },
               {
                 "id": "1.1.2.4",
                 "description": "Configure /var",
+                "status": "done",
                 "children": [
                   {
                     "id": "1.1.2.4.1",
@@ -215,7 +241,8 @@
                     "check_type": "partition",
                     "mount_point": "/var",
                     "server": "Level 2",
-                    "workstation": "Level 2"
+                    "workstation": "Level 2",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.4.2",
@@ -225,7 +252,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.4.3",
@@ -235,7 +263,8 @@
                     "mount_option": "nosuid",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               },
@@ -249,7 +278,8 @@
                     "check_type": "partition",
                     "mount_point": "/var/tmp",
                     "server": "Level 2",
-                    "workstation": "Level 2"
+                    "workstation": "Level 2",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.5.2",
@@ -259,7 +289,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.5.3",
@@ -269,7 +300,8 @@
                     "mount_option": "nosuid",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.5.4",
@@ -279,13 +311,15 @@
                     "mount_option": "noexec",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               },
               {
                 "id": "1.1.2.6",
                 "description": "Configure /var/log",
+                "status": "done",
                 "children": [
                   {
                     "id": "1.1.2.6.1",
@@ -293,7 +327,8 @@
                     "check_type": "partition",
                     "mount_point": "/var/log",
                     "server": "Level 2",
-                    "workstation": "Level 2"
+                    "workstation": "Level 2",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.6.2",
@@ -303,7 +338,8 @@
                     "mount_option": "nodev",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.6.3",
@@ -313,7 +349,8 @@
                     "mount_option": "nosuid",
                     "expected_state": "preset",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   },
                   {
                     "id": "1.1.2.6.4",
@@ -323,7 +360,8 @@
                     "mount_option": "noexec",
                     "expected_state": "present",
                     "server": "Level 1",
-                    "workstation": "Level 1"
+                    "workstation": "Level 1",
+                    "status": "done"
                   }
                 ]
               }
@@ -336,10 +374,12 @@
   {
     "id": "2",
     "description": "Services",
+    "status": "todo",
     "children": [
       {
         "id": "2.1",
         "description": "Configure Server Services",
+        "status": "todo",
         "children": []
       }
     ]
