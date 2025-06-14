@@ -1,23 +1,27 @@
 [
   {
     "id": "1",
-    "description": "Initial Setup",
+    "title": "Initial Setup",
     "status": "To Do",
+    "description": "Items in this section are advised for all systems but may be difficult or require extensive preparation after the initial setup of the system.",
     "children": [
       {
         "id": "1.1",
-        "description": "Filesystem",
+        "title": "Filesystem",
         "status": "To Do",
+        "description": "The file system is generally a built-in layer used to handle the data management of the storage",
         "children": [
           {
             "id": "1.1.1",
-            "description": "Configure Filesystem Kernel Modules",
+            "title": "Configure Filesystem Kernel Modules",
             "script": "./scripts/Kernel_Modules.sh",
             "status": "Done",
+            "description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, especially in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
             "children": [
               {
                 "id": "1.1.1.1",
-                "description": "Ensure cramfs kernel module is not available",
+                "title": "Ensure cramfs kernel module is not available",
+                "description": "The cramfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "cramfs",
                 "server": "Level 1",
@@ -26,7 +30,8 @@
               },
               {
                 "id": "1.1.1.2",
-                "description": "Ensure freevxfs kernel module is not available",
+                "title": "Ensure freevxfs kernel module is not available",
+                "description": "The freevxfs filesystem is a read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "freevxfs",
                 "server": "Level 1",
@@ -35,7 +40,8 @@
               },
               {
                 "id": "1.1.1.3",
-                "description": "Ensure hfs kernel module is not available",
+                "title": "Ensure hfs kernel module is not available",
+                "description": "The hfs filesystem is an older filesystem used primarily by Apple systems and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "hfs",
                 "server": "Level 1",
@@ -44,7 +50,8 @@
               },
               {
                 "id": "1.1.1.4",
-                "description": "Ensure hfsplus kernel module is not available",
+                "title": "Ensure hfsplus kernel module is not available",
+                "description": "The hfsplus filesystem is an updated version of the hfs filesystem used by Apple systems and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "hfsplus",
                 "server": "Level 1",
@@ -53,56 +60,33 @@
               },
               {
                 "id": "1.1.1.5",
-                "description": "Ensure jffs2 kernel module is not available",
+                "title": "Ensure jffs2 kernel module is not available",
+                "description": "The jffs2 filesystem is a journaling flash filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "jffs2",
                 "server": "Level 1",
                 "workstation": "Level 1",
-                "status": "Done"
-              },
-              {
-                "id": "1.1.1.6",
-                "description": "Ensure squashfs kernel module is not available",
-                "check_type": "kernel_module",
-                "module_name": "squashfs",
-                "server": "Level 2",
-                "workstation": "Level 2",
-                "status": "Done"
-              },
-              {
-                "id": "1.1.1.7",
-                "description": "Ensure udf kernel module is not available",
-                "check_type": "kernel_module",
-                "module_name": "udf",
-                "server": "Level 2",
-                "workstation": "Level 2",
-                "status": "Done"
-              },
-              {
-                "id": "1.1.1.8",
-                "description": "Ensure usb-storage kernel module is not available",
-                "check_type": "kernel_module",
-                "module_name": "usb-storage",
-                "server": "Level 1",
-                "workstation": "Level 2",
                 "status": "Done"
               }
             ]
           },
           {
             "id": "1.1.2",
-            "description": "Configure Filesystem Partitions",
+            "title": "Configure Filesystem Partitions",
+            "description": "Partitioning the filesystem can enhance security by isolating critical directories and preventing unauthorized access to sensitive data. It also helps in managing disk space more effectively.",
             "script": "./scripts/FSPartitions.sh",
             "status": "To Do",
             "children": [
               {
                 "id": "1.1.2.1",
-                "description": "Configure /tmp",
+                "title": "Configure /tmp",
+                "description": "The /tmp directory is used for temporary file storage. Configuring it as a separate partition can prevent unauthorized access and ensure that temporary files do not consume space on the root filesystem.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.1.1",
-                    "description": "Ensure /tmp is separate partition",
+                    "title": "Ensure /tmp is separate partition",
+                    "description": "Having /tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that the root filesystem is not filled with temporary data.",
                     "check_type": "partition",
                     "mount_point": "/tmp",
                     "server": "Level 1",
@@ -111,7 +95,8 @@
                   },
                   {
                     "id": "1.1.2.1.2",
-                    "description": "Ensure nodev option set on /tmp partition",
+                    "title": "Ensure nodev option set on /tmp partition",
+                    "description": "The nodev option prevents the creation of device files in the /tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/tmp",
                     "mount_option": "nodev",
@@ -122,7 +107,8 @@
                   },
                   {
                     "id": "1.1.2.1.3",
-                    "description": "Ensure nosuid option is set on /tmp partition",
+                    "title": "Ensure nosuid option is set on /tmp partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/tmp",
                     "mount_option": "nosuid",
@@ -133,7 +119,8 @@
                   },
                   {
                     "id": "1.1.2.1.4",
-                    "description": "Ensure noexec option is set on /tmp partition",
+                    "title": "Ensure noexec option is set on /tmp partition",
+                    "description": "The noexec option prevents the execution of binaries in the /tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/tmp",
                     "mount_option": "noexec",
@@ -146,12 +133,14 @@
               },
               {
                 "id": "1.1.2.2",
-                "description": "Configure /dev/shm",
+                "title": "Configure /dev/shm",
+                "description": "The /dev/shm directory is used for shared memory. Configuring it as a separate partition can enhance security by isolating shared memory from other filesystems.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.2.1",
-                    "description": "Verify /dev/shm is mounted as a separate partition",
+                    "title": "Verify /dev/shm is mounted as a separate partition",
+                    "description": "Having /dev/shm as a separate partition can help prevent unauthorized access to shared memory and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/dev/shm",
                     "server": "Level 1",
@@ -160,7 +149,8 @@
                   },
                   {
                     "id": "1.1.2.2.2",
-                    "description": "Ensure nodev option is set on /dev/shm partition",
+                    "title": "Ensure nodev option is set on /dev/shm partition",
+                    "description": "The nodev option prevents the creation of device files in the /dev/shm directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/dev/shm",
                     "mount_option": "nodev",
@@ -171,7 +161,8 @@
                   },
                   {
                     "id": "1.1.2.2.3",
-                    "description": "Ensure nosuid option is set on /dev/shm partition",
+                    "title": "Ensure nosuid option is set on /dev/shm partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /dev/shm directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/dev/shm",
                     "mount_option": "nosuid",
@@ -182,7 +173,8 @@
                   },
                   {
                     "id": "1.1.2.2.4",
-                    "description": "Ensure noexec option set on /dev/shm partition",
+                    "title": "Ensure noexec option set on /dev/shm partition",
+                    "description": "The noexec option prevents the execution of binaries in the /dev/shm directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/dev/shm",
                     "mount_option": "noexec",
@@ -195,12 +187,14 @@
               },
               {
                 "id": "1.1.2.3",
-                "description": "Configure /home",
+                "title": "Configure /home",
+                "description": "The /home directory is used for user home directories. Configuring it as a separate partition can enhance security by isolating user data from system files and preventing unauthorized access to sensitive user data.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.3.1",
-                    "description": "Ensure separate partition exists for /home",
+                    "title": "Ensure separate partition exists for /home",
+                    "description": "Having /home as a separate partition can help prevent unauthorized access to user data and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/home",
                     "server": "Level 2",
@@ -209,7 +203,8 @@
                   },
                   {
                     "id": "1.1.2.3.2",
-                    "description": "Ensure nodev option set on /home partition",
+                    "title": "Ensure nodev option set on /home partition",
+                    "description": "The nodev option prevents the creation of device files in the /home directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/home",
                     "mount_option": "nodev",
@@ -220,7 +215,8 @@
                   },
                   {
                     "id": "1.1.2.3.3",
-                    "description": "Ensure nosuid option is set on /home partition",
+                    "title": "Ensure nosuid option is set on /home partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /home directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/home",
                     "mount_option": "nosuid",
@@ -233,12 +229,14 @@
               },
               {
                 "id": "1.1.2.4",
-                "description": "Configure /var",
+                "title": "Configure /var",
+                "description": "The /var directory is used for variable data such as logs and spool files. Configuring it as a separate partition can enhance security by isolating variable data from system files and preventing unauthorized access to sensitive data.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.4.1",
-                    "description": "Ensure separate partition exists for /var",
+                    "title": "Ensure separate partition exists for /var",
+                    "description": "Having /var as a separate partition can help prevent unauthorized access to variable data and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var",
                     "server": "Level 2",
@@ -247,7 +245,8 @@
                   },
                   {
                     "id": "1.1.2.4.2",
-                    "description": "Ensure nodev option is set on /var partition",
+                    "title": "Ensure nodev option is set on /var partition",
+                    "description": "The nodev option prevents the creation of device files in the /var directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var",
                     "mount_option": "nodev",
@@ -258,7 +257,8 @@
                   },
                   {
                     "id": "1.1.2.4.3",
-                    "description": "Ensure nosuid option is set on /var partition",
+                    "title": "Ensure nosuid option is set on /var partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var",
                     "mount_option": "nosuid",
@@ -271,12 +271,14 @@
               },
               {
                 "id": "1.1.2.5",
-                "description": "Configure /var/tmp",
+                "title": "Configure /var/tmp",
+                "description": "The /var/tmp directory is used for temporary files that need to persist across reboots. Configuring it as a separate partition can enhance security by isolating temporary files from other filesystems and preventing unauthorized access to sensitive data.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.5.1",
-                    "description": "Ensure /var/tmp is mounted as a separate partition",
+                    "title": "Ensure /var/tmp is mounted as a separate partition",
+                    "description": "Having /var/tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var/tmp",
                     "server": "Level 2",
@@ -285,7 +287,8 @@
                   },
                   {
                     "id": "1.1.2.5.2",
-                    "description": "Ensure nodev option is set on /var/tmp partition",
+                    "title": "Ensure nodev option is set on /var/tmp partition",
+                    "description": "The nodev option prevents the creation of device files in the /var/tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/tmp",
                     "mount_option": "nodev",
@@ -296,7 +299,8 @@
                   },
                   {
                     "id": "1.1.2.5.3",
-                    "description": "Ensure nosuid option is set on /var/tmp partition",
+                    "title": "Ensure nosuid option is set on /var/tmp partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/tmp",
                     "mount_option": "nosuid",
@@ -307,7 +311,8 @@
                   },
                   {
                     "id": "1.1.2.5.4",
-                    "description": "Ensure noexec option is set on /var/tmp partition",
+                    "title": "Ensure noexec option is set on /var/tmp partition",
+                    "description": "The noexec option prevents the execution of binaries in the /var/tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/tmp",
                     "mount_option": "noexec",
@@ -320,12 +325,14 @@
               },
               {
                 "id": "1.1.2.6",
-                "description": "Configure /var/log",
+                "title": "Configure /var/log",
+                "description": "The /var/log directory is used for log files. Configuring it as a separate partition can enhance security by isolating log files from other filesystems and preventing unauthorized access to sensitive log data.",
                 "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.6.1",
-                    "description": "Ensure separate partition exists for /var/log",
+                    "title": "Ensure separate partition exists for /var/log",
+                    "description": "Having /var/log as a separate partition can help prevent unauthorized access to log files and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var/log",
                     "server": "Level 2",
@@ -334,7 +341,8 @@
                   },
                   {
                     "id": "1.1.2.6.2",
-                    "description": "Ensure nodev option is set on /var/log partition",
+                    "title": "Ensure nodev option is set on /var/log partition",
+                    "description": "The nodev option prevents the creation of device files in the /var/log directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/log",
                     "mount_option": "nodev",
@@ -345,7 +353,8 @@
                   },
                   {
                     "id": "1.1.2.6.3",
-                    "description": "Ensure nosuid option is set on /var/log partition",
+                    "title": "Ensure nosuid option is set on /var/log partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/log",
                     "mount_option": "nosuid",
@@ -356,7 +365,8 @@
                   },
                   {
                     "id": "1.1.2.6.4",
-                    "description": "Ensure noexec option is set on /var/log partition",
+                    "title": "Ensure noexec option is set on /var/log partition",
+                    "description": "The noexec option prevents the execution of binaries in the /var/log directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
                     "mount_point": "/var/log",
                     "mount_option": "noexec",
@@ -375,12 +385,12 @@
   },
   {
     "id": "2",
-    "description": "Services",
+    "title": "Services",
     "status": "To Do",
     "children": [
       {
         "id": "2.1",
-        "description": "Configure Server Services",
+        "title": "Configure Server Services",
         "status": "To Do",
         "children": []
       }
@@ -388,7 +398,7 @@
   },
   {
     "id": "3",
-    "description": "Network",
+    "title": "Network",
     "status": "To Do",
     "children": []
   }

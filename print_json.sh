@@ -27,7 +27,7 @@ print_controls() {
     local indent="$2"
 
     local id=$(echo "$json_obj_str" | jq -r '.id // empty')
-    local desc=$(echo "$json_obj_str" | jq -r '.description // empty')
+    local desc=$(echo "$json_obj_str" | jq -r '.title // empty')
     local script_path=$(echo "$json_obj_str" | jq -r '.script // empty')
 
     if [[ -n "$script_path" && -x "$script_path" ]]; then
