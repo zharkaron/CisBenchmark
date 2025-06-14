@@ -67,6 +67,33 @@
                 "server": "Level 1",
                 "workstation": "Level 1",
                 "status": "Done"
+              },
+              {
+                "id": "1.1.1.6",
+                "description": "Ensure squashfs kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "squashfs",
+                "server": "Level 2",
+                "workstation": "Level 2",
+                "status": "Done"
+              },
+              {
+                "id": "1.1.1.7",
+                "description": "Ensure udf kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "udf",
+                "server": "Level 2",
+                "workstation": "Level 2",
+                "status": "Done"
+              },
+              {
+                "id": "1.1.1.8",
+                "description": "Ensure usb-storage kernel module is not available",
+                "check_type": "kernel_module",
+                "module_name": "usb-storage",
+                "server": "Level 1",
+                "workstation": "Level 2",
+                "status": "Done"
               }
             ]
           },
