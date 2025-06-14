@@ -195,8 +195,8 @@
               {
                 "id": "1.1.2.3",
                 "description": "Configure /home",
+                "status": "done",
                 "children": [
-                    "status": "done",
                   {
                     "id": "1.1.2.3.1",
                     "description": "Ensure separate partition exists for /home",
@@ -347,7 +347,7 @@
                     "check_type": "mount_option",
                     "mount_point": "/var/log",
                     "mount_option": "nosuid",
-                    "expected_state": "preset",
+                    "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
                     "status": "done"
