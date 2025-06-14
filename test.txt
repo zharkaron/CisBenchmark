@@ -1,0 +1,15 @@
+        if [[ -n "$json_status" ]]; then
+            update_jira_status "$jira_id" "$json_status"
+        else
+            echo "ID $jira_id found in Jira but not in JSON. Hurry up and start working on it!"
+        fi
+    done
+
+    # Now check for IDs in JSON that are not in Jira and create them
+    for id in "${todo_ids[@]}" "${done_ids[@]}"; do
+        if ! json_id_in_jira "$id"; then
+            echo "ID $id found in JSON but not in Jira, creating ticket in Jira..."
+        fi
+    done
+}
+main
