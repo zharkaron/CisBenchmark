@@ -70,7 +70,8 @@
               },
               {
                 "id": "1.1.1.6",
-                "description": "Ensure squashfs kernel module is not available",
+                "title": "Ensure squashfs kernel module is not available",
+                "description": "The squashfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "squashfs",
                 "server": "Level 2",
@@ -79,7 +80,8 @@
               },
               {
                 "id": "1.1.1.7",
-                "description": "Ensure udf kernel module is not available",
+                "title": "Ensure udf kernel module is not available",
+                "description": "The udf filesystem is a universal disk format that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "udf",
                 "server": "Level 2",
@@ -88,7 +90,8 @@
               },
               {
                 "id": "1.1.1.8",
-                "description": "Ensure usb-storage kernel module is not available",
+                "title": "Ensure usb-storage kernel module is not available",
+                "description": "The usb-storage kernel module allows the system to access USB storage devices. If USB storage is not needed, it should be disabled to reduce the attack surface.",
                 "check_type": "kernel_module",
                 "module_name": "usb-storage",
                 "server": "Level 1",
