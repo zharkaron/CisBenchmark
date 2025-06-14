@@ -147,6 +147,7 @@
               {
                 "id": "1.1.2.2",
                 "description": "Configure /dev/shm",
+                "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.2.1",
@@ -271,6 +272,7 @@
               {
                 "id": "1.1.2.5",
                 "description": "Configure /var/tmp",
+                "status": "Done",
                 "children": [
                   {
                     "id": "1.1.2.5.1",
@@ -383,5 +385,12 @@
         "children": []
       }
     ]
+  },
+  {
+    "id": "3",
+    "description": "Network",
+    "status": "To Do",
+    "children": []
   }
 ]
+
