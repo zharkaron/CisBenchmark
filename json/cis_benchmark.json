@@ -3,17 +3,20 @@
     "id": "1",
     "description": "Initial Setup",
     "status": "todo",
+    "type": "epic",
     "children": [
       {
         "id": "1.1",
         "description": "Filesystem",
         "status": "todo",
+        "type": "story",
         "children": [
           {
             "id": "1.1.1",
             "description": "Configure Filesystem Kernel Modules",
             "script": "./scripts/Kernel_Modules.sh",
             "status": "done",
+            "type": "epic",
             "children": [
               {
                 "id": "1.1.1.1",
@@ -22,6 +25,7 @@
                 "module_name": "cramfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -31,6 +35,7 @@
                 "module_name": "freevxfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -40,6 +45,7 @@
                 "module_name": "hfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -49,6 +55,7 @@
                 "module_name": "hfsplus",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -58,6 +65,7 @@
                 "module_name": "jffs2",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -67,6 +75,7 @@
                 "module_name": "squashfs",
                 "server": "Level 2",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -76,6 +85,7 @@
                 "module_name": "udf",
                 "server": "Level 2",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "done"
               },
               {
@@ -85,6 +95,7 @@
                 "module_name": "usb-storage",
                 "server": "Level 1",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "done"
               }
             ]
@@ -94,11 +105,13 @@
             "description": "Configure Filesystem Partitions",
             "script": "./scripts/FSPartitions.sh",
             "status": "todo",
+            "type": "story",
             "children": [
               {
                 "id": "1.1.2.1",
                 "description": "Configure /tmp",
                 "status": "done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.1.1",
@@ -107,6 +120,7 @@
                     "mount_point": "/tmp",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -118,6 +132,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -129,6 +144,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -140,6 +156,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -147,6 +164,7 @@
               {
                 "id": "1.1.2.2",
                 "description": "Configure /dev/shm",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.2.1",
@@ -155,6 +173,7 @@
                     "mount_point": "/dev/shm",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -166,6 +185,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -177,6 +197,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -188,6 +209,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -196,6 +218,7 @@
                 "id": "1.1.2.3",
                 "description": "Configure /home",
                 "status": "done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.3.1",
@@ -204,6 +227,7 @@
                     "mount_point": "/home",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -215,6 +239,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -226,6 +251,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -234,6 +260,7 @@
                 "id": "1.1.2.4",
                 "description": "Configure /var",
                 "status": "done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.4.1",
@@ -242,6 +269,7 @@
                     "mount_point": "/var",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -253,6 +281,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -264,6 +293,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -271,6 +301,8 @@
               {
                 "id": "1.1.2.5",
                 "description": "Configure /var/tmp",
+                "type": "epic",
+                "status": "done",
                 "children": [
                   {
                     "id": "1.1.2.5.1",
@@ -279,6 +311,7 @@
                     "mount_point": "/var/tmp",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -290,6 +323,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -301,6 +335,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -312,6 +347,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -320,6 +356,7 @@
                 "id": "1.1.2.6",
                 "description": "Configure /var/log",
                 "status": "done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.6.1",
@@ -328,6 +365,7 @@
                     "mount_point": "/var/log",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -339,6 +377,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -350,6 +389,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   },
                   {
@@ -361,6 +401,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "done"
                   }
                 ]
@@ -375,6 +416,7 @@
     "id": "2",
     "description": "Services",
     "status": "todo",
+    "type": "epic",
     "children": [
       {
         "id": "2.1",
