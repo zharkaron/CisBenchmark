@@ -4,12 +4,14 @@
     "title": "Initial Setup",
     "status": "To Do",
     "description": "Items in this section are advised for all systems but may be difficult or require extensive preparation after the initial setup of the system.",
+    "type": "epic",
     "children": [
       {
         "id": "1.1",
         "title": "Filesystem",
         "status": "To Do",
         "description": "The file system is generally a built-in layer used to handle the data management of the storage",
+        "type": "story",
         "children": [
           {
             "id": "1.1.1",
@@ -17,6 +19,7 @@
             "script": "./scripts/Kernel_Modules.sh",
             "status": "Done",
             "description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, especially in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
+            "type": "epic",
             "children": [
               {
                 "id": "1.1.1.1",
@@ -26,6 +29,7 @@
                 "module_name": "cramfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -36,6 +40,7 @@
                 "module_name": "freevxfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -46,6 +51,7 @@
                 "module_name": "hfs",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -56,6 +62,7 @@
                 "module_name": "hfsplus",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -66,6 +73,7 @@
                 "module_name": "jffs2",
                 "server": "Level 1",
                 "workstation": "Level 1",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -76,6 +84,7 @@
                 "module_name": "squashfs",
                 "server": "Level 2",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -86,6 +95,7 @@
                 "module_name": "udf",
                 "server": "Level 2",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "Done"
               },
               {
@@ -96,6 +106,7 @@
                 "module_name": "usb-storage",
                 "server": "Level 1",
                 "workstation": "Level 2",
+                "type": "task",
                 "status": "Done"
               }
             ]
@@ -106,12 +117,14 @@
             "description": "Partitioning the filesystem can enhance security by isolating critical directories and preventing unauthorized access to sensitive data. It also helps in managing disk space more effectively.",
             "script": "./scripts/FSPartitions.sh",
             "status": "To Do",
+            "type": "story",
             "children": [
               {
                 "id": "1.1.2.1",
                 "title": "Configure /tmp",
                 "description": "The /tmp directory is used for temporary file storage. Configuring it as a separate partition can prevent unauthorized access and ensure that temporary files do not consume space on the root filesystem.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.1.1",
@@ -121,6 +134,7 @@
                     "mount_point": "/tmp",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -133,6 +147,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -145,6 +160,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -157,6 +173,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -166,6 +183,7 @@
                 "title": "Configure /dev/shm",
                 "description": "The /dev/shm directory is used for shared memory. Configuring it as a separate partition can enhance security by isolating shared memory from other filesystems.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.2.1",
@@ -175,6 +193,7 @@
                     "mount_point": "/dev/shm",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -187,6 +206,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -199,6 +219,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -211,6 +232,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -220,6 +242,7 @@
                 "title": "Configure /home",
                 "description": "The /home directory is used for user home directories. Configuring it as a separate partition can enhance security by isolating user data from system files and preventing unauthorized access to sensitive user data.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.3.1",
@@ -229,6 +252,7 @@
                     "mount_point": "/home",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -241,6 +265,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -253,6 +278,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -262,6 +288,7 @@
                 "title": "Configure /var",
                 "description": "The /var directory is used for variable data such as logs and spool files. Configuring it as a separate partition can enhance security by isolating variable data from system files and preventing unauthorized access to sensitive data.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.4.1",
@@ -271,6 +298,7 @@
                     "mount_point": "/var",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -283,6 +311,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -295,6 +324,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -304,6 +334,7 @@
                 "title": "Configure /var/tmp",
                 "description": "The /var/tmp directory is used for temporary files that need to persist across reboots. Configuring it as a separate partition can enhance security by isolating temporary files from other filesystems and preventing unauthorized access to sensitive data.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.5.1",
@@ -313,6 +344,7 @@
                     "mount_point": "/var/tmp",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -325,6 +357,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -337,6 +370,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -349,6 +383,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -358,6 +393,7 @@
                 "title": "Configure /var/log",
                 "description": "The /var/log directory is used for log files. Configuring it as a separate partition can enhance security by isolating log files from other filesystems and preventing unauthorized access to sensitive log data.",
                 "status": "Done",
+                "type": "epic",
                 "children": [
                   {
                     "id": "1.1.2.6.1",
@@ -367,6 +403,7 @@
                     "mount_point": "/var/log",
                     "server": "Level 2",
                     "workstation": "Level 2",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -379,6 +416,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -391,6 +429,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   },
                   {
@@ -403,6 +442,7 @@
                     "expected_state": "present",
                     "server": "Level 1",
                     "workstation": "Level 1",
+                    "type": "task",
                     "status": "Done"
                   }
                 ]
@@ -417,11 +457,14 @@
     "id": "2",
     "title": "Services",
     "status": "To Do",
+    "type": "epic",
     "children": [
       {
         "id": "2.1",
         "title": "Configure Server Services",
+        "description": "Server services are essential for the operation of the system and should be configured to ensure security and functionality.",
         "status": "To Do",
+        "type": "story",
         "children": []
       }
     ]
@@ -430,6 +473,7 @@
     "id": "3",
     "title": "Network",
     "status": "To Do",
+    "type": "epic",
     "children": []
   }
 ]
