@@ -9,7 +9,7 @@
       {
         "id": "1.1",
         "title": "Filesystem",
-        "status": "In Progress",
+        "status": "Done",
         "description": "The file system is generally a built-in layer used to handle the data management of the storage",
         "type": "Story",
         "children": [
@@ -503,12 +503,20 @@
                     "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
-                 }
+                  }
                 ]
               }
             ]
           }
         ]
+      },
+      { 
+        "id": "1.2",
+        "title": "Package Management",
+        "status": "Done",
+        "description": "Package management is a critical aspect of system security, ensuring that the software installed on the system is up-to-date and free from known vulnerabilities. This section provides guidance on how to manage packages effectively, including installing, updating, and removing software packages.",
+        "type": "Story",
+        "children": []
       }
     ]
   },
