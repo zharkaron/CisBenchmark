@@ -477,6 +477,19 @@
                     "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
+                  },
+                  {
+                    "id": "1.1.2.7.3",
+                    "title": "Ensure nosuid option is set on /var/log/audit partition",
+                    "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log/audit directory, which can help mitigate security risks.",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log/audit",
+                    "mount_option": "nosuid",
+                    "expected_state": "present",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
                   }
                 ]
               }
