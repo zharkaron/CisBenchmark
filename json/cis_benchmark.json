@@ -116,7 +116,7 @@
             "title": "Configure Filesystem Partitions",
             "description": "Partitioning the filesystem can enhance security by isolating critical directories and preventing unauthorized access to sensitive data. It also helps in managing disk space more effectively.",
             "script": "./scripts/FSPartitions.sh",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Story",
             "children": [
               {
@@ -451,7 +451,7 @@
                 "id": "1.1.2.7",
                 "title": "Configure /var/log/audit",
                 "description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
-                "status": "In Progress",
+                "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
@@ -490,7 +490,20 @@
                     "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
-                  }
+                  },
+                  {
+                    "id": "1.1.2.7.4",
+                    "title": "Ensure noexec option is set on /var/log/audit partition",
+                    "description": "The noexec option prevents the execution of binaries in the /var/log/audit directory, which can help mitigate security risks.",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log/audit",
+                    "mount_option": "noexec",
+                    "expected_state": "present",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                 }
                 ]
               }
             ]

@@ -102,3 +102,5 @@ first=true
 } > "$RESULTS_FILE"
 
 echo -e "\n${COLOR_CYAN}Compliance scan finished. All results consolidated in $RESULTS_FILE.${COLOR_RESET}"
+
+bash jira/workitem_jira.sh
