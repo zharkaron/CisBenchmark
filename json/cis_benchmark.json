@@ -27,8 +27,8 @@
                 "description": "The cramfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "cramfs",
-                "server": "Level 1",
-                "workstation": "Level 1",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "type": "Task",
                 "status": "Done"
               },
@@ -38,8 +38,8 @@
                 "description": "The freevxfs filesystem is a read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "freevxfs",
-                "server": "Level 1",
-                "workstation": "Level 1",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "type": "Task",
                 "status": "Done"
               },
@@ -49,8 +49,8 @@
                 "description": "The hfs filesystem is an older filesystem used primarily by Apple systems and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "hfs",
-                "server": "Level 1",
-                "workstation": "Level 1",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "type": "Task",
                 "status": "Done"
               },
@@ -60,8 +60,8 @@
                 "description": "The hfsplus filesystem is an updated version of the hfs filesystem used by Apple systems and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "hfsplus",
-                "server": "Level 1",
-                "workstation": "Level 1",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "type": "Task",
                 "status": "Done"
               },
@@ -71,8 +71,8 @@
                 "description": "The jffs2 filesystem is a journaling flash filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "jffs2",
-                "server": "Level 1",
-                "workstation": "Level 1",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "type": "Task",
                 "status": "Done"
               },
@@ -82,8 +82,8 @@
                 "description": "The squashfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "squashfs",
-                "server": "Level 2",
-                "workstation": "Level 2",
+                "server": "Level-2",
+                "workstation": "Level-2",
                 "type": "Task",
                 "status": "Done"
               },
@@ -93,8 +93,8 @@
                 "description": "The udf filesystem is a universal disk format that is not commonly used and can pose security risks if left enabled.",
                 "check_type": "kernel_module",
                 "module_name": "udf",
-                "server": "Level 2",
-                "workstation": "Level 2",
+                "server": "Level-2",
+                "workstation": "Level-2",
                 "type": "Task",
                 "status": "Done"
               },
@@ -104,8 +104,8 @@
                 "description": "The usb-storage kernel module allows the system to access USB storage devices. If USB storage is not needed, it should be disabled to reduce the attack surface.",
                 "check_type": "kernel_module",
                 "module_name": "usb-storage",
-                "server": "Level 1",
-                "workstation": "Level 2",
+                "server": "Level-1",
+                "workstation": "Level-2",
                 "type": "Task",
                 "status": "Done"
               }
@@ -132,8 +132,8 @@
                     "description": "Having /tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that the root filesystem is not filled with temporary data.",
                     "check_type": "partition",
                     "mount_point": "/tmp",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -145,8 +145,8 @@
                     "mount_point": "/tmp",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -158,8 +158,8 @@
                     "mount_point": "/tmp",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -171,8 +171,8 @@
                     "mount_point": "/tmp",
                     "mount_option": "noexec",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -191,8 +191,8 @@
                     "description": "Having /dev/shm as a separate partition can help prevent unauthorized access to shared memory and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/dev/shm",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -204,8 +204,8 @@
                     "mount_point": "/dev/shm",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -217,8 +217,8 @@
                     "mount_point": "/dev/shm",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -230,8 +230,8 @@
                     "mount_point": "/dev/shm",
                     "mount_option": "noexec",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -250,8 +250,8 @@
                     "description": "Having /home as a separate partition can help prevent unauthorized access to user data and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/home",
-                    "server": "Level 2",
-                    "workstation": "Level 2",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -263,8 +263,8 @@
                     "mount_point": "/home",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -276,8 +276,8 @@
                     "mount_point": "/home",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -296,8 +296,8 @@
                     "description": "Having /var as a separate partition can help prevent unauthorized access to variable data and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var",
-                    "server": "Level 2",
-                    "workstation": "Level 2",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -309,8 +309,8 @@
                     "mount_point": "/var",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -322,8 +322,8 @@
                     "mount_point": "/var",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -342,8 +342,8 @@
                     "description": "Having /var/tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var/tmp",
-                    "server": "Level 2",
-                    "workstation": "Level 2",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -355,8 +355,8 @@
                     "mount_point": "/var/tmp",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -368,8 +368,8 @@
                     "mount_point": "/var/tmp",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -381,8 +381,8 @@
                     "mount_point": "/var/tmp",
                     "mount_option": "noexec",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -401,8 +401,8 @@
                     "description": "Having /var/log as a separate partition can help prevent unauthorized access to log files and ensure that it does not consume space on the root filesystem.",
                     "check_type": "partition",
                     "mount_point": "/var/log",
-                    "server": "Level 2",
-                    "workstation": "Level 2",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -414,8 +414,8 @@
                     "mount_point": "/var/log",
                     "mount_option": "nodev",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -427,8 +427,8 @@
                     "mount_point": "/var/log",
                     "mount_option": "nosuid",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   },
@@ -440,8 +440,8 @@
                     "mount_point": "/var/log",
                     "mount_option": "noexec",
                     "expected_state": "present",
-                    "server": "Level 1",
-                    "workstation": "Level 1",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
                     "type": "Task",
                     "status": "Done"
                   }
@@ -451,9 +451,21 @@
                 "id": "1.1.2.7",
                 "title": "Configure /var/log/audit",
                 "description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
-                "status": "To Do",
+                "status": "In Progress",
                 "type": "Epics",
-                "children": []
+                "children": [
+                  {
+                    "id": "1.1.2.7.1",
+                    "title": "Ensure separate partition exists for /var/log/audit",
+                    "description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
+                    "check_type": "partition",
+                    "mount_point": "/var/log",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
               }
             ]
           }
