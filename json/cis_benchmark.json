@@ -516,7 +516,16 @@
         "status": "Done",
         "description": "Package management is a critical aspect of system security, ensuring that the software installed on the system is up-to-date and free from known vulnerabilities. This section provides guidance on how to manage packages effectively, including installing, updating, and removing software packages.",
         "type": "Story",
-        "children": []
+        "children": [
+          {
+            "id": "1.2.1",
+            "title": "Configure Package Repositories",
+            "description": "Configuring package repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
+            "status": "Done",
+            "type": "Epics",
+            "children": []
+          }
+        ]
       }
     ]
   },
