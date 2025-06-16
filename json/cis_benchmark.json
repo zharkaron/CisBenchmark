@@ -464,6 +464,19 @@
                     "workstation": "Level-2",
                     "type": "Task",
                     "status": "Done"
+                  },
+                  {
+                    "id": "1.1.2.7.2",
+                    "title": "Ensure nodev option is set on /var/log/audit partition",
+                    "description": "The nodev option prevents the creation of device files in the /var/log/audit directory, which can help mitigate security risks.",
+                    "check_type": "mount_option",
+                    "mount_point": "/var/log/audit",
+                    "mount_option": "nodev",
+                    "expected_state": "present",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
                   }
                 ]
               }
