@@ -1,0 +1,31 @@
+[
+  {
+    "id": "1.2",
+    "children": [
+      {
+        "id": "1.2.1",
+        "children": [
+          {
+            "id": "1.2.1.1",
+            "check_type": "gpg_keys"
+          },
+            {
+                "id": "1.2.1.1",
+                "check_type": "repo_conf"
+                    }
+        ]
+      },
+      {
+        "id": "1.2.2",
+        "children": [
+          {
+            "id": "1.2.2.1",
+            "check_type": "sec_updates"
+          }
+        ]
+      }
+    ]
+  }
+]
+
+
