@@ -522,7 +522,7 @@
             "id": "1.2.1",
             "title": "Configure Package Repositories",
             "description": "Configuring package repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Epics",
             "children": [
              {
@@ -538,7 +538,7 @@
                     "title": "Ensure package manager repositories are configured",
                     "description": "Configuring package manager repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
                     "check_type": "repo_conf",
-                    "status": "In Progress",
+                    "status": "Done",
                     "type": "Task"
              }
             ]
@@ -547,9 +547,18 @@
             "id": "1.2.2",
             "title": "Configure Packege Updates",
             "description": "Configuring package updates ensures that the system is kept up-to-date with the latest security patches and software improvements, reducing the risk of vulnerabilities.",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Epics",
-            "children": []
+            "children": [
+              {
+                "id": "1.2.2.1",
+                "title": "Ensure updates, patches, and additional security software are installed",
+                "description": "Regularly installing updates, patches, and additional security software helps keep the system secure against known vulnerabilities.",
+                "check_type": "sec_updates",
+                "status": "Done"
+                "type": "Task"
+              }
+            ]
           }
         ]
       }
