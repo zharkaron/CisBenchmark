@@ -532,6 +532,14 @@
                     "check_type": "gpg_keys",
                     "status": "Done",
                     "type": "Task"
+             },
+             {
+                    "id": "1.2.1.2",
+                    "title": "Ensure package manager repositories are configured",
+                    "description": "Configuring package manager repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
+                    "check_type": "repo_conf",
+                    "status": "In Progress",
+                    "type": "Task"
              }
             ]
           }
