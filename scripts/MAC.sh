@@ -1,29 +1,54 @@
 #!/usr/bin/env bash
 
 input_json="$1"
-target_parent_id="1.2"
+target_parent_id="1.3"
 
-# Checks if GPG keys are present in the APT trusted keys directory
-gpg_keys() {
-    if find /etc/apt/trusted.gpg.d -type f -name "*.gpg" 2>/dev/null | grep -q .; then
+# Checks if apparmor is installed and its utils are available
+apparmor_enabled() {
+    installed=$(dpkg-query -s apparmor 2>/dev/null)
+    utils_installed=$(dpkg-query -s apparmor-utils 2>/dev/null)
+    if [[ "$installed" == *"install ok installed"* ]] && [[ "$utils_installed" == *"install ok installed"* ]]; then
         echo "PASS"
     else
         echo "FAIL"
     fi
 }
 
-# Verifies that APT repositories are configured correctly by checking if apt update runs without errors
-repo_conf() {
-    if sudo apt update >/dev/null 2>&1; then
+# Checks if apparmor is enabled on boot
+boot_armor() {
+    app=$(grep "^\s*linux" /boot/grub/grub.cfg | grep -v "apparmor=1")
+    sec_armor=$(grep "^\s*linux" /boot/grub/grub.cfg | grep -v "security=apparmor")
+    if [[ app == "" ]] && [[ sec_armor == "" ]]; then
         echo "PASS"
     else
         echo "FAIL"
     fi
 }
 
-# Checks if security updates can be applied using apt update and apt upgrade
-sec_updates() {
-    if sudo apt update >/dev/null 2>&1 && sudo apt upgrade -y >/dev/null 2>&1; then
+# Ensures that AppArmor Profiles are in enforced or complain mode
+apparmor_profiles() {
+    profile_kill=$(apparmor_status | grep profiles | grep "kill mode" | awk '{print $1}')
+    profile_enforce=$(apparmor_status | grep profiles | grep "enforce mode" | awk '{print $1}')
+    processes_kill=$(apparmor_status | grep processes | grep "kill mode" | awk '{print $1}')
+    processes_enforce=$(apparmor_status | grep processes | grep "enforce mode" | awk '{print $1}')
+    if [[ -z "$profile_kill" || "$profile_kill" == "0" ]] && \
+       [[ -z "$profile_enforce" || "$profile_enforce" == "0" ]] && \
+       [[ -z "$processes_kill" || "$processes_kill" == "0" ]] && \
+       [[ -z "$processes_enforce" || "$processes_enforce" == "0" ]]; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensures that AppArmor Profiles are in enforcing
+apparmor_profiles_enforce() {
+    profile_complain=$(apparmor_status | grep profiles | grep "complain mode" | awk '{print $1}')
+    profile_kill=$(apparmor_status | grep profiles | grep "kill mode" | awk '{print $1}')
+    profile_unconfined=$(apparmor_status | grep profiles | grep "unconfined mode" | awk '{print $1}')
+    if { [[ -z "$profile_complain" || "$profile_complain" == "0" ]] && \
+         [[ -z "$profile_kill" || "$profile_kill" == "0" ]] && \
+         [[ -z "$profile_unconfined" || "$profile_unconfined" == "0" ]]; }; then
         echo "PASS"
     else
         echo "FAIL"
@@ -35,15 +60,19 @@ run_check() {
     local check_type="$1"
     local result
     case "$check_type" in
-        gpg_keys)
-            result=$(gpg_keys)
+        apparmor_enabled)
+            result=$(apparmor_enabled)
             ;;
-        repo_conf)
-            result=$(repo_conf)
+        boot_armor)
+            result=$(boot_armor)
             ;;
-        sec_updates)
-            result=$(sec_updates)
+        apparmor_profiles)
+            result=$(apparmor_profiles)
             ;;
+        apparmor_profiles_enforce)
+            result=$(apparmor_profiles_enforce)
+            ;;
+
         *)
             result="unknown"
             ;;
