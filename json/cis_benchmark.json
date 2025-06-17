@@ -542,6 +542,14 @@
                     "type": "Task"
              }
             ]
+          },
+          {
+            "id": "1.2.2",
+            "title": "Configure Packege Updates",
+            "description": "Configuring package updates ensures that the system is kept up-to-date with the latest security patches and software improvements, reducing the risk of vulnerabilities.",
+            "status": "In Progress",
+            "type": "Epics",
+            "children": []
           }
         ]
       }
