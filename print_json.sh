@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# I wanna check that they run the script through sudo
+if [[ $EUID -ne 0 ]]; then
+    echo "This script must be run as root or with sudo." >&2
+    exit 1
+fi
+
 JSON_FILE="./json/cis_benchmark.json"
 RESULTS_FILE="./json/results.json"
 
@@ -102,5 +108,3 @@ first=true
 } > "$RESULTS_FILE"
 
 echo -e "\n${COLOR_CYAN}Compliance scan finished. All results consolidated in $RESULTS_FILE.${COLOR_RESET}"
-
-bash jira/workitem_jira.sh
