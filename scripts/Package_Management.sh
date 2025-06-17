@@ -12,7 +12,7 @@ gpg_keys() {
 }
 
 repo_conf() {
-    if sudo apt update; then
+    if sudo apt update >/dev/null 2>&1; then
         echo "PASS"
     else
         echo "FAIL"
@@ -20,7 +20,7 @@ repo_conf() {
 }
 
 sec_updates() {
-    if sudo apt update && sudo apt upgrade -y; then
+    if sudo apt update >/dev/null 2>&1 && sudo apt upgrade -y >/dev/null 2>&1; then
         echo "PASS"
     else
         echo "FAIL"
@@ -35,10 +35,10 @@ run_check() {
             result=$(gpg_keys)
             ;;
         repo_conf)
-            result=$(repo_conf | tail -n 1)
+            result=$(repo_conf)
             ;;
         sec_updates)
-            result=$(sec_updates | tail -n 1)
+            result=$(sec_updates)
             ;;
         *)
             result="unknown"
