@@ -513,17 +513,27 @@
       { 
         "id": "1.2",
         "title": "Package Management",
-        "status": "Done",
+        "status": "In Progress",
         "description": "Package management is a critical aspect of system security, ensuring that the software installed on the system is up-to-date and free from known vulnerabilities. This section provides guidance on how to manage packages effectively, including installing, updating, and removing software packages.",
         "type": "Story",
+        "script": "./scripts/Package_Management.sh",
         "children": [
           {
             "id": "1.2.1",
             "title": "Configure Package Repositories",
             "description": "Configuring package repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
-            "status": "Done",
+            "status": "In Progress",
             "type": "Epics",
-            "children": []
+            "children": [
+             {
+                    "id": "1.2.1.1",
+                    "title": "Ensure GPG keys are configured",
+                    "description": "GPG keys are used to verify the authenticity of packages. Ensuring that GPG keys are configured helps prevent the installation of tampered or malicious packages.",
+                    "check_type": "gpg_keys",
+                    "status": "Done",
+                    "type": "Task"
+             }
+            ]
           }
         ]
       }
