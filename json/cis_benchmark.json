@@ -555,7 +555,7 @@
                 "title": "Ensure updates, patches, and additional security software are installed",
                 "description": "Regularly installing updates, patches, and additional security software helps keep the system secure against known vulnerabilities.",
                 "check_type": "sec_updates",
-                "status": "Done"
+                "status": "Done",
                 "type": "Task"
               }
             ]
