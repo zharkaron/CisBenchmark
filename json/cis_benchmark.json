@@ -625,7 +625,17 @@
         "status": "In Progress",
         "description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
         "type": "Epics",
-        "script": "./scripts/Bootloader.sh"
+        "script": "./scripts/Bootloader.sh",
+        "children": [
+          {
+            "id": "1.4.1",
+            "title": "Configure GRUB",
+            "description": "GRUB (GRand Unified Bootloader) is a widely used bootloader for Linux systems. Configuring GRUB securely helps protect the system from unauthorized access and ensures the integrity of the boot process.",
+            "check_type": "boot_password",
+            "status": "In Progress",
+            "type": "Task"
+          }
+        ]
       }
     ]
   },
