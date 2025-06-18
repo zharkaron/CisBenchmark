@@ -629,10 +629,18 @@
         "children": [
           {
             "id": "1.4.1",
-            "title": "Configure GRUB",
-            "description": "GRUB (GRand Unified Bootloader) is a widely used bootloader for Linux systems. Configuring GRUB securely helps protect the system from unauthorized access and ensures the integrity of the boot process.",
+            "title": "Ensure bootloader password is set",
+            "description": "Setting a bootloader password prevents unauthorized users from modifying the bootloader configuration or booting into single-user mode, which can bypass security measures.",
             "check_type": "boot_password",
-            "status": "In Progress",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.4.2",
+            "title": "Ensure acces to bootloader config is configured",
+            "description": "Configuring access to the bootloader configuration file ensures that only authorized users can modify the bootloader settings, preventing unauthorized changes that could compromise system security.",
+            "check_type": "boot_config",
+            "status": "Done",
             "type": "Task"
           }
         ]
