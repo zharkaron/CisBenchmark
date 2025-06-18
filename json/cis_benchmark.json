@@ -618,6 +618,14 @@
             ]
           }
         ]
+      },
+      {
+        "id": "1.4",
+        "title": "Configure Bootloader",
+        "status": "In Progress",
+        "description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
+        "type": "Epics",
+        "script": "./scripts/Bootloader.sh"
       }
     ]
   },
