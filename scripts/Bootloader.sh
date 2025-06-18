@@ -16,8 +16,8 @@ boot_password() {
 
 # function to check the config of the boot loader
 boot_config() {
-  conf=&(stat -Lc 'Access: (%#a/%A) /boot/grub/grub.cfg Uid: (%u/%U) Gid: (%g/%G)' /boot/grub/grub.cfg)
-  if [[ "$conf" != "Access: (0644/-rw-r--r--) /boot/grub/grub.cfg Uid: (0/root) Gid: (0/root)" ]]; then
+  conf=$(stat -Lc 'Access: (%#a/%A) /boot/grub/grub.cfg Uid: (%u/%U) Gid: (%g/%G)' /boot/grub/grub.cfg 2>/dev/null)
+  if [[ "$conf" != "Access: (0644/-rw-r--r--) /boot/grub/grub.cfg Uid: (0/root) Gid: (0/root) " ]]; then
     echo "FAIL"
   else
     echo "PASS"
