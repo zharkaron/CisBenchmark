@@ -592,6 +592,14 @@
                 "check_type": "boot_armor",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "1.3.1.3",
+                "title": "Ensure AppArmor profiles are in enforce mode",
+                "description": "AppArmor profiles define the access rights for applications. Ensuring that profiles are in enforce mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
+                "check_type": "apparmor_profiles",
+                "status": "In Progress",
+                "type": "Task"
               }
             ]
           }
