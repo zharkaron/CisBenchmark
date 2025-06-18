@@ -590,6 +590,8 @@
                 "title": "Ensure AppArmor is enabled in the bootloader configuration",
                 "description": "Enabling AppArmor in the bootloader configuration ensures that it is activated during system startup, providing mandatory access control from the beginning.",
                 "check_type": "boot_armor",
+                "server": "Level-1",
+                "workstation": "Level-1",
                 "status": "Done",
                 "type": "Task"
               },
@@ -598,7 +600,19 @@
                 "title": "Ensure AppArmor profiles are in enforce mode",
                 "description": "AppArmor profiles define the access rights for applications. Ensuring that profiles are in enforce mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
                 "check_type": "apparmor_profiles",
-                "status": "In Progress",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "id": "1.3.1.4",
+                "title": "Ensure all AppArmor profiles are in enforcing",
+                "description": "Ensuring that all AppArmor profiles are in enforcing mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
+                "check_type": "apparmor_profiles_enforcing",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "status": "Done",
                 "type": "Task"
               }
             ]
