@@ -361,7 +361,7 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.5.3",
+"id": "1.1.2.5.3",
                     "title": "Ensure nosuid option is set on /var/tmp partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/tmp directory, which can help mitigate security risks.",
                     "check_type": "mount_option",
@@ -622,7 +622,7 @@
       {
         "id": "1.4",
         "title": "Configure Bootloader",
-        "status": "In Progress",
+        "status": "Done",
         "description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
         "type": "Epics",
         "script": "./scripts/Bootloader.sh",
@@ -637,12 +637,63 @@
           },
           {
             "id": "1.4.2",
-            "title": "Ensure acces to bootloader config is configured",
+            "title": "Ensure access to bootloader config is configured",
             "description": "Configuring access to the bootloader configuration file ensures that only authorized users can modify the bootloader settings, preventing unauthorized changes that could compromise system security.",
             "check_type": "boot_config",
             "status": "Done",
             "type": "Task"
           }
+        ]
+      },
+      {
+        "id": "1.5",
+        "title": "Configure additional Process hardening",
+        "status": "In Progress",
+        "description": "Process hardening involves applying security measures to processes running on the system to reduce the risk of exploitation. This section provides guidance on how to configure additional process hardening techniques to enhance system security.",
+        "type": "Epics",
+        "script": "./scripts/Process_Hardening.sh",
+        "children": [
+          {
+            "id": "1.5.1",
+            "title": "Ensure address space layout randomization is enabled",
+            "description": "Address Space Layout Randomization (ASLR) is a security technique that randomizes the memory addresses used by system and application processes, making it more difficult for attackers to predict the location of specific code or data in memory.",
+            "check_type": "aslr_enabled",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.5.2",
+            "title": "Ensure ptrace_score is restricted",
+            "description": "Restricting ptrace_score prevents unauthorized processes from tracing or manipulating other processes, which can be used to exploit vulnerabilities or gain unauthorized access to sensitive information.",
+            "check_type": "ptrace_score",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.5.3",
+            "title": "Ensure core dumps are restricted",
+            "description": "Restricting core dumps prevents the creation of core dump files that can contain sensitive information about the system and running processes, which could be exploited by attackers.",
+            "check_type": "core_dumps_restricted",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.5.4",
+            "title": "Ensure prelink is not installed",
+            "description": "Prelinking is a technique that can improve the performance of dynamically linked applications, but it can also introduce security risks by making it easier for attackers to predict the locations of shared libraries in memory. Ensuring that prelink is not installed helps mitigate these risks.",
+            "check_type": "prelink_not_installed",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.5.5",
+            "title": "#nsure Automatic Error Reporting is not enabled",
+            "description": "Automatic Error Reporting can send sensitive information about the system and running processes to external servers, which could be exploited by attackers. Ensuring that Automatic Error Reporting is not enabled helps protect sensitive information.",
+            "check_type": "auto_error_reporting_disabled",
+            "status": "In Progress",
+            "type": "Task"
+          }
+          
         ]
       }
     ]
