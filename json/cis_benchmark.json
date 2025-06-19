@@ -666,7 +666,7 @@
             "title": "Ensure ptrace_score is restricted",
             "description": "Restricting ptrace_score prevents unauthorized processes from tracing or manipulating other processes, which can be used to exploit vulnerabilities or gain unauthorized access to sensitive information.",
             "check_type": "ptrace_score",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
