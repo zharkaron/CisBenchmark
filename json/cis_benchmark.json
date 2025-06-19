@@ -682,7 +682,7 @@
             "title": "Ensure prelink is not installed",
             "description": "Prelinking is a technique that can improve the performance of dynamically linked applications, but it can also introduce security risks by making it easier for attackers to predict the locations of shared libraries in memory. Ensuring that prelink is not installed helps mitigate these risks.",
             "check_type": "prelink_not_installed",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
