@@ -690,7 +690,7 @@
             "title": "Ensure Automatic Error Reporting is not enabled",
             "description": "Automatic Error Reporting can send sensitive information about the system and running processes to external servers, which could be exploited by attackers. Ensuring that Automatic Error Reporting is not enabled helps protect sensitive information.",
             "check_type": "auto_error_reporting",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           }
           
