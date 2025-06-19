@@ -658,7 +658,7 @@
             "title": "Ensure address space layout randomization is enabled",
             "description": "Address Space Layout Randomization (ASLR) is a security technique that randomizes the memory addresses used by system and application processes, making it more difficult for attackers to predict the location of specific code or data in memory.",
             "check_type": "aslr_enabled",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
