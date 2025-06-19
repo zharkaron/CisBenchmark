@@ -674,7 +674,7 @@
             "title": "Ensure core dumps are restricted",
             "description": "Restricting core dumps prevents the creation of core dump files that can contain sensitive information about the system and running processes, which could be exploited by attackers.",
             "check_type": "core_dumps_restricted",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
