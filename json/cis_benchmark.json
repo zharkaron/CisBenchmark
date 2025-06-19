@@ -622,7 +622,7 @@
       {
         "id": "1.4",
         "title": "Configure Bootloader",
-        "status": "In Progress",
+        "status": "Done",
         "description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
         "type": "Epics",
         "script": "./scripts/Bootloader.sh",
@@ -637,7 +637,7 @@
           },
           {
             "id": "1.4.2",
-            "title": "Ensure acces to bootloader config is configured",
+            "title": "Ensure access to bootloader config is configured",
             "description": "Configuring access to the bootloader configuration file ensures that only authorized users can modify the bootloader settings, preventing unauthorized changes that could compromise system security.",
             "check_type": "boot_config",
             "status": "Done",
