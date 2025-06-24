@@ -692,6 +692,14 @@
             "title": "Ensure GDM login banner is configured",
             "description": "Configuring the GDM login banner helps inform users about security policies and legal notices when they log in to the graphical user interface.",
             "check_type": "login_banner",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.7.3",
+            "title": "Ensure GDM disable-user-list option is enabled",
+            "description": "Enabling the disable-user-list option in GDM prevents unauthorized users from viewing the list of available user accounts on the login screen, enhancing security by obscuring user information.",
+            "check_type": "disable_user_list_enabled",
             "status": "In Progress",
             "type": "Task"
           }
