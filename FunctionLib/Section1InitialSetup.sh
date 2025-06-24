@@ -516,7 +516,7 @@ run_check_by_type_and_id() {
       gdm_removed
       ;;
     login_banner)
-      gdm_login_banner
+      gdm_login_banner_configured
       ;;
     disable_user_list_enabled)
       gdm_disable_user_list_enabled

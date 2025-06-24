@@ -684,6 +684,14 @@
             "title": "Ensure GDM is removed",
             "description": "Removing GDM can enhance security by reducing the attack surface of the system, especially if a different display manager is preferred or if the system does not require a graphical user interface.",
             "check_type": "gdm_removed",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.7.2",
+            "title": "Ensure GDM login banner is configured",
+            "description": "Configuring the GDM login banner helps inform users about security policies and legal notices when they log in to the graphical user interface.",
+            "check_type": "login_banner",
             "status": "In Progress",
             "type": "Task"
           }
