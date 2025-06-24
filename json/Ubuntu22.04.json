@@ -742,6 +742,14 @@
             "check_type": "autorun_never_enabled",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "1.7.9",
+            "title": "Ensure GDM autorun-never cannot be overridden",
+            "description": "Ensuring that the autorun-never setting cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
+            "check_type": "autorun_not_overridden",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
