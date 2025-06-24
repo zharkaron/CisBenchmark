@@ -488,7 +488,7 @@
       {
         "id": "1.3",
         "title": "Mandatory Access Control",
-        "status": "In Progress",
+        "status": "Done",
         "description": "Mandatory Access Control (MAC) is a security mechanism that restricts the ability of users and processes to access system resources based on predefined policies. This section provides guidance on how to implement and configure MAC systems to enhance security.",
         "type": "Story",
         "children": [
@@ -621,7 +621,56 @@
         "status": "In Progress",
         "description": "A command line warning banner is a message displayed to users when they log in to the system via the command line. Configuring a command line warning banner helps inform users about security policies and legal notices, and can deter unauthorized access.",
         "type": "Epics",
-        "children": []
+        "children": [
+          {
+            "id": "1.6.1",
+            "title": "Ensure message of the day is configured properly",
+            "description": "The message of the day (MOTD) is a message displayed to users when they log in to the system. Configuring it properly helps inform users about security policies and legal notices.",
+            "check_type": "day_message",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.6.2",
+            "title": "Ensure local login warning banner is configured properly",
+            "description": "A local login warning banner is displayed to users when they log in to the system via the console. Configuring it properly helps inform users about security policies and legal notices.",
+            "check_type": "banner_message",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.6.3",
+            "title": "Ensure remote login warning banner is configured properly",
+            "description": "A remote login warning banner is displayed to users when they log in to the system via SSH or other remote access methods. Configuring it properly helps inform users about security policies and legal notices.",
+            "check_type": "banner_message_login",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.6.4",
+            "title": "Ensure access to /etc/motd is configured",
+            "description": "Configuring access to the /etc/motd file ensures that only authorized users can modify the message of the day, preventing unauthorized changes that could compromise system security.",
+            "check_type": "access_motd",
+            "status": "In Progress",
+            "type": "Task"
+          },
+          {
+            "id": "1.6.5",
+          "title": "Ensure access to /etc/issue is configured",
+          "description": "Configuring access to the /etc/issue file ensures that only authorized users can modify the login banner, preventing unauthorized changes that could compromise system security.",
+          "check_type": "access_issue",
+          "status": "In Progress",
+          "type": "Task"
+          },
+          {
+            "id": "1.6.6",
+            "title": "Ensure access to /etc/issue.net is configured",
+            "description": "Configuring access to the /etc/issue.net file ensures that only authorized users can modify the remote login banner, preventing unauthorized changes that could compromise system security.",
+            "check_type": "access_issue_net",
+            "status": "In Progress",
+            "type": "Task"
+          }
+        ]
       }
     ]
   },
