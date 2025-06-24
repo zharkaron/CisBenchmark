@@ -716,7 +716,15 @@
             "title": "Ensure GDM screen locks cannot be overridden",
             "description": "Configuring GDM to prevent users from overriding the screen lock settings helps ensure that the system remains secure when users leave their workstations unattended.",
             "check_type": "screen_lock_not_overridden",
-            "status": "In Progress",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.7.6",
+            "title": "Ensure GDM automatic mounting of removable media is disabled",
+            "description": "Disabling the automatic mounting of removable media in GDM helps prevent unauthorized access to potentially malicious or untrusted media, enhancing system security.",
+            "check_type": "auto_mount_disabled",
+            "status": "Done",
             "type": "Task"
           }
         ]
