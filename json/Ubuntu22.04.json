@@ -474,7 +474,7 @@
             "type": "Epics",
             "children": [
               {
-                "id": "1.2.2.1",
+"id": "1.2.2.1",
                 "title": "Ensure updates, patches, and additional security software are installed",
                 "description": "Regularly installing updates, patches, and additional security software helps keep the system secure against known vulnerabilities.",
                 "check_type": "sec_updates",
@@ -708,6 +708,14 @@
             "title": "Ensure GDM screen locks when the user is idle",
             "description": "Configuring GDM to lock the screen when the user is idle helps protect the system from unauthorized access when users leave their workstations unattended.",
             "check_type": "screen_lock_idle",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.7.5",
+            "title": "Ensure GDM screen locks cannot be overridden",
+            "description": "Configuring GDM to prevent users from overriding the screen lock settings helps ensure that the system remains secure when users leave their workstations unattended.",
+            "check_type": "screen_lock_not_overridden",
             "status": "In Progress",
             "type": "Task"
           }
