@@ -726,6 +726,14 @@
             "check_type": "auto_mount_disabled",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "1.7.7",
+            "title": "Ensure GDM disabling automatic mounting of removable media is not overridden",
+            "description": "Ensuring that the disabling of automatic mounting of removable media cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
+            "check_type": "auto_mount_not_overridden",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
