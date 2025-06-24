@@ -671,6 +671,14 @@
             "type": "Task"
           }
         ]
+      },
+      {
+        "id": "1.7",
+        "title": "Configure GNOME Display Manager",
+        "status": "In Progress",
+        "description": "The GNOME Display Manager (GDM) is the default display manager for GNOME desktop environments. Configuring GDM securely is essential to prevent unauthorized access and ensure the integrity of the graphical user interface.",
+        "type": "Epics",
+        "children": []
       }
     ]
   },

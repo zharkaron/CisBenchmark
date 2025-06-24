@@ -250,6 +250,98 @@ check_access() {
     fi
 }
 
+# Ensure GDM is removed
+gdm_removed() {
+    if ! dpkg -l | grep -qw gdm3; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM login banner is configured
+gdm_login_banner_configured() {
+    if grep -q 'banner-message-enable=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM disable-user-list option is enabled
+gdm_disable_user_list_enabled() {
+    if grep -q 'disable-user-list=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM screen locks when the user is idle
+gdm_screen_lock_idle() {
+    if grep -q 'idle-delay' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM screen locks cannot be overridden
+gdm_screen_lock_not_overridden() {
+    if grep -q 'lock-enabled=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM automatic mounting of removable media is disabled
+gdm_auto_mount_disabled() {
+    if grep -q 'automount=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM disabling automatic mounting of removable media is not overridden
+gdm_auto_mount_not_overridden() {
+    if grep -q 'automount-open=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM autorun-never is enabled
+gdm_autorun_never_enabled() {
+    if grep -q 'autorun-never=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure GDM autorun-never is not overridden
+gdm_autorun_never_not_overridden() {
+    if ! grep -q 'autorun-never=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Ensure XDCMP is not enabled
+gdm_xdmcp_not_enabled() {
+    if ! grep -q 'Enable=true' /etc/gdm3/custom.conf 2>/dev/null; then
+        echo "PASS"
+    else
+        echo "FAIL"
+    fi
+}
+
+# Add more functions as needed for other checks
+
 # Check if a mount option is present or absent on a mount point
 check_mount_option() {
     local mount_point="$1"
@@ -419,6 +511,36 @@ run_check_by_type_and_id() {
       ;;
     access_issue_net)
       check_access "/etc/issue.net"
+      ;;
+    gdm_removed)
+      gdm_removed
+      ;;
+    login_banner)
+      gdm_login_banner
+      ;;
+    disable_user_list_enabled)
+      gdm_disable_user_list_enabled
+      ;;
+    screen_lock_idle)
+      gdm_screen_lock_idle
+      ;;
+    screen_lock_not_overridden)
+      gdm_screen_lock_not_overridden
+      ;;
+    auto_mount_disabled)
+      gdm_auto_mount_disabled
+      ;;
+    auto_mount_not_overridden)
+      gdm_auto_mount_not_overridden
+      ;;
+    autorun_never_enabled)
+      gdm_autorun_never_enabled
+      ;;
+    autorun_not_overridden)
+      gdm_autorun_never_not_overridden
+      ;;
+    xdmcp_not_enabled)
+      gdm_xdmcp_not_enabled
       ;;
     *)
       echo "UNKNOWN"
