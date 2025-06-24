@@ -700,6 +700,14 @@
             "title": "Ensure GDM disable-user-list option is enabled",
             "description": "Enabling the disable-user-list option in GDM prevents unauthorized users from viewing the list of available user accounts on the login screen, enhancing security by obscuring user information.",
             "check_type": "disable_user_list_enabled",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "1.7.4",
+            "title": "Ensure GDM screen locks when the user is idle",
+            "description": "Configuring GDM to lock the screen when the user is idle helps protect the system from unauthorized access when users leave their workstations unattended.",
+            "check_type": "screen_lock_idle",
             "status": "In Progress",
             "type": "Task"
           }
