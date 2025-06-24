@@ -734,6 +734,14 @@
             "check_type": "auto_mount_not_overridden",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "1.7.8",
+            "title": "Ensure GDM autorun-never is enabled",
+            "description": "Enabling autorun in GDM allows the system to automatically run specific applications or scripts when a user logs in, which can be useful for security monitoring or compliance purposes.",
+            "check_type": "autorun_never_enabled",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
