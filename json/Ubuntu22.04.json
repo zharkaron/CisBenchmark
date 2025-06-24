@@ -750,6 +750,14 @@
             "check_type": "autorun_not_overridden",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "1.7.10",
+            "title": "Ensure XDCMP is disabled",
+            "description": "Disabling XDCMP (X Display Manager Control Protocol) prevents remote access to the graphical user interface, enhancing security by reducing the attack surface of the system.",
+            "check_type": "xdmcp_not_enabled",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
