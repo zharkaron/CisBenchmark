@@ -643,7 +643,7 @@
             "title": "Ensure remote login warning banner is configured properly",
             "description": "A remote login warning banner is displayed to users when they log in to the system via SSH or other remote access methods. Configuring it properly helps inform users about security policies and legal notices.",
             "check_type": "banner_message_login",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
