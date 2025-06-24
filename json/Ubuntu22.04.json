@@ -651,7 +651,7 @@
             "title": "Ensure access to /etc/motd is configured",
             "description": "Configuring access to the /etc/motd file ensures that only authorized users can modify the message of the day, preventing unauthorized changes that could compromise system security.",
             "check_type": "access_motd",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           },
           {
