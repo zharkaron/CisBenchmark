@@ -678,7 +678,16 @@
         "status": "In Progress",
         "description": "The GNOME Display Manager (GDM) is the default display manager for GNOME desktop environments. Configuring GDM securely is essential to prevent unauthorized access and ensure the integrity of the graphical user interface.",
         "type": "Epics",
-        "children": []
+        "children": [
+          {
+            "id": "1.7.1",
+            "title": "Ensure GDM is removed",
+            "description": "Removing GDM can enhance security by reducing the attack surface of the system, especially if a different display manager is preferred or if the system does not require a graphical user interface.",
+            "check_type": "gdm_removed",
+            "status": "In Progress",
+            "type": "Task"
+          }
+        ]
       }
     ]
   },
