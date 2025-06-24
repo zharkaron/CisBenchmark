@@ -618,7 +618,7 @@
       {
         "id": "1.6",
         "title": "Configure Command Line Warning Banner",
-        "status": "In Progress",
+        "status": "Done",
         "description": "A command line warning banner is a message displayed to users when they log in to the system via the command line. Configuring a command line warning banner helps inform users about security policies and legal notices, and can deter unauthorized access.",
         "type": "Epics",
         "children": [
@@ -667,7 +667,7 @@
             "title": "Ensure access to /etc/issue.net is configured",
             "description": "Configuring access to the /etc/issue.net file ensures that only authorized users can modify the remote login banner, preventing unauthorized changes that could compromise system security.",
             "check_type": "access_issue_net",
-            "status": "In Progress",
+            "status": "Done",
             "type": "Task"
           }
         ]
