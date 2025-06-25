@@ -776,7 +776,16 @@
         "description": "Server services are essential for the operation of the system and should be configured to ensure security and functionality.",
         "status": "In Progress",
         "type": "Story",
-        "children": []
+        "children": [
+          {
+            "id": "2.1.1",
+            "title": "Ensure autofs services are not in use",
+            "description": "Autofs is a service that automatically mounts filesystems on demand. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "autofs",
+            "status": "In Progress",
+            "type": "Task"
+          }
+        ]
       }
     ]
   },
