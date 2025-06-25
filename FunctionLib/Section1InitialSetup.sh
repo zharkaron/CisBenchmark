@@ -340,6 +340,20 @@ gdm_xdmcp_not_enabled() {
     fi
 }
 
+# Ensure autofs services are not in use
+check_autofs_services() {
+  if dpkg-query -s autofs >/dev/null 2>&1 ||
+    systemctl is enabled autofs.serbiver 2>/dev/null | grep -q 'enabled' ||
+    systemctl is-active autofs.service 2>/dev/null | grep -q 'active'; then
+  echo "PASS"
+else
+  echo "FAIL"
+  fi
+}
+
+
+
+
 # Add more functions as needed for other checks
 
 # Check if a mount option is present or absent on a mount point
@@ -541,6 +555,9 @@ run_check_by_type_and_id() {
       ;;
     xdmcp_not_enabled)
       gdm_xdmcp_not_enabled
+      ;;
+    autofs)
+      check_autofs_services
       ;;
     *)
       echo "UNKNOWN"
