@@ -840,6 +840,14 @@
             "check_type": "dovecot",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.9",
+            "title": "Ensure network file system services are not in use",
+            "description": "Network file system services are used for sharing files over the network. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "nfs",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
