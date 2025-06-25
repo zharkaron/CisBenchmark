@@ -44,3 +44,6 @@ check_dhcp() {
 check_dns() {
   check_service bind9 bind9.service
 }
+check_dnsmasq() {
+  check_service dnsmasq dnsmasq.service
+}

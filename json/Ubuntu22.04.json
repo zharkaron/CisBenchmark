@@ -808,6 +808,14 @@
             "check_type": "dns",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.5",
+            "title": "Ensure dnsmasq services are not in use",
+            "description": "Dnsmasq is a lightweight DNS forwarder and DHCP server. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "dnsmasq",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
