@@ -74,3 +74,6 @@ check_samba() {
 check_snmp() {
   check_service snmpd snmpd.service
 }
+check_tftp() {
+  check_service tftpd tftpd-hpa.service
+}

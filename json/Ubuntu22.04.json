@@ -896,6 +896,14 @@
             "check_type": "snmp",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.16",
+            "title": "Ensure tftp services are not in use",
+            "description": "TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "tftp",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
