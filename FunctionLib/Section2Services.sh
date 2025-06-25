@@ -62,4 +62,6 @@ check_nis() {
 check_cups() {
   check_service cups cups.service cups.socket
 }
-
+check_rpcbind() {
+  check_service rpcbind rpcbind.service rpcbind.socket
+}
