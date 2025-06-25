@@ -792,6 +792,14 @@
             "check_type": "avahi",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.3",
+            "title": "Ensure dhcp services are not in use",
+            "description": "DHCP services are used to assign IP addresses dynamically. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "dhcp",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

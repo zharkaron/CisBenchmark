@@ -36,3 +36,7 @@ check_autofs() {
 check_avahi() {
   check_service avahi-daemon avahi-daemon.socket avahi-daemon.service
 }
+
+check_dhcp() {
+  check_service isc-dhcp-server isc-dhcp-server.service isc-dhcp-server6.service
+}
