@@ -101,13 +101,36 @@ check_MailTransferAgent() {
 }
 
 check_ApprovedServices() {
-  local 
-  local ports
-  ports=$(ss -tulnH | awk '{print $5}' | awk -F: '{print $NF}' | grep -E '^[0-9]+$' | grep -v '^22$' | sort -u)
-  if [[ -n "$ports" ]]; then
-    echo "FAIL"
+  local approved_file="./approved_services.txt"
+  local approved_ports=()
+
+  # If file exists and is not empty, read approved ports from it
+  if [[ -s "$approved_file" ]]; then
+    mapfile -t approved_ports < "$approved_file"
   else
-    echo "PASS"
+    # Default to only port 22 (SSH)
+    approved_ports=(22)
   fi
+
+  local listening_ports
+  listening_ports=$(ss -tulnH | awk '{print $5}' | awk -F: '{print $NF}' | grep -E '^[0-9]+$' | sort -u)
+
+  for port in $listening_ports; do
+    local allowed=false
+    for ap in "${approved_ports[@]}"; do
+      if [[ "$port" == "$ap" ]]; then
+        allowed=true
+        break
+      fi
+    done
+
+    if ! $allowed; then
+      echo "FAIL"
+      return 1
+    fi
+  done
+
+  echo "PASS"
+  return 0
 }
 
