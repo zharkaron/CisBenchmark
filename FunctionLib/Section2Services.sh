@@ -53,4 +53,6 @@ check_ldap() {
 check_dovecot() {
   check_service "dovecot dovecot-imapd dovecot-pop3d" dovecot.service dovecot.socket
 }
-
+check_nfs() {
+  check_service nfs-kernel-server nfs-server.service
+}
