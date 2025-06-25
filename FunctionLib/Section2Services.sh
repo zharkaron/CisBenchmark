@@ -47,3 +47,6 @@ check_dns() {
 check_dnsmasq() {
   check_service dnsmasq dnsmasq.service
 }
+check_ftp() {
+  check_service vsftpd vsftpd.service
+}
