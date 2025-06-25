@@ -912,6 +912,14 @@
             "check_type": "squid",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.18",
+            "title": "Ensure web server services are not in use",
+            "description": "Web server services are used for hosting websites. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "apache",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

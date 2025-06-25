@@ -80,3 +80,7 @@ check_tftp() {
 check_squid() {
   check_service squid squid.service
 }
+check_apache() {
+  check_service "apache2 nginx" apache2.service apache2.socket nginx.service nginx.socket
+}
+
