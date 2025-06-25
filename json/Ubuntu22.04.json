@@ -816,6 +816,14 @@
             "check_type": "dnsmasq",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.6",
+            "title": "Ensure ftp services are not in use",
+            "description": "FTP services are used for file transfer. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "ftp",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
