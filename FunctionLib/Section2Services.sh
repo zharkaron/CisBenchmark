@@ -77,3 +77,6 @@ check_snmp() {
 check_tftp() {
   check_service tftpd tftpd-hpa.service
 }
+check_squid() {
+  check_service squid squid.service
+}

@@ -904,6 +904,14 @@
             "check_type": "tftp",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.17",
+            "title": "Ensure web proxy services are not in use",
+            "description": "Web proxy services are used for caching and filtering web traffic. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "squid",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
