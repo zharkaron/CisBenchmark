@@ -56,3 +56,8 @@ check_dovecot() {
 check_nfs() {
   check_service nfs-kernel-server nfs-server.service
 }
+check_nis() {
+  check_service ypserv ypserv.service
+}
+
+

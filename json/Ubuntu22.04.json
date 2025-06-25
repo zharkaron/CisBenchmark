@@ -848,6 +848,14 @@
             "check_type": "nfs",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.10",
+            "title": "Ensure nis services are not in use",
+            "description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "nis",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
