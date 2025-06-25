@@ -928,6 +928,14 @@
             "check_type": "xinetd",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.20",
+            "title": "Ensure X windows server services are not in use",
+            "description": "X Windows server services are used for providing a graphical user interface. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "XWindows",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

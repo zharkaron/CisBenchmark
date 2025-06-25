@@ -86,4 +86,7 @@ check_apache() {
 check_xinetd() {
   check_service xinetd xinetd.service
 }
+check_XWindows() {
+  check_service xserver-common
+}
 
