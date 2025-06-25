@@ -87,7 +87,10 @@
 | 1.7.10       | Ensure XDCMP is disabled                                     | ✅       |
 | 2            | Services                                                     | ⏳       |
 | 2.1          | Configure Server Services                                    | ⏳       |
-| 2.1.1        | Ensure autofs services are not in use                        | ⏳       |
-| 2.1.2        | Ensure avahi-daemon services are not in use                  | ⏳       |
+| 2.1.1        | Ensure autofs services are not in use                        | ✅       |
+| 2.1.2        | Ensure avahi-daemon services are not in use                  | ✅       |
+| 2.1.3        | Ensure dhcp server services are not in use                   | ✅       |
+| 2.1.4        | Ensure dns server services are not in use                    | ✅       |
+| 2.1.5        | Ensure dnsmasq server services are not in use                | ✅       |
 
 ---
