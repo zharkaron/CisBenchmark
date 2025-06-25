@@ -920,6 +920,14 @@
             "check_type": "apache",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.19",
+            "title": "Ensure xinetd services are not in use",
+            "description": "Xinetd is a super-server daemon that manages internet services. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "xinetd",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
