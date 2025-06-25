@@ -90,3 +90,12 @@ check_XWindows() {
   check_service xserver-common
 }
 
+check_MailTransferAgent() {
+  inet_interfaces=$(postconf -h inet_interfaces 2>/dev/null)
+  if [[ "$inet_interfaces" == "loopback-only" || "$inet_interfaces" == "localhost" || "$inet_interfaces" == "127.0.0.1" ]]; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
+

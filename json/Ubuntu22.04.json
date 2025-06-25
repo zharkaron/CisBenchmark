@@ -936,7 +936,16 @@
             "check_type": "XWindows",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.21",
+            "title": "Ensure mail transfer agent is configured for local-only mode",
+            "description": "Configuring the mail transfer agent (MTA) for local-only mode ensures that it only accepts and delivers mail locally, preventing it from being used as an open relay for sending spam or malicious emails.",
+            "check_type": "MailTransferAgent",
+            "status": "Done",
+            "type": "Task"
           }
+
         ]
       }
     ]

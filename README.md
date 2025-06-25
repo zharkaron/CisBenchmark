@@ -107,5 +107,6 @@
 | 2.1.18       | Ensure web server services are not in use                   | ✅       |
 | 2.1.19       | Ensure xinetd services are not in use                        | ✅       |
 | 2.1.20       | Ensure X Windows services are not in use                        | ✅       |
+| 2.1.21       | Ensure Ensure mail transfer agent is configured for local-only mode | ✅       |
 
 ---
