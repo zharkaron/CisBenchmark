@@ -59,5 +59,7 @@ check_nfs() {
 check_nis() {
   check_service ypserv ypserv.service
 }
-
+check_cups() {
+  check_service cups cups.service cups.socket
+}
 
