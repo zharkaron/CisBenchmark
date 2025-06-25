@@ -864,6 +864,14 @@
             "check_type": "cups",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.12",
+            "title": "Ensure rpcbind services are not in use",
+            "description": "Rpcbind is used to map RPC program numbers to universal addresses. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "rpcbind",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
