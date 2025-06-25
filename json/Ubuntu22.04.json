@@ -832,6 +832,14 @@
             "check_type": "ldap",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.8",
+            "title": "Ensure message access services are not in use",
+            "description": "Message access services are used for inter-process communication. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "dovecot",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

@@ -32,15 +32,12 @@ check_service() {
 check_autofs() {
   check_service autofs autofs.service
 }
-
 check_avahi() {
   check_service avahi-daemon avahi-daemon.socket avahi-daemon.service
 }
-
 check_dhcp() {
   check_service isc-dhcp-server isc-dhcp-server.service isc-dhcp-server6.service
 }
-
 check_dns() {
   check_service bind9 bind9.service
 }
@@ -53,3 +50,7 @@ check_ftp() {
 check_ldap() {
   check_service slapd slapd.service
 }
+check_dovecot() {
+  check_service "dovecot dovecot-imapd dovecot-pop3d" dovecot.service dovecot.socket
+}
+
