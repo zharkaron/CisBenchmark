@@ -872,6 +872,14 @@
             "check_type": "rpcbind",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.13",
+            "title": "Ensure rsync services are not in use",
+            "description": "Rsync is used for synchronizing files and directories between systems. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "rsync",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
