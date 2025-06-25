@@ -83,4 +83,7 @@ check_squid() {
 check_apache() {
   check_service "apache2 nginx" apache2.service apache2.socket nginx.service nginx.socket
 }
+check_xinetd() {
+  check_service xinetd xinetd.service
+}
 
