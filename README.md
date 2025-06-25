@@ -96,4 +96,5 @@
 | 2.1.7        | Ensure ldap server services are not in use                   | ✅       |
 | 2.1.8        | Ensure message access server services are not in use                  | ✅       |
 | 2.1.9        | Ensure nfs server services are not in use                    | ✅       |
+| 2.1.10       | Ensure nis services are not in use                          | ✅       |
 ---
