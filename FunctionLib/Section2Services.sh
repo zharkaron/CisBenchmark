@@ -90,12 +90,24 @@ check_XWindows() {
   check_service xserver-common
 }
 
+# Function to check if the Mail Transfer Agent (MTA) is configured to listen only on localhost
 check_MailTransferAgent() {
   inet_interfaces=$(postconf -h inet_interfaces 2>/dev/null)
   if [[ "$inet_interfaces" == "loopback-only" || "$inet_interfaces" == "localhost" || "$inet_interfaces" == "127.0.0.1" ]]; then
     echo "PASS"
   else
     echo "FAIL"
+  fi
+}
+
+check_ApprovedServices() {
+  local 
+  local ports
+  ports=$(ss -tulnH | awk '{print $5}' | awk -F: '{print $NF}' | grep -E '^[0-9]+$' | grep -v '^22$' | sort -u)
+  if [[ -n "$ports" ]]; then
+    echo "FAIL"
+  else
+    echo "PASS"
   fi
 }
 

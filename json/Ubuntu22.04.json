@@ -944,8 +944,15 @@
             "check_type": "MailTransferAgent",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.22",
+            "title": "Ensure only approved services are listening on a network interface",
+            "description": "Ensuring that only approved services are listening on a network interface helps reduce the attack surface by preventing unauthorized access to services that are not needed for normal operation.",
+            "check_type": "ApprovedServices",
+            "status": "Done",
+            "type": "Task"
           }
-
         ]
       }
     ]
