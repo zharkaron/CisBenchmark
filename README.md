@@ -104,4 +104,5 @@
 | 2.1.15       | Ensure snmp services are not in use                   | ✅       |
 | 2.1.16       | Ensure tftp server services are not in use                   | ✅       |
 | 2.1.17       | Ensure web proxy services are not in use                        | ✅       |
+| 2.1.18       | Ensure web server services are not in use                   | ✅       |
 ---
