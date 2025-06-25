@@ -888,6 +888,14 @@
             "check_type": "samba",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.15",
+            "title": "Ensure snmp services are not in use",
+            "description": "SNMP (Simple Network Management Protocol) is used for network management. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "snmp",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

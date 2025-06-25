@@ -71,3 +71,6 @@ check_rsync() {
 check_samba() {
   check_service samba smbd.service
 }
+check_snmp() {
+  check_service snmpd snmpd.service
+}
