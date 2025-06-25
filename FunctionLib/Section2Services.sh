@@ -50,3 +50,6 @@ check_dnsmasq() {
 check_ftp() {
   check_service vsftpd vsftpd.service
 }
+check_ldap() {
+  check_service slapd slapd.service
+}
