@@ -782,7 +782,15 @@
             "title": "Ensure autofs services are not in use",
             "description": "Autofs is a service that automatically mounts filesystems on demand. If not needed, it should be disabled to reduce the attack surface.",
             "check_type": "autofs",
-            "status": "In Progress",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "id": "2.1.2",
+            "title": "Ensure avahi-daemon services are not in use",
+            "description": "Avahi-daemon is a service that provides mDNS/DNS-SD services. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "avahi",
+            "status": "Done",
             "type": "Task"
           }
         ]
