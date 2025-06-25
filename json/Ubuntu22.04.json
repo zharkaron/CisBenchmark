@@ -880,6 +880,14 @@
             "check_type": "rsync",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.14",
+            "title": "Ensure samba services are not in use",
+            "description": "Samba is used for sharing files and printers with Windows systems. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "samba",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

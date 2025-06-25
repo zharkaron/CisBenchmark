@@ -65,3 +65,9 @@ check_cups() {
 check_rpcbind() {
   check_service rpcbind rpcbind.service rpcbind.socket
 }
+check_rsync() {
+  check_service rsync rsync.service
+}
+check_samba() {
+  check_service samba smbd.service
+}

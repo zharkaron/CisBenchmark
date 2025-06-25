@@ -99,4 +99,6 @@
 | 2.1.10       | Ensure nis services are not in use                          | ✅       |
 | 2.1.11       | Ensure print server services are not in use                    | ✅       |
 | 2.1.12       | Ensure rpcbind server services are not in use                  | ✅       |
+| 2.1.13       | Ensure rsync services are not in use                   | ✅       |
+| 2.1.14       | Ensure samba services are not in use                   | ✅       |
 ---
