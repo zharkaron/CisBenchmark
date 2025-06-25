@@ -4,7 +4,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-source ./FunctionLib/Section1InitialSetup.sh
+source ./FunctionLib/All_Functions.sh
 
 # make sure running as root
 if [[ $EUID -ne 0 ]]; then

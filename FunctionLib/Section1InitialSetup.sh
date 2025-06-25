@@ -1,10 +1,12 @@
 #!/bin/bash
 # Section 1: Initial Setup
-# This script is going to be all the functions that are needed to check benchmark 1
+# This script defines functions for benchmark 1 checks.
 
 # Check if kernel modules are not available
-check_kernel_module_not_available() {
-  local module_name="$1"
+check_kernel_module() {
+  local id="$1"
+  local module_name
+  module_name=$(get_kernel_module_name "$id")
   if lsmod | grep -wq "$module_name"; then
     echo -n "FAIL"
   else
@@ -17,18 +19,18 @@ check_kernel_module_not_available() {
 }
 
 # Check if a mount point is a separate partition
-check_separate_partition() {
-    local mount_point="$1"
+check_partition() {
+    local id="$1"
+    local mount_point
+    mount_point=$(get_partition_mount_point "$id")
 
     if [[ ! -d "$mount_point" ]]; then
         echo -n "FAIL"
         return
     fi
 
-    # Get the device for the mount point
     local device
     device=$(findmnt -n -o SOURCE --target "$mount_point")
-    # Get the device for root
     local root_device
     root_device=$(findmnt -n -o SOURCE --target /)
 
@@ -45,7 +47,7 @@ check_separate_partition() {
 }
 
 # Checks if GPG keys are present in the APT trusted keys directory
-gpg_keys() {
+check_gpg_keys() {
     if find /etc/apt/trusted.gpg.d -type f -name "*.gpg" 2>/dev/null | grep -q .; then
         echo "PASS"
     else
@@ -54,7 +56,7 @@ gpg_keys() {
 }
 
 # Verifies that APT repositories are configured correctly by checking if apt update runs without errors
-repo_conf() {
+check_repo_conf() {
     if sudo apt update >/dev/null 2>&1; then
         echo "PASS"
     else
@@ -63,7 +65,7 @@ repo_conf() {
 }
 
 # Checks if security updates can be applied using apt update and apt upgrade
-sec_updates() {
+check_sec_updates() {
     if sudo apt update >/dev/null 2>&1 && sudo apt upgrade -y >/dev/null 2>&1; then
         echo "PASS"
     else
@@ -72,7 +74,7 @@ sec_updates() {
 }
 
 # Checks if apparmor is installed and its utils are available
-apparmor_enabled() {
+check_apparmor_enabled() {
     installed=$(dpkg-query -s apparmor 2>/dev/null)
     utils_installed=$(dpkg-query -s apparmor-utils 2>/dev/null)
     if [[ "$installed" == *"install ok installed"* ]] && [[ "$utils_installed" == *"install ok installed"* ]]; then
@@ -83,10 +85,10 @@ apparmor_enabled() {
 }
 
 # Checks if apparmor is enabled on boot
-boot_armor() {
+check_boot_armor() {
     app=$(grep "^\s*linux" /boot/grub/grub.cfg | grep -v "apparmor=1")
     sec_armor=$(grep "^\s*linux" /boot/grub/grub.cfg | grep -v "security=apparmor")
-    if [[ app == "" ]] && [[ sec_armor == "" ]]; then
+    if [[ $app == "" ]] && [[ $sec_armor == "" ]]; then
         echo "PASS"
     else
         echo "FAIL"
@@ -94,7 +96,7 @@ boot_armor() {
 }
 
 # Ensures that AppArmor Profiles are in enforced or complain mode
-apparmor_profiles() {
+check_apparmor_profiles() {
     profile_kill=$(apparmor_status | grep profiles | grep "kill mode" | awk '{print $1}')
     profile_enforce=$(apparmor_status | grep profiles | grep "enforce mode" | awk '{print $1}')
     processes_kill=$(apparmor_status | grep processes | grep "kill mode" | awk '{print $1}')
@@ -110,7 +112,7 @@ apparmor_profiles() {
 }
 
 # Ensures that AppArmor Profiles are in enforcing
-apparmor_profiles_enforce() {
+check_apparmor_profiles_enforce() {
     profile_complain=$(apparmor_status | grep profiles | grep "complain mode" | awk '{print $1}')
     profile_kill=$(apparmor_status | grep profiles | grep "kill mode" | awk '{print $1}')
     profile_unconfined=$(apparmor_status | grep profiles | grep "unconfined mode" | awk '{print $1}')
@@ -124,7 +126,7 @@ apparmor_profiles_enforce() {
 }
 
 # Function to check the password of the boot loader
-boot_password() {
+check_boot_password() {
   user=$(grep "^set superusers" /boot/grub/grub.cfg)
   password=$(awk -F. '/^\s*password/ {print $1"."$2"."$3}' /boot/grub/grub.cfg)
   if [[ -z "$user" ]] || [[ -z "$password" ]]; then
@@ -135,7 +137,7 @@ boot_password() {
 }
 
 # function to check the config of the boot loader
-boot_config() {
+check_boot_config() {
   conf=$(stat -Lc 'Access: (%#a/%A) /boot/grub/grub.cfg Uid: (%u/%U) Gid: (%g/%G)' /boot/grub/grub.cfg 2>/dev/null)
   if [[ "$conf" != "Access: (0644/-rw-r--r--) /boot/grub/grub.cfg Uid: (0/root) Gid: (0/root) " ]]; then
     echo "FAIL"
@@ -145,6 +147,20 @@ boot_config() {
 }
 
 # Function to check if Address Space Layout Randomization (ASLR) is enabled
+check_aslr_enabled() {
+    audit_kernel_param "kernel.randomize_va_space" "2"
+}
+
+# Function to check if ptrace scope is set to 1
+check_ptrace_score() {
+    audit_kernel_param "kernel.yama.ptrace_scope" "1"
+}
+
+# Function to check if core dumps are restricted
+check_core_dumps_restricted() {
+    audit_kernel_param "fs.suid_dumpable" "0"
+}
+
 audit_kernel_param() {
     local l_kpname="$1"
     local l_kpvalue="$2"
@@ -200,7 +216,7 @@ audit_kernel_param() {
     fi
 }
 
-# Function to check if ptrace scope is set to 1
+# Function to check if prelink is not installed
 check_prelink_not_installed() {
     if  ! command -v prelink >/dev/null 2>&1; then
         echo "PASS"
@@ -210,17 +226,28 @@ check_prelink_not_installed() {
 }
 
 # Function to check if automatic error reporting is disabled
-check_auto_error_reporting_disabled() {
+check_auto_error_reporting() {
     if [ -f /etc/default/apport ]; then
         if grep -q '^enabled=0' /etc/default/apport; then
             echo "PASS"
         else
             echo "FAIL"
         fi
+    else
+        echo "FAIL"
     fi
 }
 
 # Checks for specific banner/message contents in a file
+check_day_message() {
+  check_command "/etc/motd"
+}
+check_banner_message() {
+  check_command "/etc/issue"
+}
+check_banner_message_login() {
+  check_command "/etc/issue.net"
+}
 check_command() {
   local filecheck="$1"
   local os_id
@@ -235,6 +262,15 @@ check_command() {
 }
 
 # Checks the access permissions of a file
+check_access_motd() {
+  check_access "/etc/motd"
+}
+check_access_issue() {
+  check_access "/etc/issue"
+}
+check_access_issue_net() {
+  check_access "/etc/issue.net"
+}
 check_access() {
     local access_check="$1"
     if [ -e "$access_check" ]; then
@@ -251,7 +287,7 @@ check_access() {
 }
 
 # Ensure GDM is removed
-gdm_removed() {
+check_gdm_removed() {
     if ! dpkg -l | grep -qw gdm3; then
         echo "PASS"
     else
@@ -260,7 +296,7 @@ gdm_removed() {
 }
 
 # Ensure GDM login banner is configured
-gdm_login_banner_configured() {
+check_login_banner() {
     if grep -q 'banner-message-enable=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -269,7 +305,7 @@ gdm_login_banner_configured() {
 }
 
 # Ensure GDM disable-user-list option is enabled
-gdm_disable_user_list_enabled() {
+check_disable_user_list_enabled() {
     if grep -q 'disable-user-list=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -278,7 +314,7 @@ gdm_disable_user_list_enabled() {
 }
 
 # Ensure GDM screen locks when the user is idle
-gdm_screen_lock_idle() {
+check_screen_lock_idle() {
     if grep -q 'idle-delay' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -287,7 +323,7 @@ gdm_screen_lock_idle() {
 }
 
 # Ensure GDM screen locks cannot be overridden
-gdm_screen_lock_not_overridden() {
+check_screen_lock_not_overridden() {
     if grep -q 'lock-enabled=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -296,7 +332,7 @@ gdm_screen_lock_not_overridden() {
 }
 
 # Ensure GDM automatic mounting of removable media is disabled
-gdm_auto_mount_disabled() {
+check_auto_mount_disabled() {
     if grep -q 'automount=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -305,7 +341,7 @@ gdm_auto_mount_disabled() {
 }
 
 # Ensure GDM disabling automatic mounting of removable media is not overridden
-gdm_auto_mount_not_overridden() {
+check_auto_mount_not_overridden() {
     if grep -q 'automount-open=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -314,7 +350,7 @@ gdm_auto_mount_not_overridden() {
 }
 
 # Ensure GDM autorun-never is enabled
-gdm_autorun_never_enabled() {
+check_autorun_never_enabled() {
     if grep -q 'autorun-never=true' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -323,7 +359,7 @@ gdm_autorun_never_enabled() {
 }
 
 # Ensure GDM autorun-never is not overridden
-gdm_autorun_never_not_overridden() {
+check_autorun_not_overridden() {
     if ! grep -q 'autorun-never=false' /etc/gdm3/greeter.dconf-defaults 2>/dev/null; then
         echo "PASS"
     else
@@ -332,7 +368,7 @@ gdm_autorun_never_not_overridden() {
 }
 
 # Ensure XDCMP is not enabled
-gdm_xdmcp_not_enabled() {
+check_xdmcp_not_enabled() {
     if ! grep -q 'Enable=true' /etc/gdm3/custom.conf 2>/dev/null; then
         echo "PASS"
     else
@@ -340,54 +376,44 @@ gdm_xdmcp_not_enabled() {
     fi
 }
 
-# Ensure autofs services are not in use
-check_autofs_services() {
-  if dpkg-query -s autofs >/dev/null 2>&1 ||
-    systemctl is enabled autofs.serbiver 2>/dev/null | grep -q 'enabled' ||
-    systemctl is-active autofs.service 2>/dev/null | grep -q 'active'; then
-  echo "PASS"
-else
-  echo "FAIL"
-  fi
-}
-
-
-
-
-# Add more functions as needed for other checks
-
 # Check if a mount option is present or absent on a mount point
 check_mount_option() {
-    local mount_point="$1"
-    local mount_option="$2"
-    local expected_state="$3"
-    local status_val="FAIL"
+  local id
+  id="$(echo "$1" | xargs)"  # trims whitespace
+  local info mount_point option state
+  info=$(get_mount_option_info "$id")
+  if [[ -z "$info" ]]; then
+    echo "UNKNOWN"
+    return
+  fi
+  read -r mount_point option state <<< "$info"
+  local status_val="FAIL"
 
-    if ! findmnt -M "$mount_point" &>/dev/null; then
-        echo -n "FAIL"
-        return
-    fi
+  if ! findmnt -M "$mount_point" &>/dev/null; then
+      echo -n "FAIL"
+      return
+  fi
 
-    local options
-    options=$(findmnt -n -o OPTIONS --target "$mount_point")
+  local options
+  options=$(findmnt -n -o OPTIONS --target "$mount_point")
 
-    if [[ "$expected_state" == "present" ]]; then
-        if [[ "$options" == *"$mount_option"* ]]; then
-            status_val="PASS"
-        else
-            status_val="FAIL"
-        fi
-    elif [[ "$expected_state" == "absent" ]]; then
-        if [[ "$options" == *"$mount_option"* ]]; then
-            status_val="FAIL"
-        else
-            status_val="PASS"
-        fi
-    else
-        status_val="FAIL"
-    fi
+  if [[ "$state" == "present" ]]; then
+      if [[ "$options" == *"$option"* ]]; then
+          status_val="PASS"
+      else
+          status_val="FAIL"
+      fi
+  elif [[ "$state" == "absent" ]]; then
+      if [[ "$options" == *"$option"* ]]; then
+          status_val="FAIL"
+      else
+          status_val="PASS"
+      fi
+  else
+      status_val="FAIL"
+  fi
 
-    echo -n "$status_val"
+  echo -n "$status_val"
 }
 
 # Kernel module check function
@@ -421,146 +447,26 @@ get_partition_mount_point() {
 
 # Mount option check function
 get_mount_option_info() {
-  case "$1" in
-    1.1.2.1.2) echo "/tmp nodev present" ;;
-    1.1.2.1.3) echo "/tmp nosuid present" ;;
-    1.1.2.1.4) echo "/tmp noexec present" ;;
-    1.1.2.2.2) echo "/dev/shm nodev present" ;;
-    1.1.2.2.3) echo "/dev/shm nosuid present" ;;
-    1.1.2.2.4) echo "/dev/shm noexec present" ;;
-    1.1.2.3.2) echo "/home nodev present" ;;
-    1.1.2.3.3) echo "/home nosuid present" ;;
-    1.1.2.4.2) echo "/var nodev present" ;;
-    1.1.2.4.3) echo "/var nosuid present" ;;
-    1.1.2.5.2) echo "/var/tmp nodev present" ;;
-    1.1.2.5.3) echo "/var/tmp nosuid present" ;;
-    1.1.2.5.4) echo "/var/tmp noexec present" ;;
-    1.1.2.6.2) echo "/var/log nodev present" ;;
-    1.1.2.6.3) echo "/var/log nosuid present" ;;
-    1.1.2.6.4) echo "/var/log noexec present" ;;
-    1.1.2.7.2) echo "/var/log/audit nodev present" ;;
-    1.1.2.7.3) echo "/var/log/audit nosuid present" ;;
-    1.1.2.7.4) echo "/var/log/audit noexec present" ;;
-    *) echo "" ;;
-  esac
-}
-
-# Dispatcher
-run_check_by_type_and_id() {
-  local check_type="$1"
-  local id="$2"
-  case "$check_type" in
-    kernel_module)
-      local module_name
-      module_name=$(get_kernel_module_name "$id")
-      check_kernel_module_not_available "$module_name"
-      ;;
-    partition)
-      local mount_point
-      mount_point=$(get_partition_mount_point "$id")
-      check_separate_partition "$mount_point"
-      ;;
-    mount_option)
-      local info mount_point option state
-      info=$(get_mount_option_info "$id")
-      read -r mount_point option state <<< "$info"
-      check_mount_option "$mount_point" "$option" "$state"
-      ;;
-    gpg_keys)
-      gpg_keys
-      ;;
-    repo_conf)
-      repo_conf
-      ;;
-    sec_updates)
-      sec_updates
-      ;;
-    apparmor_enabled)
-      apparmor_enabled
-      ;;
-    boot_armor)
-      boot_armor
-      ;;
-    apparmor_profiles)
-      apparmor_profiles
-      ;;
-    apparmor_profiles_enforce)
-      apparmor_profiles_enforce
-      ;;
-    boot_password)
-      boot_password
-      ;;
-    boot_config)
-      boot_config
-      ;;
-    aslr_enabled)
-      audit_kernel_param "kernel.randomize_va_space" "2"
-      ;;
-    ptrace_score)
-      audit_kernel_param "kernel.yama.ptrace_scope" "1"
-      ;;
-    core_dumps_restricted)
-      audit_kernel_param "fs.suid_dumpable" "0"
-      ;;
-    prelink_not_installed)
-      check_prelink_not_installed
-      ;;
-    auto_error_reporting)
-      check_auto_error_reporting_disabled
-      ;;
-    day_message)
-      check_command "/etc/motd"
-      ;;
-    banner_message)
-      check_command "/etc/issue"
-      ;;
-    banner_message_login)
-      check_command "/etc/issue.net"
-      ;;
-    access_motd)
-      check_access "/etc/motd"
-      ;;
-    access_issue)
-      check_access "/etc/issue"
-      ;;
-    access_issue_net)
-      check_access "/etc/issue.net"
-      ;;
-    gdm_removed)
-      gdm_removed
-      ;;
-    login_banner)
-      gdm_login_banner_configured
-      ;;
-    disable_user_list_enabled)
-      gdm_disable_user_list_enabled
-      ;;
-    screen_lock_idle)
-      gdm_screen_lock_idle
-      ;;
-    screen_lock_not_overridden)
-      gdm_screen_lock_not_overridden
-      ;;
-    auto_mount_disabled)
-      gdm_auto_mount_disabled
-      ;;
-    auto_mount_not_overridden)
-      gdm_auto_mount_not_overridden
-      ;;
-    autorun_never_enabled)
-      gdm_autorun_never_enabled
-      ;;
-    autorun_not_overridden)
-      gdm_autorun_never_not_overridden
-      ;;
-    xdmcp_not_enabled)
-      gdm_xdmcp_not_enabled
-      ;;
-    autofs)
-      check_autofs_services
-      ;;
-    *)
-      echo "UNKNOWN"
-      ;;
-  esac
-}
+     case "$1" in
+       1.1.2.1.2) echo "/tmp nodev present" ;;
+       1.1.2.1.3) echo "/tmp nosuid present" ;;
+       1.1.2.1.4) echo "/tmp noexec present" ;;
+       1.1.2.2.2) echo "/dev/shm nodev present" ;;
+       1.1.2.2.3) echo "/dev/shm nosuid present" ;;
+       1.1.2.2.4) echo "/dev/shm noexec present" ;;
+       1.1.2.3.2) echo "/home nodev present" ;;
+       1.1.2.3.3) echo "/home nosuid present" ;;
+       1.1.2.4.2) echo "/var nodev present" ;;
+       1.1.2.4.3) echo "/var nosuid present" ;;
+       1.1.2.5.2) echo "/var/tmp nodev present" ;;
+       1.1.2.5.3) echo "/var/tmp nosuid present" ;;
+       1.1.2.5.4) echo "/var/tmp noexec present" ;;
+       1.1.2.6.2) echo "/var/log nodev present" ;;
+       1.1.2.6.3) echo "/var/log nosuid present" ;;
+       1.1.2.6.4) echo "/var/log noexec present" ;;
+       1.1.2.7.2) echo "/var/log/audit nodev present" ;;
+       1.1.2.7.3) echo "/var/log/audit nosuid present" ;;
+       1.1.2.7.4) echo "/var/log/audit noexec present" ;;
+       *) echo "" ;;
+     esac
+   }
