@@ -856,6 +856,14 @@
             "check_type": "nis",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.11",
+            "title": "Ensure print server services are not in use",
+            "description": "Print server services are used for managing printers over the network. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "cups",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
