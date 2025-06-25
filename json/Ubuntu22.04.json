@@ -800,6 +800,14 @@
             "check_type": "dhcp",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.4",
+            "title": "Ensure dns services are not in use",
+            "description": "DNS services are used to resolve domain names to IP addresses. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "dns",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

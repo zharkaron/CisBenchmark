@@ -40,3 +40,7 @@ check_avahi() {
 check_dhcp() {
   check_service isc-dhcp-server isc-dhcp-server.service isc-dhcp-server6.service
 }
+
+check_dns() {
+  check_service bind9 bind9.service
+}
