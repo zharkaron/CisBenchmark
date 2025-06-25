@@ -824,6 +824,14 @@
             "check_type": "ftp",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.1.7",
+            "title": "Ensure ldap services are not in use",
+            "description": "LDAP services are used for directory services. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "ldap",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }

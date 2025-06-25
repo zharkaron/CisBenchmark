@@ -93,5 +93,5 @@
 | 2.1.4        | Ensure dns server services are not in use                    | ✅       |
 | 2.1.5        | Ensure dnsmasq server services are not in use                | ✅       |
 | 2.1.6        | Ensure ftp server services are not in use                    | ✅       |
-
+| 2.1.7        | Ensure ldap server services are not in use                   | ✅       |
 ---
