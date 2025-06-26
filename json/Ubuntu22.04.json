@@ -1018,7 +1018,25 @@
         "description": "Time synchronization is essential for maintaining accurate timestamps on system logs and ensuring that scheduled tasks run at the correct times. This section provides guidance on how to configure time synchronization services securely.",
         "status": "In Progress",
         "type": "Epics",
-        "children": []
+        "children": [
+          {
+            "id": "2.3.1",
+            "title": "Ensure time syncronization is in use",
+            "description": "Time synchronization ensures that the system clock is accurate, which is crucial for logging events, scheduling tasks, and maintaining security protocols.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "id": "2.3.1.1",
+                "title": "Ensure a single time synchronization daemon is in use",
+                "description": "Using a single time synchronization daemon prevents conflicts and ensures that the system clock is synchronized with a reliable time source.",
+                "check_type": "SingleSync",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

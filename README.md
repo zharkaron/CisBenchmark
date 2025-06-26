@@ -116,5 +116,7 @@
 | 2.2.4        | Ensure telnet client services are not in use                 | ✅       |
 | 2.2.5        | Ensure ldap client services are not in use                   | ✅       |
 | 2.2.6        | Ensure ftp client services are not in use                    | ✅       |
-
+| 2.3          | Configure Time Syncehronization                              | ✅       |
+| 2.3.1        | Ensure time synchronization is in use                        | ✅       |
+| 2.3.1.1      | Ensure a single time syncronization daemon is in use         | ✅       |
 ---
