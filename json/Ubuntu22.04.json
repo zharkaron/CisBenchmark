@@ -985,6 +985,14 @@
             "check_type": "TalkClient",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.2.4",
+            "title": "Ensure telnet client is not installed",
+            "description": "Telnet is an insecure protocol for remote command execution. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "TelnetClient",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
