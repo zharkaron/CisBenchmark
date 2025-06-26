@@ -122,4 +122,6 @@
 | 2.3.2        | Configure systemd-timesyncd                                  | ✅       |
 | 2.3.2.1      | Ensure systemd-timesyncd configured with authorized timeserver | ✅       |
 | 2.3.2.2      | Ensure systemd-timesyncd is enabled                         | ✅       |
+| 2.3.3        | Configure chrony                                           | ✅       |
+| 2.3.3.1      | Ensure chrony is configured with authorized timeserver   | ✅       |
 ---

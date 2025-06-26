@@ -1060,6 +1060,23 @@
                 "type": "Task"
               }
             ]
+          },
+          {
+            "id": "2.3.3",
+            "title": "Configure chrony",
+            "description": "Chrony is a versatile time synchronization service that can be used as an alternative to systemd-timesyncd. It is particularly useful for systems that are not always connected to the network.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "id": "2.3.3.1",
+                "title": "Ensure chrony is configured with authorized timeserver",
+                "description": "Configuring chrony with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
+                "check_type": "ChronyConfig",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
           }
         ]
       }
