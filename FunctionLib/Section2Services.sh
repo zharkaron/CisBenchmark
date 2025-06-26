@@ -144,15 +144,16 @@ package_check() {
     echo "FAIL"
   fi
 }
-
 check_NISClient() {
   package_check nis
 }
-
 check_RSHClient() {
   package_check rsh-client
 }
-
 check_TalkClient() {
   package_check talk
 }
+check_TelnetClient() {
+  package_check telnet
+}
+

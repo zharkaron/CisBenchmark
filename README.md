@@ -113,4 +113,7 @@
 | 2.2.1        | Ensure NIS client services are not in use                   | ✅       |
 | 2.2.2       | Ensure rsh client services are not in use                   | ✅       |
 | 2.2.3        | Ensure talk client services are not in use                  | ✅       |
+| 2.2.4        | Ensure telnet client services are not in use                 | ✅       |
+
+
 ---
