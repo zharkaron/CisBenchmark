@@ -959,7 +959,7 @@
         "id": "2.2",
         "title": "Configure Client Services",
         "description": "Client services are used to connect to remote systems and should be configured securely to prevent unauthorized access.",
-        "status": "In Progress",
+        "status": "Done",
         "type": "Epics",
         "children": [
           {
@@ -1011,6 +1011,14 @@
             "type": "Task"
           }
         ]
+      },
+      {
+        "id": "2.3",
+        "title": "Configure Time Synchronization",
+        "description": "Time synchronization is essential for maintaining accurate timestamps on system logs and ensuring that scheduled tasks run at the correct times. This section provides guidance on how to configure time synchronization services securely.",
+        "status": "In Progress",
+        "type": "Epics",
+        "children": []
       }
     ]
   },
