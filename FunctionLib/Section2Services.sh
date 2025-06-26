@@ -156,4 +156,6 @@ check_TalkClient() {
 check_TelnetClient() {
   package_check telnet
 }
-
+check_LDAPClient() {
+  package_check ldap-utils
+}
