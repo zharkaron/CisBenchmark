@@ -184,7 +184,7 @@ check_TimesyncdConfig() {
     echo "FAIL"
   fi
 }
-check_systemd_timesyncd() {
+check_TimesyncdEnabled() {
   local enabled
   local active
 
