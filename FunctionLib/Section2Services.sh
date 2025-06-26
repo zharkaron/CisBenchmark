@@ -159,3 +159,6 @@ check_TelnetClient() {
 check_LDAPClient() {
   package_check ldap-utils
 }
+check_FTPClient() {
+  package_check ftp
+}
