@@ -1050,6 +1050,14 @@
                 "check_type": "TimesyncdConfig",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.3.2.2",
+                "title": "Ensure systemd-timesyncd is enabled and running",
+                "description": "Enabling and running systemd-timesyncd ensures that the time synchronization service is active and continuously synchronizing the system clock with the configured time server.",
+                "check_type": "TimesyncdEnabled",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }

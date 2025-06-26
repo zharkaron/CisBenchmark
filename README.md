@@ -121,5 +121,5 @@
 | 2.3.1.1      | Ensure a single time syncronization daemon is in use         | ✅       |
 | 2.3.2        | Configure systemd-timesyncd                                  | ✅       |
 | 2.3.2.1      | Ensure systemd-timesyncd configured with authorized timeserver | ✅       |
-
+| 2.3.2.2      | Ensure systemd-timesyncd is enabled                         | ✅       |
 ---
