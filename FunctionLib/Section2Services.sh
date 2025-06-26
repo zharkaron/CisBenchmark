@@ -170,7 +170,7 @@ check_SingleSync() {
     echo "FAIL"
   fi
 }
-check_timesyncd_config() {
+check_TimesyncdConfig() {
   local config_file="/etc/systemd/timesyncd.conf"
   local config=$(systemd-analyze cat-config "$config_file" 2>/dev/null)
 
