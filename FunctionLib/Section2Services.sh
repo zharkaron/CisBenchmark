@@ -197,7 +197,7 @@ check_TimesyncdEnabled() {
     echo "FAIL"
   fi
 }
-check_time_sync() {
+check_ChronyConfig() {
   local timesyncd_active="n"
   local chrony_active="n"
 
