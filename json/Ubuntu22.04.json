@@ -1075,6 +1075,14 @@
                 "check_type": "ChronyConfig",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.3.3.2",
+                "title": "Ensure chrony is running as user_chrony",
+                "description": "Running chrony as a dedicated user (user_chrony) enhances security by isolating the time synchronization service from other system processes, reducing the risk of privilege escalation.",
+                "check_type": "ChronyUser",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }

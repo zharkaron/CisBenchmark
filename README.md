@@ -124,4 +124,5 @@
 | 2.3.2.2      | Ensure systemd-timesyncd is enabled                         | ✅       |
 | 2.3.3        | Configure chrony                                           | ✅       |
 | 2.3.3.1      | Ensure chrony is configured with authorized timeserver   | ✅       |
+| 2.3.3.2      | Ensure chrony is running as user_chrony                   | ✅       |
 ---
