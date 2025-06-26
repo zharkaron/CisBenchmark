@@ -27,8 +27,6 @@ check_service() {
     echo "FAIL"
   fi
 }
-
-# Service checks
 check_autofs() {
   check_service autofs autofs.service
 }
@@ -89,8 +87,6 @@ check_xinetd() {
 check_XWindows() {
   check_service xserver-common
 }
-
-# Function to check if the Mail Transfer Agent (MTA) is configured to listen only on localhost
 check_MailTransferAgent() {
   inet_interfaces=$(postconf -h inet_interfaces 2>/dev/null)
   if [[ "$inet_interfaces" == "loopback-only" || "$inet_interfaces" == "localhost" || "$inet_interfaces" == "127.0.0.1" ]]; then
@@ -99,7 +95,6 @@ check_MailTransferAgent() {
     echo "FAIL"
   fi
 }
-
 check_ApprovedServices() {
   local approved_file="./approved_services.txt"
   local approved_ports=()
@@ -133,8 +128,6 @@ check_ApprovedServices() {
   echo "PASS"
   return 0
 }
-
-# client checks
 package_check() {
   local pkg="$1"
   # if package is not installed then return pass
@@ -162,10 +155,88 @@ check_LDAPClient() {
 check_FTPClient() {
   package_check ftp
 }
+check_SingleSync() {
+  local count=0
 
+  for svc in systemd-timesyncd.service chrony.service; do
+    if systemctl is-enabled "$svc" &>/dev/null && systemctl is-active "$svc" &>/dev/null; then
+      ((count++))
+    fi
+  done
 
+  if [[ "$count" -eq 1 ]]; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
+check_timesyncd_config() {
+  local config_file="/etc/systemd/timesyncd.conf"
+  local config=$(systemd-analyze cat-config "$config_file" 2>/dev/null)
 
+  # Check if NTP and FallbackNTP are set (not commented out)
+  grep -Eiq '^\s*NTP=' <<< "$config" && local ntp_set=true || ntp_set=false
+  grep -Eiq '^\s*FallbackNTP=' <<< "$config" && local fallback_set=true || fallback_set=false
 
+  if $ntp_set && $fallback_set; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
+check_systemd_timesyncd() {
+  local enabled
+  local active
 
+  enabled=$(systemctl is-enabled systemd-timesyncd.service 2>/dev/null)
+  active=$(systemctl is-active systemd-timesyncd.service 2>/dev/null)
 
+  if [[ "$enabled" == "enabled" && "$active" == "active" ]]; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
+check_time_sync() {
+  local timesyncd_active="n"
+  local chrony_active="n"
 
+  # Check systemd-timesyncd service enabled and active
+  if systemctl is-enabled systemd-timesyncd.service &>/dev/null && systemctl is-active systemd-timesyncd.service &>/dev/null; then
+    timesyncd_active="y"
+  fi
+
+  # Check chrony config for 'server' or 'pool'
+  if grep -Pq '^\s*(server|pool)\s+\S+' /etc/chrony/*.conf 2>/dev/null; then
+    chrony_active="y"
+  fi
+
+  if [[ $timesyncd_active == "y" && $chrony_active == "y" ]]; then
+    echo "FAIL"
+  elif [[ $timesyncd_active == "n" && $chrony_active == "n" ]]; then
+    echo "FAIL"
+  else
+    echo "PASS"
+  fi
+}
+check_chrony_user() {
+  # Check if chronyd is running
+  if pgrep chronyd > /dev/null 2>&1; then
+    # Check if any chronyd process is NOT running as _chrony
+    if ps -eo user,comm | awk '/[c]hronyd/ && $1 != "_chrony" { exit 1 }'; then
+      echo "PASS"
+    else
+      echo "FAIL"
+    fi
+  else
+    # Chronyd not running, so either not in use or irrelevant for this test
+    echo "FAIL"
+  fi
+}
+check_chrony_enabled_running() {
+  if systemctl is-enabled chrony.service &>/dev/null && systemctl is-active chrony.service &>/dev/null; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
