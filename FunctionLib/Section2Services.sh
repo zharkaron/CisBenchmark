@@ -219,7 +219,7 @@ check_ChronyConfig() {
     echo "PASS"
   fi
 }
-check_chrony_user() {
+check_ChronyUser() {
   # Check if chronyd is running
   if pgrep chronyd > /dev/null 2>&1; then
     # Check if any chronyd process is NOT running as _chrony
