@@ -134,3 +134,19 @@ check_ApprovedServices() {
   return 0
 }
 
+# client checks
+package_check() {
+  local pkg="$1"
+  # if package is not installed then return pass
+  if ! dpkg-query -s "$pkg" >/dev/null 2>&1; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
+
+check_NISClient() {
+  package_check nis
+}
+
+

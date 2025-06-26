@@ -108,6 +108,8 @@
 | 2.1.19       | Ensure xinetd services are not in use                        | ✅       |
 | 2.1.20       | Ensure X Windows services are not in use                        | ✅       |
 | 2.1.21       | Ensure Ensure mail transfer agent is configured for local-only mode | ✅       |
-| 2.1.22       | Ensure only approved services are listening on the network interface | ✅       |
+| 2.1.22       | Ensure only approved services are listening on the network interface | ✅  |
+| 2.2          | Configure Client services                                 | ⏳       |
+| 2.2.1        | Ensure NIS client services are not in use                   | ✅       |
 
 ---

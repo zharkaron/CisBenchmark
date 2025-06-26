@@ -774,7 +774,7 @@
         "id": "2.1",
         "title": "Configure Server Services",
         "description": "Server services are essential for the operation of the system and should be configured to ensure security and functionality.",
-        "status": "In Progress",
+        "status": "Done",
         "type": "Story",
         "children": [
           {
@@ -950,6 +950,23 @@
             "title": "Ensure only approved services are listening on a network interface",
             "description": "Ensuring that only approved services are listening on a network interface helps reduce the attack surface by preventing unauthorized access to services that are not needed for normal operation.",
             "check_type": "ApprovedServices",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "id": "2.2",
+        "title": "Configure Client Services",
+        "description": "Client services are used to connect to remote systems and should be configured securely to prevent unauthorized access.",
+        "status": "In Progress",
+        "type": "Epics",
+        "children": [
+          {
+            "id": "2.2.1",
+            "title": "Ensure NIS client is not installed",
+            "description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "NISClient",
             "status": "Done",
             "type": "Task"
           }
