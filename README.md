@@ -86,7 +86,7 @@
 | 1.7.9        | Ensure GDM autorun-never cannot be overridden                | ✅       |
 | 1.7.10       | Ensure XDCMP is disabled                                     | ✅       |
 | 2            | Services                                                     | ⏳       |
-| 2.1          | Configure Server Services                                    | ⏳       |
+| 2.1          | Configure Server Services                                    | ✅       |
 | 2.1.1        | Ensure autofs services are not in use                        | ✅       |
 | 2.1.2        | Ensure avahi-daemon services are not in use                  | ✅       |
 | 2.1.3        | Ensure dhcp server services are not in use                   | ✅       |
@@ -94,27 +94,27 @@
 | 2.1.5        | Ensure dnsmasq server services are not in use                | ✅       |
 | 2.1.6        | Ensure ftp server services are not in use                    | ✅       |
 | 2.1.7        | Ensure ldap server services are not in use                   | ✅       |
-| 2.1.8        | Ensure message access server services are not in use                  | ✅       |
+| 2.1.8        | Ensure message access server services are not in use         | ✅       |
 | 2.1.9        | Ensure nfs server services are not in use                    | ✅       |
-| 2.1.10       | Ensure nis services are not in use                          | ✅       |
-| 2.1.11       | Ensure print server services are not in use                    | ✅       |
-| 2.1.12       | Ensure rpcbind server services are not in use                  | ✅       |
-| 2.1.13       | Ensure rsync services are not in use                   | ✅       |
-| 2.1.14       | Ensure samba services are not in use                   | ✅       |
-| 2.1.15       | Ensure snmp services are not in use                   | ✅       |
+| 2.1.10       | Ensure nis services are not in use                           | ✅       |
+| 2.1.11       | Ensure print server services are not in use                  | ✅       |
+| 2.1.12       | Ensure rpcbind server services are not in use                | ✅       |
+| 2.1.13       | Ensure rsync services are not in use                         | ✅       |
+| 2.1.14       | Ensure samba services are not in use                         | ✅       |
+| 2.1.15       | Ensure snmp services are not in use                          | ✅       |
 | 2.1.16       | Ensure tftp server services are not in use                   | ✅       |
-| 2.1.17       | Ensure web proxy services are not in use                        | ✅       |
-| 2.1.18       | Ensure web server services are not in use                   | ✅       |
+| 2.1.17       | Ensure web proxy services are not in use                     | ✅       |
+| 2.1.18       | Ensure web server services are not in use                    | ✅       |
 | 2.1.19       | Ensure xinetd services are not in use                        | ✅       |
-| 2.1.20       | Ensure X Windows services are not in use                        | ✅       |
+| 2.1.20       | Ensure X Windows services are not in use                     | ✅       |
 | 2.1.21       | Ensure Ensure mail transfer agent is configured for local-only mode | ✅       |
 | 2.1.22       | Ensure only approved services are listening on the network interface | ✅  |
-| 2.2          | Configure Client services                                 | ⏳       |
-| 2.2.1        | Ensure NIS client services are not in use                   | ✅       |
-| 2.2.2       | Ensure rsh client services are not in use                   | ✅       |
-| 2.2.3        | Ensure talk client services are not in use                  | ✅       |
+| 2.2          | Configure Client services                                    | ✅       |
+| 2.2.1        | Ensure NIS client services are not in use                    | ✅       |
+| 2.2.2        | Ensure rsh client services are not in use                    | ✅       |
+| 2.2.3        | Ensure talk client services are not in use                   | ✅       |
 | 2.2.4        | Ensure telnet client services are not in use                 | ✅       |
-| 2.2.5        | Ensure ldap client services are not in use                  | ✅       |
-| 2.2.6        | Ensure ftp client services are not in use                   | ✅       |
+| 2.2.5        | Ensure ldap client services are not in use                   | ✅       |
+| 2.2.6        | Ensure ftp client services are not in use                    | ✅       |
 
 ---
