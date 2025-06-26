@@ -153,3 +153,6 @@ check_RSHClient() {
   package_check rsh-client
 }
 
+check_TalkClient() {
+  package_check talk
+}

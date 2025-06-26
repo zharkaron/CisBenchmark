@@ -977,6 +977,14 @@
             "check_type": "RSHClient",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.2.3",
+            "title": "Ensure talk client is not installed",
+            "description": "Talk is a command-line utility for real-time communication between users. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "TalkClient",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
