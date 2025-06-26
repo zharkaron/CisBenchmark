@@ -1035,6 +1035,23 @@
                 "type": "Task"
               }
             ]
+          },
+          {
+            "id": "2.3.2",
+            "title": "Configure systemd-timesyncd",
+            "description": "systemd-timesyncd is a lightweight time synchronization service that is part of the systemd suite. Configuring it ensures that the system clock is synchronized with network time servers.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "id": "2.3.2.1",
+                "title": "Ensure systemd-timesyncd configured with authorized timeserver",
+                "description": "Configuring systemd-timesyncd with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
+                "check_type": "TimesyncdConfig",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
           }
         ]
       }
