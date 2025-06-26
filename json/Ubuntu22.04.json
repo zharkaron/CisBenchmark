@@ -993,6 +993,14 @@
             "check_type": "TelnetClient",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.2.5",
+            "title": "Ensure ldap client is not installed",
+            "description": "LDAP (Lightweight Directory Access Protocol) is used for accessing directory services. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "LDAPClient",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
