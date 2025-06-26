@@ -1001,6 +1001,14 @@
             "check_type": "LDAPClient",
             "status": "Done",
             "type": "Task"
+          },
+          {
+            "id": "2.2.6",
+            "title": "Ensure ftp client is not installed",
+            "description": "FTP (File Transfer Protocol) is an insecure protocol for transferring files. If not needed, it should be disabled to reduce the attack surface.",
+            "check_type": "FTPClient",
+            "status": "Done",
+            "type": "Task"
           }
         ]
       }
