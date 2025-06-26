@@ -111,5 +111,5 @@
 | 2.1.22       | Ensure only approved services are listening on the network interface | ✅  |
 | 2.2          | Configure Client services                                 | ⏳       |
 | 2.2.1        | Ensure NIS client services are not in use                   | ✅       |
-
+| 2.2.2       | Ensure rsh client services are not in use                   | ✅       |
 ---

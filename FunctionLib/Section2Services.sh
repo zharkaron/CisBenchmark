@@ -149,4 +149,7 @@ check_NISClient() {
   package_check nis
 }
 
+check_RSHClient() {
+  package_check rsh-client
+}
 
