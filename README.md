@@ -1,3 +1,4 @@
+# This repo is made to be used as a CIA (CIS) benchmark for Linux, windows, and macOS.
 
 | ID           | Title                                                        | Status   |
 |--------------|--------------------------------------------------------------|----------|
@@ -126,3 +127,4 @@
 | 2.3.3.1      | Ensure chrony is configured with authorized timeserver   | ✅       |
 | 2.3.3.2      | Ensure chrony is running as user_chrony                   | ✅       |
 ---
+
