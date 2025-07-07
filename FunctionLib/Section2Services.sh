@@ -257,19 +257,18 @@ CronPerm() {
     echo "FAIL"
   fi
 }
-
 check_CronTab() {
   CronPerm "crontab"
 }
-
 check_CronHourly() {
   CronPerm "cron.hourly/"
 }
-
 check_CronDaily() {
   CronPerm "cron.daily/"
 }
-
 check_CronWeekly() {
   CronPerm "cron.weekly/"
+}
+check_CronMonthly() {
+  CronPerm "cron.monthly/"
 }
