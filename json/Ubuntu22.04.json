@@ -1109,6 +1109,14 @@
                 "check_type": "CronEnabled",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.2",
+                "title": "Ensure permissions on /etc/crontab are configured",
+                "description": "Configuring permissions on /etc/crontab ensures that only authorized users can modify the system-wide cron jobs, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronTab",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }

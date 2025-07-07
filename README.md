@@ -129,6 +129,7 @@
 | 2.4          | Job Schedulers                                         | ✅       |
 | 2.4.1        | Configure cron                                         | ✅       |
 | 2.4.1.1      | Ensure cron daemon is enabled and active                 | ✅       |
+| 2.4.1.2      | Ensure permissions on /etc/crontab are configured     | ✅       |
 ---
 
 

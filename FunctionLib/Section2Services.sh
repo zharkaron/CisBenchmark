@@ -241,7 +241,6 @@ check_chrony_enabled_running() {
   fi
 }
 check_CronEnabled() {
-  # check if cron is enabled and installed
   if systemctl list-unit-files | awk '$1~/^crond?\.service/{print $2}' | grep -q 'enabled' && systemctl list-units | awk '$1~/^crond?\.service/{print $3}' | grep -q "active"; then
     echo "PASS"
   else
@@ -249,7 +248,15 @@ check_CronEnabled() {
   fi
 }
 
+CronPerm() {
+  local $1
+  if stat -Lc 'Access: (%a/%A) Uid: ( %u/ %U) Gid: ( %g/ %G)' /etc/$1 | grep -q 'Access: (600/-rw-------) Uid: ( 0/ root) Gid: ( 0/ root)"'; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
 
-
-
-
+check_CronTab() {
+  CronPerm "crontab"
+}
