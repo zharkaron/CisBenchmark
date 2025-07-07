@@ -249,8 +249,9 @@ check_CronEnabled() {
 }
 
 CronPerm() {
-  local $1
-  if stat -Lc 'Access: (%a/%A) Uid: ( %u/ %U) Gid: ( %g/ %G)' /etc/$1 | grep -q 'Access: (600/-rw-------) Uid: ( 0/ root) Gid: ( 0/ root)"'; then
+  # variable to hold the file or directory name
+  local file="$1"
+  if stat -Lc 'Access: (%a/%A) Uid: ( %u/ %U) Gid: ( %g/ %G)' /etc/$file | grep -q 'Access: (600/-rw-------) Uid: ( 0/ root) Gid: ( 0/ root)"'; then
     echo "PASS"
   else
     echo "FAIL"
@@ -259,4 +260,8 @@ CronPerm() {
 
 check_CronTab() {
   CronPerm "crontab"
+}
+
+check_CronHourly() {
+  CronPerm "cron.hourly/"
 }
