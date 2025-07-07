@@ -1133,6 +1133,14 @@
                 "check_type": "CronDaily",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.5",
+                "title": "Ensure permissions on /etc/cron.weekly are configured",
+                "description": "Configuring permissions on /etc/cron.weekly ensures that only authorized users can modify the weekly cron jobs, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronWeekly",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }
