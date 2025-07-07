@@ -1157,6 +1157,14 @@
                 "check_type": "CronD",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.8",
+                "title": "Ensure crontab is restricted to authorized users",
+                "description": "Restricting crontab access to authorized users ensures that only trusted users can create or modify scheduled jobs, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronRestricted",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }
