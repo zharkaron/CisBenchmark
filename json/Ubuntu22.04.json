@@ -1117,6 +1117,14 @@
                 "check_type": "CronTab",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.3",
+                "title": "Ensure permissions on /etc/cron.hourly are configured",
+                "description": "Configuring permissions on /etc/cron.hourly ensures that only authorized users can modify the hourly cron jobs, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronHourly",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }
