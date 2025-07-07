@@ -1149,6 +1149,14 @@
                 "check_type": "CronMonthly",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.7",
+                "title": "Ensure permissions on /etc/cron.d are configured",
+                "description": "Configuring permissions on /etc/cron.d ensures that only authorized users can modify the cron jobs defined in this directory, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronD",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }

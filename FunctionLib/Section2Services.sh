@@ -272,3 +272,7 @@ check_CronWeekly() {
 check_CronMonthly() {
   CronPerm "cron.monthly/"
 }
+check_CronD() {
+  CronPerm "cron.d/"
+}
+
