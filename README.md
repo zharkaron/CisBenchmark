@@ -135,5 +135,6 @@
 | 2.4.1.5   | Ensure permissions on /etc/cron.weekly are configured | ✅       |
 | 2.4.1.6      | Ensure permissions on /etc/cron.monthly are configured | ✅       |
 | 2.4.1.7     | Ensure permissions on /etc/cron.d are configured | ✅       |
+| 2.4.1.8      | Ensure crontab is restricted to authorized users | ✅       |
 ---
 

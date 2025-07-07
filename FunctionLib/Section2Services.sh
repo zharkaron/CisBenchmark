@@ -275,4 +275,14 @@ check_CronMonthly() {
 check_CronD() {
   CronPerm "cron.d/"
 }
+check_CronRestricted() {
+  cron_allow_info=$(stat -Lc 'Access: (%a/%A) Owner: (%U) Group: (%G)' /etc/cron.allow 2>/dev/null)
+  cron_deny_exists=$(stat /etc/cron.deny 2>/dev/null)
+
+  if [ "$cron_allow_info" = "Access: (600/-rw-------) Owner: (root) Group: (root)" ] && [ -z "$cron_deny_exists" ]; then
+    echo "PASS"
+  else
+    echo "FAIL"
+  fi
+}
 
