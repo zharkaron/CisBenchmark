@@ -1125,6 +1125,14 @@
                 "check_type": "CronHourly",
                 "status": "Done",
                 "type": "Task"
+              },
+              {
+                "id": "2.4.1.4",
+                "title": "Ensure permissions on /etc/cron.daily are configured",
+                "description": "Configuring permissions on /etc/cron.daily ensures that only authorized users can modify the daily cron jobs, preventing unauthorized changes that could compromise system security.",
+                "check_type": "CronDaily",
+                "status": "Done",
+                "type": "Task"
               }
             ]
           }

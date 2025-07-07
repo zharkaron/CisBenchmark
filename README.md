@@ -131,5 +131,6 @@
 | 2.4.1.1      | Ensure cron daemon is enabled and active                 | ✅       |
 | 2.4.1.2      | Ensure permissions on /etc/crontab are configured     | ✅       |
 | 2.4.1.3      | Ensure permissions on /etc/cron.hourly are configured | ✅       |
+| 2.4.1.4      | Ensure permissions on /etc/cron.daily are configured  | ✅       |
 ---
 

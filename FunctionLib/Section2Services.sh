@@ -265,3 +265,7 @@ check_CronTab() {
 check_CronHourly() {
   CronPerm "cron.hourly/"
 }
+
+check_CronDaily() {
+  CronPerm "cron.daily/"
+}
