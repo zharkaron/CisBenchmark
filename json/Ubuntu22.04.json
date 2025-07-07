@@ -1167,6 +1167,23 @@
                 "type": "Task"
               }
             ]
+          },
+          {
+            "id": "2.4.2",
+            "title": "Configure at",
+            "description": "At is a command-line utility that allows users to schedule one-time tasks to be executed at a specified time in the future.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "id": "2.4.2.1",
+                "title": "Ensure at is restricted to authorized users",
+                "description": "Restricting at access to authorized users ensures that only trusted users can create or modify scheduled one-time tasks, preventing unauthorized changes that could compromise system security.",
+                "check_type": "AtRestricted",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
           }
         ]
       }
