@@ -1087,6 +1087,32 @@
             ]
           }
         ]
+      },
+      {
+        "id": "2.4",
+        "title": "Job Schedulers",
+        "description": "Job schedulers are used to automate the execution of tasks at specified times or intervals. This section provides guidance on how to configure job schedulers securely.",
+        "status": "In Progress",
+        "type": "Epics",
+        "children": [
+          {
+            "id": "2.4.1",
+            "title": "Configure cron",
+            "description": "Cron is a time-based job scheduler in Unix-like operating systems. It allows users to schedule jobs (commands or scripts) to run at specific times or intervals.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "id": "2.4.1.1",
+                "title": "Ensure cron daemon is enabled and active",
+                "description": "Enabling and activating the cron daemon ensures that scheduled jobs are executed as intended, maintaining system functionality and automation.",
+                "check_type": "CronEnabled",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
