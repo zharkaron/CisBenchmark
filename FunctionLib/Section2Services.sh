@@ -269,3 +269,7 @@ check_CronHourly() {
 check_CronDaily() {
   CronPerm "cron.daily/"
 }
+
+check_CronWeekly() {
+  CronPerm "cron.weekly/"
+}
