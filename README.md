@@ -126,5 +126,9 @@
 | 2.3.3        | Configure chrony                                           | ✅       |
 | 2.3.3.1      | Ensure chrony is configured with authorized timeserver   | ✅       |
 | 2.3.3.2      | Ensure chrony is running as user_chrony                   | ✅       |
+| 2.4          | Job Schedulers                                         | ✅       |
+| 2.4.1        | Configure cron                                         | ✅       |
+| 2.4.1.1      | Ensure cron daemon is enabled and active                 | ✅       |
 ---
+
 
