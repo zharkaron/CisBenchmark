@@ -14,7 +14,7 @@ fi
 
 print_json_tree() {
   local indent="$1"
-  local id check_type result children_count
+  local id title check_type result children_count
 
   # Read JSON from stdin
   local json
@@ -23,16 +23,18 @@ print_json_tree() {
   # Check if the current node is an array
   if echo "$json" | jq -e 'type == "array"' >/dev/null; then
     echo "$json" | jq -c '.[]' | while read -r element; do
-      echo "$element" | print_json_tree "$indent"
+      echo "$element" | print_json_tree "$indent" "$id"
     done
     return
   fi
 
-  id=$(echo "$json" | jq -r '.Summary // empty')
+   id=$(echo "$json" | jq -r '.Summary // empty' | grep -o '^[0-9.]\+')
+  title=$(echo "$json" | jq -r '.Summary // empty' | sed 's/^[0-9.]\+\s*//')
   check_type=$(echo "$json" | jq -r '.Check_Type // empty')
 
+
   # Print id with indentation and color
-  printf "%s${CYAN}%s${NC}: %s" "$indent" "$id"
+  printf "%s${CYAN}%s${NC}: %s" "$indent" "$id" "$title"
 
   # If it's a leaf node, run the check and print result in color
   if [[ -n "$check_type" ]]; then

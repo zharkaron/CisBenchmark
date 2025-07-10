@@ -90,21 +90,18 @@
             ]
           },
           {
-            "id": "1.1.2",
             "Summary": "1.1.2 Configure Filesystem Partitions",
             "description": "Partitioning the filesystem can enhance security by isolating critical directories and preventing unauthorized access to sensitive data. It also helps in managing disk space more effectively.",
             "status": "Done",
             "type": "Story",
             "children": [
               {
-                "id": "1.1.2.1",
                 "Summary": "1.1.2.1 Configure /tmp",
                 "description": "The /tmp directory is used for temporary file storage. Configuring it as a separate partition can prevent unauthorized access and ensure that temporary files do not consume space on the root filesystem.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.1.1",
                     "Summary": "1.1.2.1.1 Ensure /tmp is separate partition",
                     "description": "Having /tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that the root filesystem is not filled with temporary data.",
                     "Check_Type": "partition",
@@ -114,7 +111,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.1.2",
                     "Summary": "1.1.2.1.2 Ensure nodev option set on /tmp partition",
                     "description": "The nodev option prevents the creation of device files in the /tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -124,7 +120,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.1.3",
                     "Summary": "1.1.2.1.3 Ensure nosuid option is set on /tmp partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -134,7 +129,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.1.4",
                     "Summary": "1.1.2.1.4 Ensure noexec option is set on /tmp partition",
                     "description": "The noexec option prevents the execution of binaries in the /tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -146,14 +140,12 @@
                 ]
               },
               {
-                "id": "1.1.2.2",
                 "Summary": "1.1.2.2 Configure /dev/shm",
                 "description": "The /dev/shm directory is used for shared memory. Configuring it as a separate partition can enhance security by isolating shared memory from other filesystems.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.2.1",
                     "Summary": "1.1.2.2.1 Verify /dev/shm is mounted as a separate partition",
                     "description": "Having /dev/shm as a separate partition can help prevent unauthorized access to shared memory and ensure that it does not consume space on the root filesystem.",
                     "Check_Type": "partition",
@@ -163,7 +155,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.2.2",
                     "Summary": "1.1.2.2.2 Ensure nodev option is set on /dev/shm partition",
                     "description": "The nodev option prevents the creation of device files in the /dev/shm directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -173,7 +164,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.2.3",
                     "Summary": "1.1.2.2.3 Ensure nosuid option is set on /dev/shm partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /dev/shm directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -183,7 +173,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.2.4",
                     "Summary": "1.1.2.2.4 Ensure noexec option set on /dev/shm partition",
                     "description": "The noexec option prevents the execution of binaries in the /dev/shm directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -195,14 +184,12 @@
                 ]
               },
               {
-                "id": "1.1.2.3",
                 "Summary": "1.1.2.3 Configure /home",
                 "description": "The /home directory is used for user home directories. Configuring it as a separate partition can enhance security by isolating user data from system files and preventing unauthorized access to sensitive user data.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.3.1",
                     "Summary": "1.1.2.3.1 Ensure separate partition exists for /home",
                     "description": "Having /home as a separate partition can help prevent unauthorized access to user data and ensure that it does not consume space on the root filesystem.",
                     "Check_Type": "partition",
@@ -211,7 +198,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.3.2",
                     "Summary": "1.1.2.3.2 Ensure nodev option set on /home partition",
                     "description": "The nodev option prevents the creation of device files in the /home directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -221,7 +207,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.3.3",
                     "Summary": "1.1.2.3.3 Ensure nosuid option is set on /home partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /home directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -233,14 +218,12 @@
                 ]
               },
               {
-                "id": "1.1.2.4",
                 "Summary": "1.1.2.4 Configure /var",
                 "description": "The /var directory is used for variable data such as logs and spool files. Configuring it as a separate partition can enhance security by isolating variable data from system files and preventing unauthorized access to sensitive data.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.4.1",
                     "Summary": "1.1.2.4.1 Ensure separate partition exists for /var",
                     "description": "Having /var as a separate partition can help prevent unauthorized access to variable data and ensure that it does not consume space on the root filesystem.",
                     "Check_Type": "partition",
@@ -250,7 +233,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.4.2",
                     "Summary": "1.1.2.4.2 Ensure nodev option is set on /var partition",
                     "description": "The nodev option prevents the creation of device files in the /var directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -260,7 +242,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.4.3",
                     "Summary": "1.1.2.4.3 Ensure nosuid option is set on /var partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -272,14 +253,12 @@
                 ]
               },
               {
-                "id": "1.1.2.5",
                 "Summary": "1.1.2.5 Configure /var/tmp",
                 "description": "The /var/tmp directory is used for temporary files that need to persist across reboots. Configuring it as a separate partition can enhance security by isolating temporary files from other filesystems and preventing unauthorized access to sensitive data.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.5.1",
                     "Summary": "1.1.2.5.1 Ensure /var/tmp is mounted as a separate partition",
                     "description": "Having /var/tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that it does not consume space on the root filesystem.",
                     "Check_Type": "partition",
@@ -289,7 +268,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.5.2",
                     "Summary": "1.1.2.5.2 Ensure nodev option is set on /var/tmp partition",
                     "description": "The nodev option prevents the creation of device files in the /var/tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -299,7 +277,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.5.3",
                     "Summary": "1.1.2.5.3 Ensure nosuid option is set on /var/tmp partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -309,7 +286,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.5.4",
                     "Summary": "1.1.2.5.4 Ensure noexec option is set on /var/tmp partition",
                     "description": "The noexec option prevents the execution of binaries in the /var/tmp directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -321,14 +297,12 @@
                 ]
               },
               {
-                "id": "1.1.2.6",
                 "Summary": "1.1.2.6 Configure /var/log",
                 "description": "The /var/log directory is used for log files. Configuring it as a separate partition can enhance security by isolating log files from other filesystems and preventing unauthorized access to sensitive log data.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.6.1",
                     "Summary": "1.1.2.6.1 Ensure separate partition exists for /var/log",
                     "description": "Having /var/log as a separate partition can help prevent unauthorized access to log files and ensure that it does not consume space on the root filesystem.",
                     "Check_Type": "partition",
@@ -338,7 +312,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.6.2",
                     "Summary": "1.1.2.6.2 Ensure nodev option is set on /var/log partition",
                     "description": "The nodev option prevents the creation of device files in the /var/log directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -348,7 +321,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.6.3",
                     "Summary": "1.1.2.6.3 Ensure nosuid option is set on /var/log partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -358,7 +330,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.6.4",
                     "Summary": "1.1.2.6.4 Ensure noexec option is set on /var/log partition",
                     "description": "The noexec option prevents the execution of binaries in the /var/log directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -370,14 +341,12 @@
                 ]
               },
               {
-                "id": "1.1.2.7",
                 "Summary": "1.1.2.7 Configure /var/log/audit",
                 "description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
                 "status": "Done",
                 "type": "Epics",
                 "children": [
                   {
-                    "id": "1.1.2.7.1",
                     "Summary": "1.1.2.7.1 Ensure separate partition exists for /var/log/audit",
                     "description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
                     "Check_Type": "partition",
@@ -387,7 +356,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.7.2",
                     "Summary": "1.1.2.7.2 Ensure nodev option is set on /var/log/audit partition",
                     "description": "The nodev option prevents the creation of device files in the /var/log/audit directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -397,7 +365,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.7.3",
                     "Summary": "1.1.2.7.3 Ensure nosuid option is set on /var/log/audit partition",
                     "description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log/audit directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -407,7 +374,6 @@
                     "status": "Done"
                   },
                   {
-                    "id": "1.1.2.7.4",
                     "Summary": "1.1.2.7.4 Ensure noexec option is set on /var/log/audit partition",
                     "description": "The noexec option prevents the execution of binaries in the /var/log/audit directory, which can help mitigate security risks.",
                     "Check_Type": "mount_option",
@@ -423,21 +389,18 @@
         ]
       },
       {
-        "id": "1.2",
         "Summary": "1.2 Package Management",
         "status": "Done",
         "description": "Package management is a critical aspect of system security, ensuring that the software installed on the system is up-to-date and free from known vulnerabilities. This section provides guidance on how to manage packages effectively, including installing, updating, and removing software packages.",
         "type": "Story",
         "children": [
           {
-            "id": "1.2.1",
             "Summary": "1.2.1 Configure Package Repositories",
             "description": "Configuring package repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "1.2.1.1",
                 "Summary": "1.2.1.1 Ensure GPG keys are configured",
                 "description": "GPG keys are used to verify the authenticity of packages. Ensuring that GPG keys are configured helps prevent the installation of tampered or malicious packages.",
                 "Check_Type": "gpg_keys",
@@ -445,7 +408,6 @@
                 "type": "Task"
               },
               {
-                "id": "1.2.1.2",
                 "Summary": "1.2.1.2 Ensure package manager repositories are configured",
                 "description": "Configuring package manager repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
                 "Check_Type": "repo_conf",
@@ -455,14 +417,12 @@
             ]
           },
           {
-            "id": "1.2.2",
             "Summary": "1.2.2 Configure Packege Updates",
             "description": "Configuring package updates ensures that the system is kept up-to-date with the latest security patches and software improvements, reducing the risk of vulnerabilities.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "1.2.2.1",
                 "Summary": "1.2.2.1 Ensure updates, patches, and additional security software are installed",
                 "description": "Regularly installing updates, patches, and additional security software helps keep the system secure against known vulnerabilities.",
                 "Check_Type": "sec_updates",
@@ -474,21 +434,18 @@
         ]
       },
       {
-        "id": "1.3",
         "Summary": "1.3 Mandatory Access Control",
         "status": "Done",
         "description": "Mandatory Access Control (MAC) is a security mechanism that restricts the ability of users and processes to access system resources based on predefined policies. This section provides guidance on how to implement and configure MAC systems to enhance security.",
         "type": "Story",
         "children": [
           {
-            "id": "1.3.1",
             "Summary": "1.3.1 Configure AppArmor",
             "description": "AppArmor is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles. Configuring AppArmor enhances security by limiting the actions that programs can perform.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "1.3.1.1",
                 "Summary": "1.3.1.1 Ensure AppArmor is installed",
                 "description": "AppArmor must be installed to provide mandatory access control for applications. It helps in confining programs to a limited set of resources and capabilities.",
                 "Check_Type": "apparmor_enabled",
@@ -496,7 +453,6 @@
                 "type": "Task"
               },
               {
-                "id": "1.3.1.2",
                 "Summary": "1.3.1.2 Ensure AppArmor is enabled in the bootloader configuration",
                 "description": "Enabling AppArmor in the bootloader configuration ensures that it is activated during system startup, providing mandatory access control from the beginning.",
                 "Check_Type": "boot_armor",
@@ -506,7 +462,6 @@
                 "type": "Task"
               },
               {
-                "id": "1.3.1.3",
                 "Summary": "1.3.1.3 Ensure AppArmor profiles are in enforce mode",
                 "description": "AppArmor profiles define the access rights for applications. Ensuring that profiles are in enforce mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
                 "Check_Type": "apparmor_profiles",
@@ -516,7 +471,6 @@
                 "type": "Task"
               },
               {
-                "id": "1.3.1.4",
                 "Summary": "1.3.1.4 Ensure all AppArmor profiles are in enforcing",
                 "description": "Ensuring that all AppArmor profiles are in enforcing mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
                 "Check_Type": "apparmor_profiles_enforce",
@@ -530,14 +484,12 @@
         ]
       },
       {
-        "id": "1.4",
         "Summary": "1.4 Configure Bootloader",
         "status": "Done",
         "description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
         "type": "Epics",
         "children": [
           {
-            "id": "1.4.1",
             "Summary": "1.4.1 Ensure bootloader password is set",
             "description": "Setting a bootloader password prevents unauthorized users from modifying the bootloader configuration or booting into single-user mode, which can bypass security measures.",
             "Check_Type": "boot_password",
@@ -545,7 +497,6 @@
             "type": "Task"
           },
           {
-            "id": "1.4.2",
             "Summary": "1.4.2 Ensure access to bootloader config is configured",
             "description": "Configuring access to the bootloader configuration file ensures that only authorized users can modify the bootloader settings, preventing unauthorized changes that could compromise system security.",
             "Check_Type": "boot_config",
@@ -555,14 +506,12 @@
         ]
       },
       {
-        "id": "1.5",
         "Summary": "1.5 Configure additional Process hardening",
         "status": "Done",
         "description": "Process hardening involves applying security measures to processes running on the system to reduce the risk of exploitation. This section provides guidance on how to configure additional process hardening techniques to enhance system security.",
         "type": "Epics",
         "children": [
           {
-            "id": "1.5.1",
             "Summary": "1.5.1 Ensure address space layout randomization is enabled",
             "description": "Address Space Layout Randomization (ASLR) is a security technique that randomizes the memory addresses used by system and application processes, making it more difficult for attackers to predict the location of specific code or data in memory.",
             "Check_Type": "aslr_enabled",
@@ -570,7 +519,6 @@
             "type": "Task"
           },
           {
-            "id": "1.5.2",
             "Summary": "1.5.2 Ensure ptrace_score is restricted",
             "description": "Restricting ptrace_score prevents unauthorized processes from tracing or manipulating other processes, which can be used to exploit vulnerabilities or gain unauthorized access to sensitive information.",
             "Check_Type": "ptrace_score",
@@ -578,7 +526,6 @@
             "type": "Task"
           },
           {
-            "id": "1.5.3",
             "Summary": "1.5.3 Ensure core dumps are restricted",
             "description": "Restricting core dumps prevents the creation of core dump files that can contain sensitive information about the system and running processes, which could be exploited by attackers.",
             "Check_Type": "core_dumps_restricted",
@@ -586,7 +533,6 @@
             "type": "Task"
           },
           {
-            "id": "1.5.4",
             "Summary": "1.5.4 Ensure prelink is not installed",
             "description": "Prelinking is a technique that can improve the performance of dynamically linked applications, but it can also introduce security risks by making it easier for attackers to predict the locations of shared libraries in memory. Ensuring that prelink is not installed helps mitigate these risks.",
             "Check_Type": "prelink_not_installed",
@@ -594,7 +540,6 @@
             "type": "Task"
           },
           {
-            "id": "1.5.5",
             "Summary": "1.5.5 Ensure Automatic Error Reporting is not enabled",
             "description": "Automatic Error Reporting can send sensitive information about the system and running processes to external servers, which could be exploited by attackers. Ensuring that Automatic Error Reporting is not enabled helps protect sensitive information.",
             "Check_Type": "auto_error_reporting",
@@ -604,14 +549,12 @@
         ]
       },
       {
-        "id": "1.6",
         "Summary": "1.6 Configure Command Line Warning Banner",
         "status": "Done",
         "description": "A command line warning banner is a message displayed to users when they log in to the system via the command line. Configuring a command line warning banner helps inform users about security policies and legal notices, and can deter unauthorized access.",
         "type": "Epics",
         "children": [
           {
-            "id": "1.6.1",
             "Summary": "1.6.1 Ensure message of the day is configured properly",
             "description": "The message of the day (MOTD) is a message displayed to users when they log in to the system. Configuring it properly helps inform users about security policies and legal notices.",
             "Check_Type": "day_message",
@@ -619,7 +562,6 @@
             "type": "Task"
           },
           {
-            "id": "1.6.2",
             "Summary": "1.6.2 Ensure local login warning banner is configured properly",
             "description": "A local login warning banner is displayed to users when they log in to the system via the console. Configuring it properly helps inform users about security policies and legal notices.",
             "Check_Type": "banner_message",
@@ -627,7 +569,6 @@
             "type": "Task"
           },
           {
-            "id": "1.6.3",
             "Summary": "1.6.3 Ensure remote login warning banner is configured properly",
             "description": "A remote login warning banner is displayed to users when they log in to the system via SSH or other remote access methods. Configuring it properly helps inform users about security policies and legal notices.",
             "Check_Type": "banner_message_login",
@@ -635,7 +576,6 @@
             "type": "Task"
           },
           {
-            "id": "1.6.4",
             "Summary": "1.6.4 Ensure access to /etc/motd is configured",
             "description": "Configuring access to the /etc/motd file ensures that only authorized users can modify the message of the day, preventing unauthorized changes that could compromise system security.",
             "Check_Type": "access_motd",
@@ -643,7 +583,6 @@
             "type": "Task"
           },
           {
-            "id": "1.6.5",
             "Summary": "1.6.5 Ensure access to /etc/issue is configured",
             "description": "Configuring access to the /etc/issue file ensures that only authorized users can modify the login banner, preventing unauthorized changes that could compromise system security.",
             "Check_Type": "access_issue",
@@ -651,7 +590,6 @@
             "type": "Task"
           },
           {
-            "id": "1.6.6",
             "Summary": "1.6.6 Ensure access to /etc/issue.net is configured",
             "description": "Configuring access to the /etc/issue.net file ensures that only authorized users can modify the remote login banner, preventing unauthorized changes that could compromise system security.",
             "Check_Type": "access_issue_net",
@@ -661,14 +599,12 @@
         ]
       },
       {
-        "id": "1.7",
         "Summary": "1.7 Configure GNOME Display Manager",
         "status": "Done",
         "description": "The GNOME Display Manager (GDM) is the default display manager for GNOME desktop environments. Configuring GDM securely is essential to prevent unauthorized access and ensure the integrity of the graphical user interface.",
         "type": "Epics",
         "children": [
           {
-            "id": "1.7.1",
             "Summary": "1.7.1 Ensure GDM is removed",
             "description": "Removing GDM can enhance security by reducing the attack surface of the system, especially if a different display manager is preferred or if the system does not require a graphical user interface.",
             "Check_Type": "gdm_removed",
@@ -676,7 +612,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.2",
             "Summary": "1.7.2 Ensure GDM login banner is configured",
             "description": "Configuring the GDM login banner helps inform users about security policies and legal notices when they log in to the graphical user interface.",
             "Check_Type": "login_banner",
@@ -684,7 +619,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.3",
             "Summary": "1.7.3 Ensure GDM disable-user-list option is enabled",
             "description": "Enabling the disable-user-list option in GDM prevents unauthorized users from viewing the list of available user accounts on the login screen, enhancing security by obscuring user information.",
             "Check_Type": "disable_user_list_enabled",
@@ -692,7 +626,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.4",
             "Summary": "1.7.4 Ensure GDM screen locks when the user is idle",
             "description": "Configuring GDM to lock the screen when the user is idle helps protect the system from unauthorized access when users leave their workstations unattended.",
             "Check_Type": "screen_lock_idle",
@@ -700,7 +633,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.5",
             "Summary": "1.7.5 Ensure GDM screen locks cannot be overridden",
             "description": "Configuring GDM to prevent users from overriding the screen lock settings helps ensure that the system remains secure when users leave their workstations unattended.",
             "Check_Type": "screen_lock_not_overridden",
@@ -708,7 +640,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.6",
             "Summary": "1.7.6 Ensure GDM automatic mounting of removable media is disabled",
             "description": "Disabling the automatic mounting of removable media in GDM helps prevent unauthorized access to potentially malicious or untrusted media, enhancing system security.",
             "Check_Type": "auto_mount_disabled",
@@ -716,7 +647,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.7",
             "Summary": "1.7.7 Ensure GDM disabling automatic mounting of removable media is not overridden",
             "description": "Ensuring that the disabling of automatic mounting of removable media cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
             "Check_Type": "auto_mount_not_overridden",
@@ -724,7 +654,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.8",
             "Summary": "1.7.8 Ensure GDM autorun-never is enabled",
             "description": "Enabling autorun in GDM allows the system to automatically run specific applications or scripts when a user logs in, which can be useful for security monitoring or compliance purposes.",
             "Check_Type": "autorun_never_enabled",
@@ -732,7 +661,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.9",
             "Summary": "1.7.9 Ensure GDM autorun-never cannot be overridden",
             "description": "Ensuring that the autorun-never setting cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
             "Check_Type": "autorun_not_overridden",
@@ -740,7 +668,6 @@
             "type": "Task"
           },
           {
-            "id": "1.7.10",
             "Summary": "1.7.10 Ensure XDCMP is disabled",
             "description": "Disabling XDCMP (X Display Manager Control Protocol) prevents remote access to the graphical user interface, enhancing security by reducing the attack surface of the system.",
             "Check_Type": "xdmcp_not_enabled",
@@ -752,21 +679,18 @@
     ]
   },
   {
-    "id": "2",
     "Summary": "2 Services",
     "description": "While applying system updates and patches helps correct known vulnerabilities, one of the best ways to protect the system against as yet unreported vulnerabilities is to disable all services that are not required for normal system operation. This prevents the exploitation of vulnerabilities discovered at a later date. If a service is not enabled, it cannot be exploited. The actions in this section of the document provide guidance on some services which can be safely disabled and under which circumstances, greatly reducing the number of possible threats to the resulting system. Additionally, some services which should remain enabled but with secure configuration are covered as well as insecure service clients.",
     "status": "In Progress",
     "type": "Epics",
     "children": [
       {
-        "id": "2.1",
         "Summary": "2.1 Configure Server Services",
         "description": "Server services are essential for the operation of the system and should be configured to ensure security and functionality.",
         "status": "Done",
         "type": "Story",
         "children": [
           {
-            "id": "2.1.1",
             "Summary": "2.1.1 Ensure autofs services are not in use",
             "description": "Autofs is a service that automatically mounts filesystems on demand. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "autofs",
@@ -774,7 +698,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.2",
             "Summary": "2.1.2 Ensure avahi-daemon services are not in use",
             "description": "Avahi-daemon is a service that provides mDNS/DNS-SD services. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "avahi",
@@ -782,7 +705,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.3",
             "Summary": "2.1.3 Ensure dhcp services are not in use",
             "description": "DHCP services are used to assign IP addresses dynamically. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "dhcp",
@@ -790,7 +712,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.4",
             "Summary": "2.1.4 Ensure dns services are not in use",
             "description": "DNS services are used to resolve domain names to IP addresses. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "dns",
@@ -798,7 +719,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.5",
             "Summary": "2.1.5 Ensure dnsmasq services are not in use",
             "description": "Dnsmasq is a lightweight DNS forwarder and DHCP server. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "dnsmasq",
@@ -806,7 +726,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.6",
             "Summary": "2.1.6 Ensure ftp services are not in use",
             "description": "FTP services are used for file transfer. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "ftp",
@@ -814,7 +733,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.7",
             "Summary": "2.1.7 Ensure ldap services are not in use",
             "description": "LDAP services are used for directory services. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "ldap",
@@ -822,7 +740,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.8",
             "Summary": "2.1.8 Ensure message access services are not in use",
             "description": "Message access services are used for inter-process communication. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "dovecot",
@@ -830,7 +747,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.9",
             "Summary": "2.1.9 Ensure network file system services are not in use",
             "description": "Network file system services are used for sharing files over the network. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "nfs",
@@ -838,7 +754,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.10",
             "Summary": "2.1.10 Ensure nis services are not in use",
             "description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "nis",
@@ -846,7 +761,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.11",
             "Summary": "2.1.11 Ensure print server services are not in use",
             "description": "Print server services are used for managing printers over the network. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "cups",
@@ -854,7 +768,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.12",
             "Summary": "2.1.12 Ensure rpcbind services are not in use",
             "description": "Rpcbind is used to map RPC program numbers to universal addresses. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "rpcbind",
@@ -862,7 +775,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.13",
             "Summary": "2.1.13 Ensure rsync services are not in use",
             "description": "Rsync is used for synchronizing files and directories between systems. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "rsync",
@@ -870,7 +782,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.14",
             "Summary": "2.1.14 Ensure samba services are not in use",
             "description": "Samba is used for sharing files and printers with Windows systems. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "samba",
@@ -878,7 +789,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.15",
             "Summary": "2.1.15 Ensure snmp services are not in use",
             "description": "SNMP (Simple Network Management Protocol) is used for network management. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "snmp",
@@ -886,7 +796,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.16",
             "Summary": "2.1.16 Ensure tftp services are not in use",
             "description": "TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "tftp",
@@ -894,7 +803,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.17",
             "Summary": "2.1.17 Ensure web proxy services are not in use",
             "description": "Web proxy services are used for caching and filtering web traffic. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "squid",
@@ -902,7 +810,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.18",
             "Summary": "2.1.18 Ensure web server services are not in use",
             "description": "Web server services are used for hosting websites. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "apache",
@@ -910,7 +817,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.19",
             "Summary": "2.1.19 Ensure xinetd services are not in use",
             "description": "Xinetd is a super-server daemon that manages internet services. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "xinetd",
@@ -918,7 +824,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.20",
             "Summary": "2.1.20 Ensure X windows server services are not in use",
             "description": "X Windows server services are used for providing a graphical user interface. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "XWindows",
@@ -926,7 +831,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.21",
             "Summary": "2.1.21 Ensure mail transfer agent is configured for local-only mode",
             "description": "Configuring the mail transfer agent (MTA) for local-only mode ensures that it only accepts and delivers mail locally, preventing it from being used as an open relay for sending spam or malicious emails.",
             "Check_Type": "MailTransferAgent",
@@ -934,7 +838,6 @@
             "type": "Task"
           },
           {
-            "id": "2.1.22",
             "Summary": "2.1.22 Ensure only approved services are listening on a network interface",
             "description": "Ensuring that only approved services are listening on a network interface helps reduce the attack surface by preventing unauthorized access to services that are not needed for normal operation.",
             "Check_Type": "ApprovedServices",
@@ -944,14 +847,12 @@
         ]
       },
       {
-        "id": "2.2",
         "Summary": "2.2 Configure Client Services",
         "description": "Client services are used to connect to remote systems and should be configured securely to prevent unauthorized access.",
         "status": "Done",
         "type": "Epics",
         "children": [
           {
-            "id": "2.2.1",
             "Summary": "2.2.1 Ensure NIS client is not installed",
             "description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "NISClient",
@@ -959,7 +860,6 @@
             "type": "Task"
           },
           {
-            "id": "2.2.2",
             "Summary": "2.2.2 Ensure rsh client is not installed",
             "description": "RSH (Remote Shell) is an insecure protocol for remote command execution. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "RSHClient",
@@ -967,7 +867,6 @@
             "type": "Task"
           },
           {
-            "id": "2.2.3",
             "Summary": "2.2.3 Ensure talk client is not installed",
             "description": "Talk is a command-line utility for real-time communication between users. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "TalkClient",
@@ -975,7 +874,6 @@
             "type": "Task"
           },
           {
-            "id": "2.2.4",
             "Summary": "2.2.4 Ensure telnet client is not installed",
             "description": "Telnet is an insecure protocol for remote command execution. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "TelnetClient",
@@ -983,7 +881,6 @@
             "type": "Task"
           },
           {
-            "id": "2.2.5",
             "Summary": "2.2.5 Ensure ldap client is not installed",
             "description": "LDAP (Lightweight Directory Access Protocol) is used for accessing directory services. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "LDAPClient",
@@ -991,7 +888,6 @@
             "type": "Task"
           },
           {
-            "id": "2.2.6",
             "Summary": "2.2.6 Ensure ftp client is not installed",
             "description": "FTP (File Transfer Protocol) is an insecure protocol for transferring files. If not needed, it should be disabled to reduce the attack surface.",
             "Check_Type": "FTPClient",
@@ -1001,21 +897,18 @@
         ]
       },
       {
-        "id": "2.3",
         "Summary": "2.3 Configure Time Synchronization",
         "description": "Time synchronization is essential for maintaining accurate timestamps on system logs and ensuring that scheduled tasks run at the correct times. This section provides guidance on how to configure time synchronization services securely.",
         "status": "In Progress",
         "type": "Epics",
         "children": [
           {
-            "id": "2.3.1",
             "Summary": "2.3.1 Ensure time syncronization is in use",
             "description": "Time synchronization ensures that the system clock is accurate, which is crucial for logging events, scheduling tasks, and maintaining security protocols.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "2.3.1.1",
                 "Summary": "2.3.1.1 Ensure a single time synchronization daemon is in use",
                 "description": "Using a single time synchronization daemon prevents conflicts and ensures that the system clock is synchronized with a reliable time source.",
                 "Check_Type": "SingleSync",
@@ -1025,14 +918,12 @@
             ]
           },
           {
-            "id": "2.3.2",
             "Summary": "2.3.2 Configure systemd-timesyncd",
             "description": "systemd-timesyncd is a lightweight time synchronization service that is part of the systemd suite. Configuring it ensures that the system clock is synchronized with network time servers.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "2.3.2.1",
                 "Summary": "2.3.2.1 Ensure systemd-timesyncd configured with authorized timeserver",
                 "description": "Configuring systemd-timesyncd with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
                 "Check_Type": "TimesyncdConfig",
@@ -1040,7 +931,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.3.2.2",
                 "Summary": "2.3.2.2 Ensure systemd-timesyncd is enabled and running",
                 "description": "Enabling and running systemd-timesyncd ensures that the time synchronization service is active and continuously synchronizing the system clock with the configured time server.",
                 "Check_Type": "TimesyncdEnabled",
@@ -1050,14 +940,12 @@
             ]
           },
           {
-            "id": "2.3.3",
             "Summary": "2.3.3 Configure chrony",
             "description": "Chrony is a versatile time synchronization service that can be used as an alternative to systemd-timesyncd. It is particularly useful for systems that are not always connected to the network.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "2.3.3.1",
                 "Summary": "2.3.3.1 Ensure chrony is configured with authorized timeserver",
                 "description": "Configuring chrony with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
                 "Check_Type": "ChronyConfig",
@@ -1065,7 +953,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.3.3.2",
                 "Summary": "2.3.3.2 Ensure chrony is running as user_chrony",
                 "description": "Running chrony as a dedicated user (user_chrony) enhances security by isolating the time synchronization service from other system processes, reducing the risk of privilege escalation.",
                 "Check_Type": "ChronyUser",
@@ -1077,21 +964,18 @@
         ]
       },
       {
-        "id": "2.4",
         "Summary": "2.4 Job Schedulers",
         "description": "Job schedulers are used to automate the execution of tasks at specified times or intervals. This section provides guidance on how to configure job schedulers securely.",
         "status": "In Progress",
         "type": "Epics",
         "children": [
           {
-            "id": "2.4.1",
             "Summary": "2.4.1 Configure cron",
             "description": "Cron is a time-based job scheduler in Unix-like operating systems. It allows users to schedule jobs (commands or scripts) to run at specific times or intervals.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "2.4.1.1",
                 "Summary": "2.4.1.1 Ensure cron daemon is enabled and active",
                 "description": "Enabling and activating the cron daemon ensures that scheduled jobs are executed as intended, maintaining system functionality and automation.",
                 "Check_Type": "CronEnabled",
@@ -1099,7 +983,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.2",
                 "Summary": "2.4.1.2 Ensure permissions on /etc/crontab are configured",
                 "description": "Configuring permissions on /etc/crontab ensures that only authorized users can modify the system-wide cron jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronTab",
@@ -1107,7 +990,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.3",
                 "Summary": "2.4.1.3 Ensure permissions on /etc/cron.hourly are configured",
                 "description": "Configuring permissions on /etc/cron.hourly ensures that only authorized users can modify the hourly cron jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronHourly",
@@ -1115,7 +997,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.4",
                 "Summary": "2.4.1.4 Ensure permissions on /etc/cron.daily are configured",
                 "description": "Configuring permissions on /etc/cron.daily ensures that only authorized users can modify the daily cron jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronDaily",
@@ -1123,7 +1004,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.5",
                 "Summary": "2.4.1.5 Ensure permissions on /etc/cron.weekly are configured",
                 "description": "Configuring permissions on /etc/cron.weekly ensures that only authorized users can modify the weekly cron jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronWeekly",
@@ -1131,7 +1011,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.6",
                 "Summary": "2.4.1.6 Ensure permissions on /etc/cron.monthly are configured",
                 "description": "Configuring permissions on /etc/cron.monthly ensures that only authorized users can modify the monthly cron jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronMonthly",
@@ -1139,7 +1018,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.7",
                 "Summary": "2.4.1.7 Ensure permissions on /etc/cron.d are configured",
                 "description": "Configuring permissions on /etc/cron.d ensures that only authorized users can modify the cron jobs defined in this directory, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronD",
@@ -1147,7 +1025,6 @@
                 "type": "Task"
               },
               {
-                "id": "2.4.1.8",
                 "Summary": "2.4.1.8 Ensure crontab is restricted to authorized users",
                 "description": "Restricting crontab access to authorized users ensures that only trusted users can create or modify scheduled jobs, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "CronRestricted",
@@ -1157,14 +1034,12 @@
             ]
           },
           {
-            "id": "2.4.2",
             "Summary": "2.4.2 Configure at",
             "description": "At is a command-line utility that allows users to schedule one-time tasks to be executed at a specified time in the future.",
             "status": "Done",
             "type": "Epics",
             "children": [
               {
-                "id": "2.4.2.1",
                 "Summary": "2.4.2.1 Ensure at is restricted to authorized users",
                 "description": "Restricting at access to authorized users ensures that only trusted users can create or modify scheduled one-time tasks, preventing unauthorized changes that could compromise system security.",
                 "Check_Type": "AtRestricted",
@@ -1178,7 +1053,6 @@
     ]
   },
   {
-    "id": "3",
     "Summary": "3 Network",
     "status": "In Progress",
     "type": "Epics",
