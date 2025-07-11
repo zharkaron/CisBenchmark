@@ -427,6 +427,10 @@ get_kernel_module_name() {
     1.1.1.6) echo "squashfs" ;;
     1.1.1.7) echo "udf" ;;
     1.1.1.8) echo "usb-storage" ;;
+    3.2.1) echo "dccp" ;;
+    3.2.2) echo "tipc" ;;
+    3.2.3) echo "rds" ;;
+    3.2.4) echo "sctp" ;;
     *) echo "" ;;
   esac
 }
