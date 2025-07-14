@@ -1249,5 +1249,321 @@
         ]
       }
     ]
-  }
+  },
+  {
+    "Summary": "4 Host Based Firewall",
+    "Description": "Host-based firewalls are software applications that monitor and control incoming and outgoing network traffic based on predetermined security rules. They are installed on individual hosts or devices, providing a layer of security that is specific to that host.",
+    "Project": "CIA",
+    "Type": "Epic",
+    "Status": "In Progress",
+    "children": [
+      {
+        "Summary": "4.1 Configure Uncomplicated Firewall (UFW)",
+        "Description": "Uncomplicated Firewall (UFW) is a user-friendly interface for managing iptables firewall rules. It is designed to make managing a netfilter firewall easier, and is particularly well-suited for host-based firewalls.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.1.1 Ensure ufw is installed",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "Uncomplicated Firewall (UFW) is a user-friendly interface for managing iptables firewall rules. It is designed to make managing a netfilter firewall easier, and is particularly well-suited for host-based firewalls.",
+            "Project": "CIA",
+            "Check_Type": "ufw_installed",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.2 Ensure iptables-persistent is not installed with ufw",
+            "Label": ["Level 1 - Server, Level 1 - Workstation"],
+            "Description": "The iptables-persistent package is used to save and restore iptables rules. However, it is not compatible with UFW, which manages its own rules. Therefore, it is recommended to ensure that iptables-persistent is not installed when using UFW.",
+            "Project": "CIA",
+            "Type": "Subtask",
+            "Check_Type": "iptables_persistent_not_installed",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.3 Ensure ufw service is enabled",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The UFW service must be enabled to ensure that the firewall rules are applied at system startup. This is important for maintaining the security posture of the host.",
+            "Project": "CIA",
+            "Check_Type": "ufw_service_enabled",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.4 Ensure ufw loopback traffic is configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The loopback interface is used for internal communication within the host. It is important to ensure that traffic on the loopback interface is allowed, as it is used by many applications for inter-process communication.",
+            "Project": "CIA",
+            "Check_Type": "ufw_loopback_traffic_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.5 Ensure ufw outbound connections are configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "Outbound connections are those initiated from the host to external networks. It is important to configure outbound connections to allow necessary traffic while blocking unwanted connections.",
+            "Project": "CIA",
+            "Check_Type": "ufw_outbound_connections_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.6 Ensure ufw firewall rules exist for all open ports",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "All open ports on the host should have corresponding UFW firewall rules to ensure that only authorized traffic is allowed. This helps to prevent unauthorized access and potential attacks.",
+            "Project": "CIA",
+            "Check_Type": "ufw_firewall_rules_for_open_ports",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.7 Ensure ufw default deny firewall policy is configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The default deny policy for UFW ensures that all incoming traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to prevent unauthorized access to the host.",
+            "Project": "CIA",
+            "Check_Type": "ufw_default_deny_policy_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "4.2 Configure nftables",
+        "Description": "nftables is a framework provided by the Linux kernel for packet filtering, network address translation (NAT), and other packet mangling. It replaces the older iptables framework and provides a more efficient and flexible way to manage firewall rules.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.2.1 Ensure nftables is installed",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "nftables is a framework provided by the Linux kernel for packet filtering, network address translation (NAT), and other packet mangling. It replaces the older iptables framework and provides a more efficient and flexible way to manage firewall rules.",
+            "Project": "CIA",
+            "Check_Type": "nftables_installed",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.2 Ensure ufw is uninstalled or disabled with nftables",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "If nftables is being used, it is recommended to uninstall or disable UFW, as they can conflict with each other. This ensures that nftables can manage all firewall rules without interference.",
+            "Project": "CIA",
+            "Check_Type": "ufw_uninstalled_or_disabled_with_nftables",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.3 Ensure iptables are flushed with nftables",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "When switching to nftables, it is important to flush existing iptables rules to avoid conflicts. This ensures that nftables can start with a clean slate and manage all firewall rules effectively.",
+            "Project": "CIA",
+            "Check_Type": "iptables_flushed_with_nftables",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.4 Ensure a nftables table exists",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "A nftables table is a collection of chains and rules. It is important to ensure that at least one table exists to manage firewall rules effectively.",
+            "Project": "CIA",
+            "Check_Type": "nftables_table_exists",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.5 Ensure a nftables base chain exists",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "A base chain is a default chain that is used to manage incoming and outgoing traffic. It is important to ensure that a base chain exists to provide a foundation for managing firewall rules.",
+            "Project": "CIA",
+            "Check_Type": "nftables_base_chain_exists",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.6 Ensure nftables loopback traffic is configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The loopback interface is used for internal communication within the host. It is important to ensure that traffic on the loopback interface is allowed, as it is used by many applications for inter-process communication.",
+            "Project": "CIA",
+            "Check_Type": "nftables_loopback_traffic_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.7 Ensure nftables outbound and stablished connections are configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "Outbound connections are those initiated from the host to external networks. It is important to configure outbound connections to allow necessary traffic while blocking unwanted connections. Established connections should also be allowed to ensure that ongoing communications are not disrupted.",
+            "Project": "CIA",
+            "Check_Type": "nftables_outbound_established_connections_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.8 Ensure nftables default deny firewall policy is configured",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The default deny policy for nftables ensures that all incoming traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to prevent unauthorized access to the host.",
+            "Project": "CIA",
+            "Check_Type": "nftables_default_deny_policy_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.9 Ensure nftables service is enabled",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "The nftables service must be enabled to ensure that the firewall rules are applied at system startup. This is important for maintaining the security posture of the host.",
+            "Project": "CIA",
+            "Check_Type": "nftables_service_enabled",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.10 Ensure nftables rules are permanent",
+            "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+            "Description": "It is important to ensure that nftables rules are permanent, meaning they persist across reboots. This ensures that the firewall rules remain in effect even after the host is restarted.",
+            "Project": "CIA",
+            "Check_Type": "nftables_rules_permanent",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "4.3 Configure iptables",
+        "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+        "Project": "CIA",
+        "Type": "Epic",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.3.1 Configure iptables software",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.1.1 Ensure iptables packages are installed",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+                "Project": "CIA",
+                "Check_Type": "iptables_packages_installed",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.1.2 Ensure nftables is not installed with iptables",
+                "Label": ["Level 1 - Server, Level 1 - Workstation"],
+                "Description": "If nftables is being used, it is recommended to uninstall or disable iptables, as they can conflict with each other. This ensures that nftables can manage all firewall rules without interference.",
+                "Project": "CIA",
+                "Type": "Subtask",
+                "Check_Type": "nftables_not_installed_with_iptables",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.1.3 Ensure ufw is uninstalled or disabled with iptables",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "If iptables is being used, it is recommended to uninstall or disable UFW, as they can conflict with each other. This ensures that iptables can manage all firewall rules without interference.",
+                "Project": "CIA",
+                "Check_Type": "ufw_uninstalled_or_disabled_with_iptables",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          },
+          {
+            "Summary": "4.3.2 Configure IPv4 iptables",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel. This section focuses on configuring IPv4 iptables specifically.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.2.1 Ensure iptables default deny firewall policy is configured",
+            
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Setting a default deny policy for iptables ensures that all incoming and outgoing traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to protect the system from unauthorized access.",
+                "Project": "CIA",
+                "Check_Type": "iptables_default_deny_firewall_policy_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.2 Ensure iptables loopback traffic is configured",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Configuring loopback traffic in iptables allows the system to communicate with itself. This is essential for many applications and services that rely on local communication, such as web servers and databases.",
+                "Project": "CIA",
+                "Check_Type": "iptables_loopback_traffic_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.3 Ensure iptables outbound and established connections are configured",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Project": "CIA",
+                "Check_Type": "iptables_outbound_and_established_connections_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.4 Ensure iptables firewall rules exist for all open ports",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Ensuring that iptables firewall rules exist for all open ports is essential for maintaining security. This prevents unauthorized access to services running on those ports and helps to mitigate potential vulnerabilities.",
+                "Project": "CIA",
+                "Check_Type": "iptables_firewall_rules_exist_for_all_open_ports",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          },
+          {
+            "Summary": "4.3.3 Configure IPv6 iptables",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel. This section focuses on configuring IPv6 iptables specifically.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.3.1 Ensure ip6tables default deny firewall policy is configured",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Setting a default deny policy for ip6tables ensures that all incoming and outgoing IPv6 traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to protect the system from unauthorized access.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_default_deny_firewall_policy_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.2 Ensure ip6tables loopback traffic is configured",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Configuring loopback traffic in ip6tables allows the system to communicate with itself over IPv6. This is essential for many applications and services that rely on local communication, such as web servers and databases.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_loopback_traffic_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.3 Ensure ip6tables outbound and established connections are configured",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_outbound_and_established_connections_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.4 Ensure ip6tables firewall rules exist for all open ports",
+                "Label": ["Level 1 - Server", "Level 1 - Workstation"],
+                "Description": "Ensuring that ip6tables firewall rules exist for all open ports is essential for maintaining security. This prevents unauthorized access to services running on those ports and helps to mitigate potential vulnerabilities.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_firewall_rules_exist_for_all_open_ports",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  } 
 ]
