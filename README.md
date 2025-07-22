@@ -138,5 +138,63 @@
 | 2.4.1.8      | Ensure crontab is restricted to authorized users | ✅       |
 | 2.4.2        | Configure at                                         | ✅       |
 | 2.4.2.1      | Ensure at is restricted to authorized users | ✅       |
+| 3            | Network                                                     | ✅       |
+| 3.1          | Configure Network Devices                                   | ✅       |
+| 3.1.1        | Ensure IPv6 status is identified                            | ✅       |
+| 3.1.2        | Ensure wireless interfaces are disabled                     | ✅       |
+| 3.1.3        | Ensure Bluetooth services are not in use                    | ✅       |
+| 3.2          | Configure Network Kernel Modules                            | ✅       |
+| 3.2.1        | Ensure dccp kernel module is not available                  | ✅       |
+| 3.2.2        | Ensure tipc kernel module is not available                  | ✅       |
+| 3.2.3        | Ensure rds kernel module is not available                   | ✅       |
+| 3.2.4        | Ensure sctp kernel module is not available                  | ✅       |
+| 3.3          | Configure Network Kernel Parameters                         | ✅       |
+| 3.3.1        | Ensure ip forwarding is disabled                            | ✅       |
+| 3.3.2        | Ensure packet redirect sending is disabled                  | ✅       |
+| 3.3.3        | Ensure bogus icmp responses are ignored                     | ✅       |
+| 3.3.4        | Ensure broadcast icmp requests are ignored                  | ✅       |
+| 3.3.5        | Ensure icmp redirects are not accepted                      | ✅       |
+| 3.3.6        | Ensure secure icmp redirects are not accepted               | ✅       |
+| 3.3.7        | Ensure reverse path filtering is enabled                    | ✅       |
+| 3.3.8        | Ensure source routed packets are not accepted               | ✅       |
+| 3.3.9        | Ensure suspicious packets are logged                        | ✅       |
+| 3.3.10       | Ensure tcp syn cookies are enabled                           | ✅       |
+| 3.3.11       | Ensure ipv6 router advertisements are not accepted          | ✅       |
+| 4            | Host Based Firewall                                         | ✅       |
+| 4.1          | Configure Uncomplicated Firewall (UFW)                      | ✅       |
+| 4.1.1        | Ensure ufw is installed                                     | ✅       |
+| 4.1.2        | Ensure iptables-persistent is not installed with ufw       | ✅       |
+| 4.1.3        | Ensure ufw service is enabled                               | ✅       |
+| 4.1.4        | Ensure ufw loopback traffic is configured                   | ✅       |
+| 4.1.5        | Ensure ufw outbound connections are configured              | ✅       |
+| 4.1.6        | Ensure ufw firewall rules exist for all open ports          | ✅       |
+| 4.1.7        | Ensure ufw default deny firewall policy is configured       | ✅       |
+| 4.2          | Configure nftables                                         | ✅       |
+| 4.2.1        | Ensure nftables is installed                               | ✅       |
+| 4.2.2        | Ensure ufw is uninstalled or disabled with nftables         | ✅       |
+| 4.2.3        | Ensure iptables are flushed with nftables                   | ✅       |
+| 4.2.4        | Ensure a nftables table exists                              | ✅       |
+| 4.2.5        | Ensure a nftables base chain exists                         | ✅       |
+| 4.2.6        | Ensure nftables loopback traffic is configured              | ✅       |
+| 4.2.7        | Ensure nftables outbound and established connections configured | ✅   |
+| 4.2.8        | Ensure nftables default deny firewall policy is configured  | ✅       |
+| 4.2.9        | Ensure nftables service is enabled                          | ✅       |
+| 4.2.10       | Ensure nftables rules are permanent                         | ✅       |
+| 4.3          | Configure iptables                                         | ✅       |
+| 4.3.1        | Configure iptables software                                 | ✅       |
+| 4.3.1.1      | Ensure iptables packages are installed                      | ✅       |
+| 4.3.1.2      | Ensure nftables is not installed with iptables             | ✅       |
+| 4.3.1.3      | Ensure ufw is uninstalled or disabled with iptables         | ✅       |
+| 4.3.2        | Configure IPv4 iptables                                    | ✅       |
+| 4.3.2.1      | Ensure iptables default deny firewall policy is configured | ✅       |
+| 4.3.2.2      | Ensure iptables loopback traffic is configured             | ✅       |
+| 4.3.2.3      | Ensure iptables outbound and established connections configured | ✅    |
+| 4.3.2.4      | Ensure iptables firewall rules exist for all open ports     | ✅       |
+| 4.3.3        | Configure IPv6 iptables                                    | ✅       |
+| 4.3.3.1      | Ensure ip6tables default deny firewall policy is configured | ✅       |
+| 4.3.3.2      | Ensure ip6tables loopback traffic is configured            | ✅       |
+| 4.3.3.3      | Ensure ip6tables outbound and established connections configured | ✅    |
+| 4.3.3.4      | Ensure ip6tables firewall rules exist for all open ports    | ✅       |
+
 ---
 
