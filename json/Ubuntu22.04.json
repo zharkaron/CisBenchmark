@@ -2228,12 +2228,174 @@
         ]
       },
       {
-        "Summary": "",
+        "Summary": "5.4 User Accounts and Environment",
         "Status" : "Done",
-        "Description": "",
+        "Description": "This section provides guidance on setting up secure defaults for system and user accounts and their environment.",
         "project": "CIA",
-        "Check_Type": "",
-        "type": "Subtask"
+        "type": "Subtask",
+        "children": [
+          {
+            "Summary": "5.4.1 Configure shadow password suite parameters",
+            "Status" : "Done",
+            "Description": "While a majority of the password control parameters have been moved to PAM, some parameters are still available through the shadow password suite. Any changes made to /etc/login.defs will only be applied if the usermod command is used. If user IDs are added a different way, use the chage command to effect changes to individual user IDs.",
+            "project": "CIA",
+            "type": "Subtask",
+            "children": [
+              {
+                "Summary": "5.4.1.1 Ensure password expiration is configured",
+                "Status" : "Done",
+                "Description": "The PASS_MAX_DAYS parameter in /etc/login.defs allows an administrator to force passwords to expire once they reach a defined age. PASS_MAX_DAYS <N> - The maximum number of days a password may be used. If the password is older than this, a password change will be forced. If not specified, -1 will be assumed (which disables the restriction).",
+                "project": "CIA",
+                "Check_Type": "passwd_expiration",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.1.2 Ensure minimum password age is configured",
+                "Status" : "Done",
+                "Description": "The minimum password age determines the number of days that you must use a password before you can change it. PASS_MIN_DAYS <N> - The minimum number of days allowed between password changes. Any password changes attempted sooner than this will be rejected. If not specified, 0 will be assumed (which disables the restriction).",
+                "project": "CIA",
+                "Check_Type": "min_passwd_age",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.1.3 Ensure password expiration warning days is configured",
+                "Status" : "Done",
+                "Description": "The PASS_WARN_AGE parameter in /etc/login.defs allows an administrator to notify users that their password will expire in a defined number of days. PASS_WARN_AGE <N> - The number of days warning given before a password expires. A zero means warning is given only upon the day of expiration, a negative value means no warning is given. If not specified, no warning will be provided.",
+                "project": "CIA",
+                "Check_Type": "passwd_expiration_warning_days",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.1.4 Ensure strong password hashing algorithm is configured",
+                "Status" : "Done",
+                "Description": "A cryptographic hash function converts an arbitrary-length input into a fixed length output. Password hashing performs a one-way transformation of a password, turning the password into another string, called the hashed password. ENCRYPT_METHOD (string) - This defines the system default encryption algorithm for encrypting passwords (if no algorithm are specified on the command line).",
+                "project": "CIA",
+                "Check_Type": "passwd_hashing_algorithm",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.1.5 Ensure inactive password lock is configured",
+                "Status" : "Done",
+                "Description": "User accounts that have been inactive for over a given period of time can be automatically disabled. INACTIVE - Defines the number of days after the password exceeded its maximum age where the user is expected to replace this password. The value is stored in the shadow password file. An input of 0 will disable an expired password with no delay. An input of -1 will blank the respective field in the shadow password file.",
+                "project": "CIA",
+                "Check_Type": "passwd_inactive_lock",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.1.6 Ensure all users last password change date is in the past",
+                "Status" : "Done",
+                "Description": "All users should have a password change date in the past.",
+                "project": "CIA",
+                "Check_Type": "last_passwd_change",
+                "type": "Subtask"
+              }
+            ]
+          },
+          {
+            "Summary": "5.4.2 Configure root and system accounts and environment",
+            "Status" : "Done",
+            "project": "CIA",
+            "type": "Subtask",
+            "children": [
+              {
+                "Summary": "5.4.2.1 Ensure root is the only UID 0 account",
+                "Status" : "Done",
+                "Description": "Any account with UID 0 has superuser privileges on the system.",
+                "project": "CIA",
+                "Check_Type": "root_UID",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.2 Ensure root is the only GID 0 account",
+                "Status" : "Done",
+                "Description": "The usermod command can be used to specify which group the root account belongs to. This affects permissions of files that are created by the root account.",
+                "project": "CIA",
+                "Check_Type": "root_GID",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.3 Ensure group root is the only GID 0 group",
+                "Status" : "Done",
+                "Description": "The groupmod command can be used to specify which group the root group belongs to. This affects permissions of files that are group owned by the root group.",
+                "project": "CIA",
+                "Check_Type": "only_GID_root",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.4 Ensure root password is set (Automated)",
+                "Status" : "Done",
+                "Description": "There are a number of methods to access the root account directly. Without a password set any user would be able to gain access and thus control over the entire system.",
+                "project": "CIA",
+                "Check_Type": "root_passwd",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.5 Ensure root path integrity",
+                "Status" : "Done",
+                "Description": "The root user can execute any command on the system and could be fooled into executing programs unintentionally if the PATH is not set correctly.",
+                "project": "CIA",
+                "Check_Type": "root_integrity",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.6 Ensure root user umask is configured",
+                "Status" : "Done",
+                "Description": "The user file-creation mode mask (umask) is used to determine the file permission for newly created directories and files. In Linux, the default permissions for any newly created directory is 0777 (rwxrwxrwx), and for any newly created file it is 0666 (rw-rw- rw-). The umask modifies the default Linux permissions by restricting (masking) these permissions. The umask is not simply subtracted, but is processed bitwise. Bits set in the umask are cleared in the resulting file mode.",
+                "project": "CIA",
+                "Check_Type": "root_umask",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.7 Ensure system accounts do not have a valid login shell",
+                "Status" : "Done",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "project": "CIA",
+                "Check_Type": "system_accounts",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "5.4.2.8 Ensure accounts without a valid login shell are locked",
+                "Status" : "Done",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "project": "CIA",
+                "Check_Type": "shell_locked",
+                "type": "Subtask"
+              }
+            ]
+          },
+          {
+            "Summary": "5.4.3 Configure user default environment",
+            "Status" : "Done",
+            "project": "CIA",
+            "type": "Subtask",
+            "children": [
+              {
+                "Summary": "",
+                "Status" : "Done",
+                "Description": "",
+                "project": "CIA",
+                "Check_Type": "",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "",
+                "Status" : "Done",
+                "Description": "",
+                "project": "CIA",
+                "Check_Type": "",
+                "type": "Subtask"
+              },
+              {
+                "Summary": "",
+                "Status" : "Done",
+                "Description": "",
+                "project": "CIA",
+                "Check_Type": "",
+                "type": "Subtask"
+              }
+            ]
+          }
+        ]
       }
     ]
   }
