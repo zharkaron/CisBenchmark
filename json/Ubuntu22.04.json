@@ -2370,27 +2370,27 @@
             "type": "Subtask",
             "children": [
               {
-                "Summary": "",
+                "Summary": "5.4.3.1 Ensure nologin is not listed in /etc/shells",
                 "Status" : "Done",
-                "Description": "",
+                "Description": "/etc/shells is a text file which contains the full pathnames of valid login shells. This file is consulted by chsh and available to be queried by other programs. Be aware that there are programs which consult this file to find out if a user is a normal user; for example, FTP daemons traditionally disallow access to users with shells not included in this file.",
                 "project": "CIA",
-                "Check_Type": "",
+                "Check_Type": "nologin",
                 "type": "Subtask"
               },
               {
-                "Summary": "",
+                "Summary": "5.4.3.2 Ensure default user shell timeout is configured",
                 "Status" : "Done",
-                "Description": "",
+                "Description": "TMOUT is an environmental setting that determines the timeout of a shell in seconds.",
                 "project": "CIA",
-                "Check_Type": "",
+                "Check_Type": "default_timeout",
                 "type": "Subtask"
               },
               {
-                "Summary": "",
+                "Summary": "5.4.3.3 Ensure default user umask is configured",
                 "Status" : "Done",
-                "Description": "",
+                "Description": "The user file-creation mode mask (umask) is used to determine the file permission for newly created directories and files. In Linux, the default permissions for any newly created directory is 0777 (rwxrwxrwx), and for any newly created file it is 0666 (rw-rw- rw-). The umask modifies the default Linux permissions by restricting (masking) these permissions. The umask is not simply subtracted, but is processed bitwise. Bits set in the umask are cleared in the resulting file mode.",
                 "project": "CIA",
-                "Check_Type": "",
+                "Check_Type": "default_umask",
                 "type": "Subtask"
               }
             ]
@@ -2398,5 +2398,13 @@
         ]
       }
     ]
+  },
+  {
+    "Summary": "",
+    "Status" : "Done",
+    "Description": "",
+    "project": "CIA",
+    "Check_Type": "",
+    "type": "Subtask"
   }
 ]
