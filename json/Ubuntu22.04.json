@@ -2073,20 +2073,167 @@
                     "Project": "CIA",
                     "Check_Type": "root_fail_lockout",
                     "Type": "Subtask"
+                  }
+                ]
+              },
+              {
+                "Summary": "5.3.3.2 Configure pam_pwquality module",
+                "Status": "Done",
+                "Description": "The pam_pwquality.so module checks the strength of passwords. It performs checks such as making sure a password is not a dictionary word, it is a certain length, contains a mix of characters (e.g. alphabet, numeric, other) and more.",
+                "Project": "CIA",
+                "Type": "Story",
+                "children": [
+                  {
+                    "Summary": "5.3.3.2.1 Ensure password number of changed characters is configured",
+                    "Status": "Done",
+                    "Description": "The pwquality difok option sets the number of characters in a password that must not be present in the old password.",
+                    "Project": "CIA",
+                    "Check_Type": "Passwd_char",
+                    "Type": "Subtask"
                   },
                   {
-                    "Summary": "",
+                    "Summary": "5.3.3.2.2 Ensure minimum password length is configured",
                     "Status": "Done",
-                    "Description": "",
+                    "Description": "The minimum password length setting determines the lowers number of characters that make up a password for a user account. There are many different theories about how to determine the best password length for an organization, but perhaps 'passphrase' is a better term than 'password'. The minlen option sets the minimum acceptable size for the new password (plus one if credits are not disabled which is the default). Cannot be set to lower value than 6.",
                     "Project": "CIA",
-                    "Check_Type": "",
+                    "Check_Type": "min_passwd",
                     "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.3 Ensure password complexity is configured",
+                    "Status": "Done",
+                    "Description": "The password complexity can be controlled using five parameters: `minclass` sets the minimum number of character types (digit, uppercase, lowercase, special) required in a password. `dcredit` defines the requirement for digits, with a negative value (e.g., -1) meaning at least one digit is required. `ucredit` works similarly for uppercase letters, `lcredit` for lowercase letters, and `ocredit` for special characters. Negative values in these credit options enforce the presence of that character type in the password.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_complex",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.4 Ensure password same consecutive characters is configured",
+                    "Status": "Done",
+                    "Description": "The pwquality maxrepeat option sets the maximum number of allowed same consecutive characters in a new password.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_conse",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.5 Ensure password maximum sequential characters is configured",
+                    "Status": "Done",
+                    "Description": "The pwquality maxsequence option sets the maximum length of monotonic character sequences in the new password. Examples of such sequence are 12345 or fedcb. The check is disabled if the value is 0. Note: Most such passwords will not pass the simplicity check unless the sequence is only a minor part of the password.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_max",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.6 Ensure password dictionary check is enabled",
+                    "Status": "Done",
+                    "Description": "The pwquality dictcheck option sets whether to check for the words from the cracklib dictionary.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_dic",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.7 Ensure password quality checking is enforced",
+                    "Status": "Done",
+                    "Description": "The pam_pwquality module can be configured to either reject a password if it fails the checks, or only print a warning. This is configured by setting the enforcing=<N> argument. If nonzero, a password will be rejected if it fails the checks, otherwise only a warning message will be provided. This setting applies only to the pam_pwquality module and possibly other applications that explicitly change their behavior based on it. It does not affect pwmake(1) and pwscore(1).",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_quality",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.2.8 Ensure password quality is enforced for the root user",
+                    "Status": "Done",
+                    "Description": "If the pwquality enforce_for_root option is enabled, the module will return error on failed check even if the user changing the password is root. This option is off by default which means that just the message about the failed check is printed but root can change the password anyway. Note: The root is not asked for an old password so the checks that compare the old and new password are not performed.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_quality_root",
+                    "Type": "Subtask"
+                  }
+                ]
+              },
+              {
+                "Summary": "5.3.3.3 Configure pam_pwhistory module",
+                "Status": "Done",
+                "Description": "pam_pwhistory - PAM module to remember last passwords pam_history.so module - This module saves the last passwords for each user in order to force password change history and keep the user from alternating between the same password too frequently. This module does not work together with kerberos. In general, it does not make much sense to use this module in conjunction with NIS or LDAP, since the old passwords are stored on the local machine and are not available on another machine for password history checking.",
+                "Project": "CIA",
+                "Type": "Story",
+                "children": [
+                  {
+                    "Summary": "5.3.3.3.1 Ensure password history remember is configured",
+                    "Status": "Done",
+                    "Description": "The /etc/security/opasswd file stores the users' old passwords and can be checked to ensure that users are not recycling recent passwords. The number of passwords remembered is set via the remember argument value in set for the pam_pwhistory module.",
+                    "Project": "CIA",
+                    "Check_Type": "passwd_hist",
+                    "Type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.3.2 Ensure password history is enforced for the root user",
+                    "status": "done",
+                    "Description": "If the pwhistory enforce_for_root option is enabled, the module will enforce password history for the root user as well",
+                    "project": "CIA",
+                    "Check_Type": "passwd_hist_root",
+                    "type": "subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.3.3 Ensure pam_pwhistory includes use_authtok",
+                    "status": "done",
+                    "Description": "use_authtok - When password changing enforce the module to set the new password to the one provided by a previously stacked password module",
+                    "project": "CIA",
+                    "Check_Type": "pam_pwhistory",
+                    "type": "subtask"
+                  }
+                ]
+              },
+              {
+                "Summary": "5.3.3.4 Configure pam_unix module",
+                "Status": "Done",
+                "Description": "The pam_unix.so module is the standard Unix authentication module. It uses standard calls from the system's libraries to retrieve and set account information as well as authentication. Usually this is obtained from the /etc/passwd and the /etc/shadow file as well if shadow is enabled.",
+                "Project": "CIA",
+                "Type": "Story",
+                "children": [
+                  {
+                    "Summary": "5.3.3.4.1 Ensure pam_unix does not include nullok",
+                    "Status" : "Done",
+                    "Description": "The nullok argument overrides the default action of pam_unix.so to not permit the user access to a service if their official password is blank.",
+                    "project": "CIA",
+                    "Check_Type": "pam_unix_nullok",
+                    "type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.4.2 Ensure pam_unix does not include remember",
+                    "Status" : "Done",
+                    "Description": "The remember=n argument saves the last n passwords for each user in /etc/security/opasswd in order to force password change history and keep the user from alternating between the same password too frequently. The MD5 password hash algorithm is used for storing the old passwords. Instead of this option the pam_pwhistory module should be used. The pam_pwhistory module saves the last n passwords for each user in /etc/security/opasswd using the password hash algorithm set on the pam_unix module. This allows for the yescrypt or sha512 hash algorithm to be used.",
+                    "project": "CIA",
+                    "Check_Type": "pam_unix",
+                    "type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.4.3 Ensure pam_unix includes a strong password hashing algorithm",
+                    "Status" : "Done",
+                    "Description": "A cryptographic hash function converts an arbitrary-length input into a fixed length output. Password hashing performs a one-way transformation of a password, turning the password into another string, called the hashed password.",
+                    "project": "CIA",
+                    "Check_Type": "pam_unix_hashing",
+                    "type": "Subtask"
+                  },
+                  {
+                    "Summary": "5.3.3.4.4 Ensure pam_unix includes use_authtok",
+                    "Status" : "Done",
+                    "Description": "use_authtok - When password changing enforce the module to set the new password to the one provided by a previously stacked password module",
+                    "project": "CIA",
+                    "Check_Type": "pam_unix_authtok",
+                    "type": "Subtask"
                   }
                 ]
               }
             ]
           }
         ]
+      },
+      {
+        "Summary": "",
+        "Status" : "Done",
+        "Description": "",
+        "project": "CIA",
+        "Check_Type": "",
+        "type": "Subtask"
       }
     ]
   }
