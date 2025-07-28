@@ -2400,11 +2400,277 @@
     ]
   },
   {
-    "Summary": "",
+    "Summary": "6 Logging and Auditing",
     "Status" : "Done",
-    "Description": "",
+    "Description": "he items in this section describe how to configure logging, log monitoring, and auditing, using tools included in most distributions. It is recommended that rsyslog be used for logging (with logwatch providing summarization) and auditd be used for auditing (with aureport providing summarization) to automatically monitor logs for intrusion attempts and other suspicious system behavior. In addition to the local log files created by the steps in this section, it is also recommended that sites collect copies of their system logs on a secure, centralized log server via an encrypted connection. Not only does centralized logging help sites correlate events that may be occurring on multiple systems, but having a second copy of the system log information may be critical after a system compromise where the attacker has modified the local log files on the affected system(s). If a log correlation system is deployed, configure it to process the logs described in this section. Because it is often necessary to correlate log information from many different systems (particularly after a security incident) it is recommended that the time be synchronized among systems and devices connected to the local network. The standard Internet protocol for time synchronization is the Network Time Protocol (NTP), which is supported by most network-ready devices. Reference <http://chrony.tuxfamily.org/> manual page for more information on configuring chrony. It is important that all logs described in this section be monitored on a regular basis and correlated to determine trends. A seemingly innocuous entry in one log could be more significant when compared to an entry in another log.",
     "project": "CIA",
-    "Check_Type": "",
-    "type": "Subtask"
+    "type": "Epic",
+    "children": [
+      {
+        "Summary": "6.1 Configure Filesystem Integrity Checking",
+        "Status" : "Done",
+        "Description": "AIDE is a file integrity checking tool, similar in nature to Tripwire. While it cannot prevent intrusions, it can detect unauthorized changes to configuration files by alerting when the files are changed. When setting up AIDE, decide internally what the site policy will be concerning integrity checking. Review the AIDE quick start guide and AIDE documentation before proceeding.",
+        "project": "CIA",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "6.1.1 Ensure AIDE is installed",
+            "Status" : "Done",
+            "Description": "AIDE takes a snapshot of filesystem state including modification times, permissions, and file hashes which can then be used to compare against the current state of the filesystem to detect modifications to the system.",
+            "project": "CIA",
+            "Check_Type": "AIDE_installed",
+            "type": "Subtask"
+          },
+          {
+            "Summary": "6.1.2 Ensure filesystem integrity is regularly checked",
+            "Status" : "Done",
+            "Description": "Periodic checking of the filesystem integrity is needed to detect changes to the filesystem.",
+            "project": "CIA",
+            "Check_Type": "filesystem_integrity",
+            "type": "Subtask"
+          },
+          {
+            "Summary": "6.1.3 Ensure cryptographic mechanisms are used to protect the integrity of audit tools",
+            "Status" : "Done",
+            "Description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+            "project": "CIA",
+            "Check_Type": "cryptographic_mechanisms",
+            "type": "Subtask"
+          }
+        ]
+      },
+      {
+        "Summary": "6.2 System Logging",
+        "Status" : "Done",
+        "Description": "Logging services should be configured to prevent information leaks and to aggregate logs on a remote server so that they can be reviewed in the event of a system compromise. A centralized log server provides a single point of entry for further analysis, monitoring and filtering.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "6.2.1 Configure journald",
+            "Status" : "Done",
+            "Description": "Included in the systemd suite is a journaling service called systemd-journald.service for the collection and storage of logging data.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.2.1.1 Configure systemd-journald service",
+                "Status" : "Done",
+                "Description": "The daemon will implicitly collect numerous metadata fields for each log messages in a secure and unfakeable way. See systemd.journal-fields man page for more information about the collected metadata. The journal service stores log data either persistently below /var/log/journal or in a volatile way below /run/log/journal/. By default, log data is stored persistently if /var/log/journal/ exists during boot, with an implicit fallback to volatile storage. Use Storage= in journald.conf to configure where log data is placed, independently of the existence of /var/log/journal/. On systems where /var/log/journal/ does not exist but where persistent logging is desired, and the default journald.conf is used, it is sufficient to create the directory and ensure it has the correct access modes and ownership.",
+                "project": "CIA",
+                "type": "Epic",
+                "children": [
+                  {
+                    "Summary": "6.2.1.1.1 Ensure journald service is enabled and active",
+                    "Status" : "Done",
+                    "Description": "Ensure that the systemd-journald service is enabled to allow capturing of logging events.",
+                    "project": "CIA",
+                    "Check_Type":"journald_enabled",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.2 Ensure journald log file access is configured",
+                    "Status" : "Done",
+                    "Description": "Journald will create logfiles that do not already exist on the system. This setting controls what permissions will be applied to these newly created files.",
+                    "project": "CIA",
+                    "Check_Type":"journald_access",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.3 Ensure journald log file rotation is configured",
+                    "Status" : "Done",
+                    "Description": "Journald includes the capability of rotating log files regularly to avoid filling up the system with logs or making the logs unmanageably large. The file /etc/systemd/journald.conf is the configuration file used to specify how logs generated by Journald should be rotated.",
+                    "project": "CIA",
+                    "Check_Type":"journald_rotation",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.4 Ensure journald ForwardToSyslog is disabled",
+                    "Status" : "Done",
+                    "Description": "Data from journald should be kept in the confines of the service and not forwarded to other services.",
+                    "project": "CIA",
+                    "Check_Type":"journald_ForwardToSyslog",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.5 Ensure journald Storage is configured",
+                    "Status" : "Done",
+                    "Description": "Data from journald may be stored in volatile memory or persisted locally on the server. Logs in memory will be lost upon a system reboot. By persisting logs to local disk on the server they are protected from loss due to a reboot.",
+                    "project": "CIA",
+                    "Check_Type":"journald_storage",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.6 Ensure journald Compress is configured",
+                    "Status" : "Done",
+                    "Description": "The journald system includes the capability of compressing overly large files to avoid filling up the system with logs or making the logs unmanageably large.",
+                    "project": "CIA",
+                    "Check_Type":"journald_compress",
+                    "type": "Epic"
+                  }
+                ]
+              },
+              {
+                "Summary": "6.2.1.2 Configure systemd-journal-remote",
+                "Status" : "Done",
+                "Description": "The systemd-journal-remote package includes systemd-journal-upload. systemd-journal-upload will upload journal entries to the URL specified with --url=. This program reads journal entries from one or more journal files, similarly to journalctl. systemd-journal-upload transfers the raw content of journal file and uses HTTP as a transport protocol. systemd-journal-upload.service is a system service that uses systemd-journal- upload to upload journal entries to a server. It uses the configuration in journal- upload.conf.",
+                "project": "CIA",
+                "type": "Epic",
+                "children": [
+                  {
+                    "Summary": "6.2.1.2.1 Ensure systemd-journal-remote is installed",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-remote supports the ability to send log events it gathers to a remote log host or to receive messages from remote hosts, thus enabling centralized log management.",
+                    "Check_Type": "systemd-journal-remote",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.2 Ensure systemd-journal-remote authentication is configured",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-upload supports the ability to send log events it gathers to a remote log host.",
+                    "Check_Type": "systemd-journal-remote_authentication",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.3 Ensure systemd-journal-upload is enabled and active",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-upload supports the ability to send log events it gathers to a remote log host.",
+                    "Check_Type": "systemd-journal-upload enabled",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.4 Ensure systemd-journal-remote service is not in use",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-remote supports the ability to receive messages from remote hosts, thus acting as a log server. Clients should not receive data from other hosts.",
+                    "Check_Type": "systemd-journald-remote_noinuse",
+                    "type": "Epic"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Summary": "6.2.2 Configure Logfiles",
+            "Status" : "Done",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.2.2.1 Ensure access to all logfiles has been configured",
+                "Status" : "Done",
+                "Description": "Log files contain information from many services on the the local system, or in the event of a centralized log server, others systems logs as well. In general log files are found in /var/log/, although application can be configured to store logs elsewhere. Should your application store logs in another, ensure to run the same test on that location.",
+                "project": "CIA",
+                "Check_Type": "logfiles_access",
+                "type": "Epic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "6.3 System Auditing",
+        "Status" : "Done",
+        "Description": "The Linux Auditing System operates on a set of rules that collects certain types of system activity to facilitate incident investigation, detect unauthorized access or modification of data. By default events will be logged to /var/log/audit/audit.log, which can be configured in /etc/audit/auditd.conf.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "6.3.1 Configure auditd Service`",
+            "Status" : "Done",
+            "Description": "The capturing of system events provides system administrators with information to allow them to determine if unauthorized access to their system is occurring.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.3.1.1 Ensure auditd packages are installed ",
+                "Status" : "Done",
+                "Description": "auditd is the userspace component to the Linux Auditing System. It's responsible for writing audit records to the disk",
+                "project": "CIA",
+                "Check_Type": "auditd_installed",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.2 Ensure auditd service is enabled and active",
+                "Status" : "Done",
+                "Description": "Turn on the auditd daemon to record system events.",
+                "project": "CIA",
+                "Check_Type": "auditd_enabled",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.3 Ensure auditing for processes that start prior to auditd is enabled",
+                "Status" : "Done",
+                "Description": "Configure grub2 so that processes that are capable of being audited can be audited even if they start up prior to auditd startup.",
+                "project": "CIA",
+                "Check_Type": "auditing_bfr_auditd",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.4 Ensure audit_backlog_limit is sufficient",
+                "Status" : "Done",
+                "Description": "In the kernel-level audit subsystem, a socket buffer queue is used to hold audit events. Whenever a new audit event is received, it is logged and prepared to be added to this queue. The kernel boot parameter audit_backlog_limit=N, with N representing the amount of messages, will ensure that a queue cannot grow beyond a certain size. If an audit event is logged which would grow the queue beyond this limit, then a failure occurs and is handled according to the system configuration",
+                "project": "CIA",
+                "Check_Type": "autidit_backlog_limit_sufficient",
+                "type": "Epic"
+              }
+            ]
+          },
+          {
+            "Summary": "",
+            "Status" : "Done",
+            "Description": "",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+            ]
+          },
+          {
+            "Summary": "",
+            "Status" : "Done",
+            "Description": "",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+            ]
+          },
+          {
+            "Summary": "",
+            "Status" : "Done",
+            "Description": "",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "7 System Maintenance",
+    "Status" : "Done",
+    "description": "Recommendations in this section are intended as maintenance and are intended to be checked on a frequent basis to ensure system stability. Many recommendations do not have quick remediations and require investigation into the cause and best fix available and may indicate an attempted breach of system security.",
+    "project": "CIA",
+    "type": "Epic",
+    "children": [
+      {
+        "Summary": "7.1 System File Permissions",
+        "status" : "done",
+        "description": "This section provides guidance on securing aspects of system files and directories.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+        ]
+      },
+      {
+        "Summary": "7.2 Local User and Group Settings",
+        "status" : "done",
+        "description": "This section provides guidance on securing aspects of the local users and groups.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+        ]
+      }
+    ]
   }
 ]
