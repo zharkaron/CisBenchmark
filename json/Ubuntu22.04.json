@@ -14,7 +14,7 @@
           {
             "Summary": "1.1.1 Configure Filesystem Kernel Modules",
             "status": "Done",
-            "Description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, especially in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
+            "Description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, espeCIAlly in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
             "type": "Epics",
             "children": [
               {
@@ -606,7 +606,7 @@
         "children": [
           {
             "Summary": "1.7.1 Ensure GDM is removed",
-            "Description": "Removing GDM can enhance security by reducing the attack surface of the system, especially if a different display manager is preferred or if the system does not require a graphical user interface.",
+            "Description": "Removing GDM can enhance security by reducing the attack surface of the system, espeCIAlly if a different display manager is preferred or if the system does not require a graphical user interface.",
             "Check_Type": "gdm_removed",
             "status": "Done",
             "type": "Task"
@@ -904,7 +904,7 @@
         "children": [
           {
             "Summary": "2.3.1 Ensure time syncronization is in use",
-            "Description": "Time synchronization ensures that the system clock is accurate, which is crucial for logging events, scheduling tasks, and maintaining security protocols.",
+            "Description": "Time synchronization ensures that the system clock is accurate, which is cruCIAl for logging events, scheduling tasks, and maintaining security protocols.",
             "status": "Done",
             "type": "Epics",
             "children": [
@@ -1619,7 +1619,7 @@
                   "Level 1 - Server",
                   "Level 1 - Workstation"
                 ],
-                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
                 "Project": "CIA",
                 "Check_Type": "iptables_outbound_and_established_connections_configured",
                 "Type": "Subtask",
@@ -1676,7 +1676,7 @@
                   "Level 1 - Server",
                   "Level 1 - Workstation"
                 ],
-                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
                 "Project": "CIA",
                 "Check_Type": "ip6tables_outbound_and_established_connections_configured",
                 "Type": "Subtask",
@@ -2005,7 +2005,7 @@
               {
                 "Summary": "5.3.2.1 Ensure pam_unix module is enabled",
                 "Status": "Done",
-                "Description": "pam_unix is the standard Unix authentication module. It uses standard calls from the system's libraries to retrieve and set account information as well as authentication. Usually this is obtained from the /etc/passwd and if shadow is enabled, the /etc/shadow file as well. The account component performs the task of establishing the status of the user's account and password based on the following shadow elements: expire, last_change, max_change, min_change, warn_change. In the case of the latter, it may offer advice to the user on changing their password or, through the PAM_AUTHTOKEN_REQD return, delay giving service to the user until they have established a new password. The entries listed above are documented in the shadow(5) manual page. Should the user's record not contain one or more of these entries, the corresponding shadow check is not performed. The authentication component performs the task of checking the users credentials (password). The default action of this module is to not permit the user access to a service if their official password is blank",
+                "Description": "pam_unix is the standard Unix authentication module. It uses standard calls from the system's libraries to retrieve and set account information as well as authentication. Usually this is obtained from the /etc/passwd and if shadow is enabled, the /etc/shadow file as well. The account component performs the task of establishing the status of the user's account and password based on the following shadow elements: expire, last_change, max_change, min_change, warn_change. In the case of the latter, it may offer advice to the user on changing their password or, through the PAM_AUTHTOKEN_REQD return, delay giving service to the user until they have established a new password. The entries listed above are documented in the shadow(5) manual page. Should the user's record not contain one or more of these entries, the corresponding shadow check is not performed. The authentication component performs the task of checking the users credentials (password). The default action of this module is to not permit the user access to a service if their offiCIAl password is blank",
                 "Project": "CIA",
                 "Check_Type": "Pam_unix",
                 "Type": "Subtask"
@@ -2102,7 +2102,7 @@
                   {
                     "Summary": "5.3.3.2.3 Ensure password complexity is configured",
                     "Status": "Done",
-                    "Description": "The password complexity can be controlled using five parameters: `minclass` sets the minimum number of character types (digit, uppercase, lowercase, special) required in a password. `dcredit` defines the requirement for digits, with a negative value (e.g., -1) meaning at least one digit is required. `ucredit` works similarly for uppercase letters, `lcredit` for lowercase letters, and `ocredit` for special characters. Negative values in these credit options enforce the presence of that character type in the password.",
+                    "Description": "The password complexity can be controlled using five parameters: `minclass` sets the minimum number of character types (digit, uppercase, lowercase, speCIAl) required in a password. `dcredit` defines the requirement for digits, with a negative value (e.g., -1) meaning at least one digit is required. `ucredit` works similarly for uppercase letters, `lcredit` for lowercase letters, and `ocredit` for special characters. Negative values in these credit options enforce the presence of that character type in the password.",
                     "Project": "CIA",
                     "Check_Type": "passwd_complex",
                     "Type": "Subtask"
@@ -2192,7 +2192,7 @@
                   {
                     "Summary": "5.3.3.4.1 Ensure pam_unix does not include nullok",
                     "Status" : "Done",
-                    "Description": "The nullok argument overrides the default action of pam_unix.so to not permit the user access to a service if their official password is blank.",
+                    "Description": "The nullok argument overrides the default action of pam_unix.so to not permit the user access to a service if their offiCIAl password is blank.",
                     "project": "CIA",
                     "Check_Type": "pam_unix_nullok",
                     "type": "Subtask"
@@ -2348,7 +2348,7 @@
               {
                 "Summary": "5.4.2.7 Ensure system accounts do not have a valid login shell",
                 "Status" : "Done",
-                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add speCIAl accounts that are not intended to provide an interactive shell.",
                 "project": "CIA",
                 "Check_Type": "system_accounts",
                 "type": "Subtask"
@@ -2356,7 +2356,7 @@
               {
                 "Summary": "5.4.2.8 Ensure accounts without a valid login shell are locked",
                 "Status" : "Done",
-                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add speCIAl accounts that are not intended to provide an interactive shell.",
                 "project": "CIA",
                 "Check_Type": "shell_locked",
                 "type": "Subtask"
@@ -2746,7 +2746,7 @@
               {
                 "Summary": "6.3.3.11 Ensure session initiation information is collected",
                 "Status" : "Done",
-                "Description": "Monitor session initiation events. The parameters in this section track changes to the files associated with session events.",
+                "Description": "Monitor session initiation events. The parameters in this section track changes to the files assoCIAted with session events.",
                 "project": "CIA",
                 "Check_Type": "session_init_info",
                 "type": "Epic"
@@ -2762,7 +2762,7 @@
               {
                 "Summary": "6.3.3.13 Ensure file deletion events by users are collected",
                 "Status" : "Done",
-                "Description": "Monitor the use of system calls associated with the deletion or renaming of files and file attributes.",
+                "Description": "Monitor the use of system calls assoCIAted with the deletion or renaming of files and file attributes.",
                 "project": "CIA",
                 "Check_Type": "file_deletion",
                 "type": "Epic"
@@ -2834,12 +2834,92 @@
             ]
           },
           {
-            "Summary": "",
+            "Summary": "6.3.4 Configure auditd File Access",
             "Status" : "Done",
-            "Description": "",
+            "Description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events.",
             "project": "CIA",
             "type": "Epic",
             "children": [
+              {
+                "Summary": "6.3.4.1 Ensure audit log files mode is configured",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.2 Ensure audit log files owner is configured (Automated)",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files_owner",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.3 Ensure audit log files group owner is configured",
+                "status" : "done",
+                "description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "check_type": "audit_log_group_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.4 Ensure the audit log file directory mode is configured",
+                "status" : "done",
+                "description": "The audit log directory contains audit log files.",
+                "project": "CIA",
+                "check_type": "audit_log_file_directory",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.5 Ensure audit configuration files mode is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.6 Ensure audit configuration files owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.7 Ensure audit configuration files group owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config_group",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.8 Ensure audit tools mode is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.9 Ensure audit tools owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.10 Ensure audit tools group owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools_group",
+                "type": "epic"
+              }
             ]
           }
         ]
