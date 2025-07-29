@@ -14,7 +14,7 @@
           {
             "Summary": "1.1.1 Configure Filesystem Kernel Modules",
             "status": "Done",
-            "Description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, especially in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
+            "Description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, espeCIAlly in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
             "type": "Epics",
             "children": [
               {
@@ -606,7 +606,7 @@
         "children": [
           {
             "Summary": "1.7.1 Ensure GDM is removed",
-            "Description": "Removing GDM can enhance security by reducing the attack surface of the system, especially if a different display manager is preferred or if the system does not require a graphical user interface.",
+            "Description": "Removing GDM can enhance security by reducing the attack surface of the system, espeCIAlly if a different display manager is preferred or if the system does not require a graphical user interface.",
             "Check_Type": "gdm_removed",
             "status": "Done",
             "type": "Task"
@@ -904,7 +904,7 @@
         "children": [
           {
             "Summary": "2.3.1 Ensure time syncronization is in use",
-            "Description": "Time synchronization ensures that the system clock is accurate, which is crucial for logging events, scheduling tasks, and maintaining security protocols.",
+            "Description": "Time synchronization ensures that the system clock is accurate, which is cruCIAl for logging events, scheduling tasks, and maintaining security protocols.",
             "status": "Done",
             "type": "Epics",
             "children": [
@@ -1619,7 +1619,7 @@
                   "Level 1 - Server",
                   "Level 1 - Workstation"
                 ],
-                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
                 "Project": "CIA",
                 "Check_Type": "iptables_outbound_and_established_connections_configured",
                 "Type": "Subtask",
@@ -1676,7 +1676,7 @@
                   "Level 1 - Server",
                   "Level 1 - Workstation"
                 ],
-                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is crucial for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
                 "Project": "CIA",
                 "Check_Type": "ip6tables_outbound_and_established_connections_configured",
                 "Type": "Subtask",
@@ -2005,7 +2005,7 @@
               {
                 "Summary": "5.3.2.1 Ensure pam_unix module is enabled",
                 "Status": "Done",
-                "Description": "pam_unix is the standard Unix authentication module. It uses standard calls from the system's libraries to retrieve and set account information as well as authentication. Usually this is obtained from the /etc/passwd and if shadow is enabled, the /etc/shadow file as well. The account component performs the task of establishing the status of the user's account and password based on the following shadow elements: expire, last_change, max_change, min_change, warn_change. In the case of the latter, it may offer advice to the user on changing their password or, through the PAM_AUTHTOKEN_REQD return, delay giving service to the user until they have established a new password. The entries listed above are documented in the shadow(5) manual page. Should the user's record not contain one or more of these entries, the corresponding shadow check is not performed. The authentication component performs the task of checking the users credentials (password). The default action of this module is to not permit the user access to a service if their official password is blank",
+                "Description": "pam_unix is the standard Unix authentication module. It uses standard calls from the system's libraries to retrieve and set account information as well as authentication. Usually this is obtained from the /etc/passwd and if shadow is enabled, the /etc/shadow file as well. The account component performs the task of establishing the status of the user's account and password based on the following shadow elements: expire, last_change, max_change, min_change, warn_change. In the case of the latter, it may offer advice to the user on changing their password or, through the PAM_AUTHTOKEN_REQD return, delay giving service to the user until they have established a new password. The entries listed above are documented in the shadow(5) manual page. Should the user's record not contain one or more of these entries, the corresponding shadow check is not performed. The authentication component performs the task of checking the users credentials (password). The default action of this module is to not permit the user access to a service if their offiCIAl password is blank",
                 "Project": "CIA",
                 "Check_Type": "Pam_unix",
                 "Type": "Subtask"
@@ -2102,7 +2102,7 @@
                   {
                     "Summary": "5.3.3.2.3 Ensure password complexity is configured",
                     "Status": "Done",
-                    "Description": "The password complexity can be controlled using five parameters: `minclass` sets the minimum number of character types (digit, uppercase, lowercase, special) required in a password. `dcredit` defines the requirement for digits, with a negative value (e.g., -1) meaning at least one digit is required. `ucredit` works similarly for uppercase letters, `lcredit` for lowercase letters, and `ocredit` for special characters. Negative values in these credit options enforce the presence of that character type in the password.",
+                    "Description": "The password complexity can be controlled using five parameters: `minclass` sets the minimum number of character types (digit, uppercase, lowercase, speCIAl) required in a password. `dcredit` defines the requirement for digits, with a negative value (e.g., -1) meaning at least one digit is required. `ucredit` works similarly for uppercase letters, `lcredit` for lowercase letters, and `ocredit` for special characters. Negative values in these credit options enforce the presence of that character type in the password.",
                     "Project": "CIA",
                     "Check_Type": "passwd_complex",
                     "Type": "Subtask"
@@ -2192,7 +2192,7 @@
                   {
                     "Summary": "5.3.3.4.1 Ensure pam_unix does not include nullok",
                     "Status" : "Done",
-                    "Description": "The nullok argument overrides the default action of pam_unix.so to not permit the user access to a service if their official password is blank.",
+                    "Description": "The nullok argument overrides the default action of pam_unix.so to not permit the user access to a service if their offiCIAl password is blank.",
                     "project": "CIA",
                     "Check_Type": "pam_unix_nullok",
                     "type": "Subtask"
@@ -2348,7 +2348,7 @@
               {
                 "Summary": "5.4.2.7 Ensure system accounts do not have a valid login shell",
                 "Status" : "Done",
-                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add speCIAl accounts that are not intended to provide an interactive shell.",
                 "project": "CIA",
                 "Check_Type": "system_accounts",
                 "type": "Subtask"
@@ -2356,7 +2356,7 @@
               {
                 "Summary": "5.4.2.8 Ensure accounts without a valid login shell are locked",
                 "Status" : "Done",
-                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add special accounts that are not intended to provide an interactive shell.",
+                "Description": "There are a number of accounts provided with most distributions that are used to manage applications and are not intended to provide an interactive shell. Furthermore, a user may add speCIAl accounts that are not intended to provide an interactive shell.",
                 "project": "CIA",
                 "Check_Type": "shell_locked",
                 "type": "Subtask"
@@ -2616,30 +2616,310 @@
             ]
           },
           {
-            "Summary": "",
+            "Summary": "6.3.2 Configure Data Retention",
             "Status" : "Done",
-            "Description": "",
+            "Description": "When auditing, it is important to carefully configure the storage requirements for audit logs. By default, auditd will max out the log files at 5MB and retain only 4 copies on them. Older versions will be deleted. It is possible on a system that the 20 MBs of audit logs may fill up the system causing loss of audit data. While the recommendations here provide guidance, check your site policy for audit storage requirements.",
             "project": "CIA",
             "type": "Epic",
             "children": [
+              {
+                "Summary": "6.3.2.1 Ensure audit log storage size is configured",
+                "Status" : "Done",
+                "Description": "Configure the maximum size of the audit log file. Once the log reaches the maximum size, it will be rotated and a new log file will be started.",
+                "project": "CIA",
+                "Check_Type": "audit_log_storage_config",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.2 Ensure audit logs are not automatically deleted",
+                "Status" : "Done",
+                "Description": "The max_log_file_action setting determines how to handle the audit log file reaching the max file size. A value of keep_logs will rotate the logs but never delete old logs.",
+                "project": "CIA",
+                "Check_Type": "audit_logs_not_automatically_deleteld",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.3 Ensure system is disabled when audit logs are full",
+                "Status" : "Done",
+                "Description": "The auditd daemon can be configured to halt the system or put the system in single user mode, if no free space is available or an error is detected on the partition that holds the audit log files.",
+                "project": "CIA",
+                "Check_Type": "system_disabled_logs_full",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.4 Ensure system warns when audit logs are low on space",
+                "Status" : "Done",
+                "Description": "The auditd daemon can be configured to halt the system, put the system in single user mode or send a warning message, if the partition that holds the audit log files is low on space.",
+                "project": "CIA",
+                "Check_Type": "alarm_logs_full",
+                "type": "Epic"
+              }
             ]
           },
           {
-            "Summary": "",
+            "Summary": "6.3.3 Configure auditd Rules",
             "Status" : "Done",
-            "Description": "",
+            "Description": "The Audit system operates on a set of rules that define what is to be captured in the log files.",
             "project": "CIA",
             "type": "Epic",
             "children": [
+              {
+                "Summary": "6.3.3.1 Ensure changes to system administration scope (sudoers) is collected",
+                "Status" : "Done",
+                "Description": "Monitor scope changes for system administrators. If the system has been properly configured to force system administrators to log in as themselves first and then use th  sudo command to execute privileged commands, it is possible to monitor changes in scope. The file /etc/sudoers, or files in /etc/sudoers.d, will be written to when the file(s) or related attributes have changed. The audit records will be tagged with the identifier 'scope'.",
+                "project": "CIA",
+                "Check_Type": "sudoers",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.2 Ensure actions as another user are always logged",
+                "Status" : "Done",
+                "Description": "sudo provides users with temporary elevated privileges to perform operations, either as the superuser or another user.",
+                "project": "CIA",
+                "Check_Type": "actions_logged",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.3 Ensure events that modify the sudo log file are collected",
+                "Status" : "Done",
+                "Description": "Monitor the sudo log file. If the system has been properly configured to disable the use of the su command and force all administrators to have to log in first and then use sudo to execute privileged commands, then all administrator commands will be logged to /var/log/sudo.log . Any time a command is executed, an audit event will be triggered as the /var/log/sudo.log file will be opened for write and the executed administration command will be written to the log.",
+                "project": "CIA",
+                "Check_Type": "mod_sudo_log_file",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.4 Ensure events that modify date and time information are collected",
+                "Status" : "Done",
+                "Description": "Capture events where the system date and/or time has been modified.",
+                "project": "CIA",
+                "Check_Type": "mod_date_time",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.5 Ensure events that modify the system's network environment are collected",
+                "Status" : "Done",
+                "Description": "Record changes to network environment files or system calls.",
+                "project": "CIA",
+                "Check_Type": "system_network",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.6 Ensure use of privileged commands are collected",
+                "Status" : "Done",
+                "Description": "Monitor privileged programs, those that have the setuid and/or setgid bit set on execution, to determine if unprivileged users are running these commands.",
+                "project": "CIA",
+                "Check_Type": "priviledge_commands",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.7 Ensure unsuccessful file access attempts are collected",
+                "Status" : "Done",
+                "Description": "Monitor for unsuccessful attempts to access files.",
+                "project": "CIA",
+                "Check_Type": "unsuccessful_priv_commands",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.8 Ensure events that modify user/group information are collected",
+                "Status" : "Done",
+                "Description": "Record events affecting the modification of user or group information,",
+                "project": "CIA",
+                "Check_Type": "mod_user/group",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.9 Ensure discretionary access control permission modification events are collected",
+                "Status" : "Done",
+                "Description": "Monitor changes to file permissions, attributes, ownership and group. The parameters in this section track changes for system calls that affect file permissions and attributes. The following commands and system calls effect the permissions, ownership and various attributes of files.",
+                "project": "CIA",
+                "Check_Type": "",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.10 Ensure successful file system mounts are collected",
+                "Status" : "Done",
+                "Description": "Monitor the use of the mount system call. The mount (and umount ) system call controls the mounting and unmounting of file systems. The parameters below configure the system to create an audit record when the mount system call is used by a non- privileged user",
+                "project": "CIA",
+                "Check_Type": "sys_mount",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.11 Ensure session initiation information is collected",
+                "Status" : "Done",
+                "Description": "Monitor session initiation events. The parameters in this section track changes to the files assoCIAted with session events.",
+                "project": "CIA",
+                "Check_Type": "session_init_info",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.12 Ensure login and logout events are collected",
+                "Status" : "Done",
+                "Description": "Monitor login and logout events.",
+                "project": "CIA",
+                "Check_Type": "log_logout",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.13 Ensure file deletion events by users are collected",
+                "Status" : "Done",
+                "Description": "Monitor the use of system calls assoCIAted with the deletion or renaming of files and file attributes.",
+                "project": "CIA",
+                "Check_Type": "file_deletion",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.14 Ensure events that modify the system's Mandatory Access Controls are collected",
+                "Status" : "Done",
+                "Description": "Monitor AppArmor, an implementation of mandatory access controls. The parameters below monitor any write access (potential additional, deletion or modification of files in the directory) or attribute changes to the /etc/apparmor/ and /etc/apparmor.d/ directories.",
+                "project": "CIA",
+                "Check_Type": "mod_mac",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.15 Ensure successful and unsuccessful attempts to use the chcon command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the chcon command.",
+                "project": "CIA",
+                "Check_Type": "chcon_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.16 Ensure successful and unsuccessful attempts to use the setfacl command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the setfacl command",
+                "project": "CIA",
+                "Check_Type": "setfacl_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.17 Ensure successful and unsuccessful attempts to use the chacl command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the chacl command. chacl is an IRIX-compatibility command, and is maintained for those users who are familiar with its use from either XFS or IRIX.",
+                "project": "CIA",
+                "Check_Type": "chacl_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.18 Ensure successful and unsuccessful attempts to use the usermod command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the usermod command.",
+                "project": "CIA",
+                "Check_Type": "usermod_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.19 Ensure kernel module loading unloading and modification is collected",
+                "Status" : "Done",
+                "Description": "Monitor the loading and unloading of kernel modules. All the loading / listing / dependency checking of modules is done by kmod via symbolic links.",
+                "project": "CIA",
+                "Check_Type": "module_load_unload",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.20 Ensure the audit configuration is immutable",
+                "Status" : "Done",
+                "Description": "Set system audit so that audit rules cannot be modified with auditctl . Setting the flag '-e 2' forces audit to be put in immutable mode. Audit changes can only be made on system reboot.",
+                "project": "CIA",
+                "Check_Type": "audit_immutable",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.21 Ensure the running and on disk configuration is the same",
+                "Status" : "Done",
+                "Description": "The Audit system have both on disk and running configuration. It is possible for these configuration settings to differ.",
+                "project": "CIA",
+                "Check_Type": "run_disk_same",
+                "type": "Epic"
+              }
             ]
           },
           {
-            "Summary": "",
+            "Summary": "6.3.4 Configure auditd File Access",
             "Status" : "Done",
-            "Description": "",
+            "Description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events.",
             "project": "CIA",
             "type": "Epic",
             "children": [
+              {
+                "Summary": "6.3.4.1 Ensure audit log files mode is configured",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.2 Ensure audit log files owner is configured (Automated)",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files_owner",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.3 Ensure audit log files group owner is configured",
+                "status" : "done",
+                "description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "check_type": "audit_log_group_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.4 Ensure the audit log file directory mode is configured",
+                "status" : "done",
+                "description": "The audit log directory contains audit log files.",
+                "project": "CIA",
+                "check_type": "audit_log_file_directory",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.5 Ensure audit configuration files mode is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.6 Ensure audit configuration files owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.7 Ensure audit configuration files group owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "check_type": "audit_config_group",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.8 Ensure audit tools mode is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.9 Ensure audit tools owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.10 Ensure audit tools group owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "check_type": "audit_tools_group",
+                "type": "epic"
+              }
             ]
           }
         ]
