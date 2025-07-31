@@ -1,4 +1,1705 @@
-[  
+[
+  {
+    "Summary": "1 Initial Setup",
+    "status": "Done",
+    "Description": "Items in this section are advised for all systems but may be difficult or require extensive preparation after the initial setup of the system.",
+    "type": "Epics",
+    "children": [
+      {
+        "Summary": "1.1 Filesystem",
+        "status": "Done",
+        "Description": "The file system is generally a built-in layer used to handle the data management of the storage",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "1.1.1 Configure Filesystem Kernel Modules",
+            "status": "Done",
+            "Description": "A number of uncommon filesystem types are supported under Linux. Removing support for unneeded filesystem types reduces the local attack surface of the system. If a filesystem type is not needed it should be disabled. Native Linux file systems are designed to ensure that built-in security controls function as expected. Non-native filesystems can lead to unexpected consequences to both the security and functionality of the system and should be used with caution. Many filesystems are created for niche use cases and are not maintained and supported as the operating systems are updated and patched. Users of non-native filesystems should ensure that there is attention and ongoing support for them, espeCIAlly in light of frequent operating system changes. Standard network connectivity and Internet access to cloud storage may make the use of non-standard filesystem formats to directly attach heterogeneous devices much less attractive",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "1.1.1.1 Ensure cramfs kernel module is not available",
+                "Description": "The cramfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.2 Ensure freevxfs kernel module is not available",
+                "Description": "The freevxfs filesystem is a read-only filesystem that is not commonly used and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.3 Ensure hfs kernel module is not available",
+                "Description": "The hfs filesystem is an older filesystem used primarily by Apple systems and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.4 Ensure hfsplus kernel module is not available",
+                "Description": "The hfsplus filesystem is an updated version of the hfs filesystem used by Apple systems and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.5 Ensure jffs2 kernel module is not available",
+                "Description": "The jffs2 filesystem is a journaling flash filesystem that is not commonly used and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.6 Ensure squashfs kernel module is not available",
+                "Description": "The squashfs filesystem is a compressed read-only filesystem that is not commonly used and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "server": "Level-2",
+                "workstation": "Level-2",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.7 Ensure udf kernel module is not available",
+                "Description": "The udf filesystem is a universal disk format that is not commonly used and can pose security risks if left enabled.",
+                "Check_Type": "kernel_module",
+                "type": "Task",
+                "status": "Done"
+              },
+              {
+                "Summary": "1.1.1.8 Ensure usb-storage kernel module is not available",
+                "Description": "The usb-storage kernel module allows the system to access USB storage devices. If USB storage is not needed, it should be disabled to reduce the attack surface.",
+                "Check_Type": "kernel_module",
+                "server": "Level-1",
+                "workstation": "Level-2",
+                "type": "Task",
+                "status": "Done"
+              }
+            ]
+          },
+          {
+            "Summary": "1.1.2 Configure Filesystem Partitions",
+            "Description": "Partitioning the filesystem can enhance security by isolating critical directories and preventing unauthorized access to sensitive data. It also helps in managing disk space more effectively.",
+            "status": "Done",
+            "type": "Story",
+            "children": [
+              {
+                "Summary": "1.1.2.1 Configure /tmp",
+                "Description": "The /tmp directory is used for temporary file storage. Configuring it as a separate partition can prevent unauthorized access and ensure that temporary files do not consume space on the root filesystem.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.1.1 Ensure /tmp is separate partition",
+                    "Description": "Having /tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that the root filesystem is not filled with temporary data.",
+                    "Check_Type": "partition",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.1.2 Ensure nodev option set on /tmp partition",
+                    "Description": "The nodev option prevents the creation of device files in the /tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.1.3 Ensure nosuid option is set on /tmp partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.1.4 Ensure noexec option is set on /tmp partition",
+                    "Description": "The noexec option prevents the execution of binaries in the /tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.2 Configure /dev/shm",
+                "Description": "The /dev/shm directory is used for shared memory. Configuring it as a separate partition can enhance security by isolating shared memory from other filesystems.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.2.1 Verify /dev/shm is mounted as a separate partition",
+                    "Description": "Having /dev/shm as a separate partition can help prevent unauthorized access to shared memory and ensure that it does not consume space on the root filesystem.",
+                    "Check_Type": "partition",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.2.2 Ensure nodev option is set on /dev/shm partition",
+                    "Description": "The nodev option prevents the creation of device files in the /dev/shm directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.2.3 Ensure nosuid option is set on /dev/shm partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /dev/shm directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.2.4 Ensure noexec option set on /dev/shm partition",
+                    "Description": "The noexec option prevents the execution of binaries in the /dev/shm directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.3 Configure /home",
+                "Description": "The /home directory is used for user home directories. Configuring it as a separate partition can enhance security by isolating user data from system files and preventing unauthorized access to sensitive user data.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.3.1 Ensure separate partition exists for /home",
+                    "Description": "Having /home as a separate partition can help prevent unauthorized access to user data and ensure that it does not consume space on the root filesystem.",
+                    "Check_Type": "partition",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.3.2 Ensure nodev option set on /home partition",
+                    "Description": "The nodev option prevents the creation of device files in the /home directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.3.3 Ensure nosuid option is set on /home partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /home directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.4 Configure /var",
+                "Description": "The /var directory is used for variable data such as logs and spool files. Configuring it as a separate partition can enhance security by isolating variable data from system files and preventing unauthorized access to sensitive data.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.4.1 Ensure separate partition exists for /var",
+                    "Description": "Having /var as a separate partition can help prevent unauthorized access to variable data and ensure that it does not consume space on the root filesystem.",
+                    "Check_Type": "partition",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.4.2 Ensure nodev option is set on /var partition",
+                    "Description": "The nodev option prevents the creation of device files in the /var directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.4.3 Ensure nosuid option is set on /var partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /var directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.5 Configure /var/tmp",
+                "Description": "The /var/tmp directory is used for temporary files that need to persist across reboots. Configuring it as a separate partition can enhance security by isolating temporary files from other filesystems and preventing unauthorized access to sensitive data.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.5.1 Ensure /var/tmp is mounted as a separate partition",
+                    "Description": "Having /var/tmp as a separate partition can help prevent unauthorized access to temporary files and ensure that it does not consume space on the root filesystem.",
+                    "Check_Type": "partition",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.5.2 Ensure nodev option is set on /var/tmp partition",
+                    "Description": "The nodev option prevents the creation of device files in the /var/tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.5.3 Ensure nosuid option is set on /var/tmp partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.5.4 Ensure noexec option is set on /var/tmp partition",
+                    "Description": "The noexec option prevents the execution of binaries in the /var/tmp directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.6 Configure /var/log",
+                "Description": "The /var/log directory is used for log files. Configuring it as a separate partition can enhance security by isolating log files from other filesystems and preventing unauthorized access to sensitive log data.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.6.1 Ensure separate partition exists for /var/log",
+                    "Description": "Having /var/log as a separate partition can help prevent unauthorized access to log files and ensure that it does not consume space on the root filesystem.",
+                    "Check_Type": "partition",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.6.2 Ensure nodev option is set on /var/log partition",
+                    "Description": "The nodev option prevents the creation of device files in the /var/log directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.6.3 Ensure nosuid option is set on /var/log partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.6.4 Ensure noexec option is set on /var/log partition",
+                    "Description": "The noexec option prevents the execution of binaries in the /var/log directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              },
+              {
+                "Summary": "1.1.2.7 Configure /var/log/audit",
+                "Description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
+                "status": "Done",
+                "type": "Epics",
+                "children": [
+                  {
+                    "Summary": "1.1.2.7.1 Ensure separate partition exists for /var/log/audit",
+                    "Description": "The auditing daemon, auditd, stores log data in the /var/log/audit directory.",
+                    "Check_Type": "partition",
+                    "server": "Level-2",
+                    "workstation": "Level-2",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.7.2 Ensure nodev option is set on /var/log/audit partition",
+                    "Description": "The nodev option prevents the creation of device files in the /var/log/audit directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.7.3 Ensure nosuid option is set on /var/log/audit partition",
+                    "Description": "The nosuid option prevents the execution of setuid and setgid programs in the /var/log/audit directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  },
+                  {
+                    "Summary": "1.1.2.7.4 Ensure noexec option is set on /var/log/audit partition",
+                    "Description": "The noexec option prevents the execution of binaries in the /var/log/audit directory, which can help mitigate security risks.",
+                    "Check_Type": "mount_option",
+                    "server": "Level-1",
+                    "workstation": "Level-1",
+                    "type": "Task",
+                    "status": "Done"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "1.2 Package Management",
+        "status": "Done",
+        "Description": "Package management is a critical aspect of system security, ensuring that the software installed on the system is up-to-date and free from known vulnerabilities. This section provides guidance on how to manage packages effectively, including installing, updating, and removing software packages.",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "1.2.1 Configure Package Repositories",
+            "Description": "Configuring package repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "1.2.1.1 Ensure GPG keys are configured",
+                "Description": "GPG keys are used to verify the authenticity of packages. Ensuring that GPG keys are configured helps prevent the installation of tampered or malicious packages.",
+                "Check_Type": "gpg_keys",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "1.2.1.2 Ensure package manager repositories are configured",
+                "Description": "Configuring package manager repositories ensures that the system can access trusted sources for software packages, reducing the risk of installing malicious or outdated software.",
+                "Check_Type": "repo_conf",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          },
+          {
+            "Summary": "1.2.2 Configure Packege Updates",
+            "Description": "Configuring package updates ensures that the system is kept up-to-date with the latest security patches and software improvements, reducing the risk of vulnerabilities.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "1.2.2.1 Ensure updates, patches, and additional security software are installed",
+                "Description": "Regularly installing updates, patches, and additional security software helps keep the system secure against known vulnerabilities.",
+                "Check_Type": "sec_updates",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "1.3 Mandatory Access Control",
+        "status": "Done",
+        "Description": "Mandatory Access Control (MAC) is a security mechanism that restricts the ability of users and processes to access system resources based on predefined policies. This section provides guidance on how to implement and configure MAC systems to enhance security.",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "1.3.1 Configure AppArmor",
+            "Description": "AppArmor is a Linux kernel security module that allows the system administrator to restrict programs' capabilities with per-program profiles. Configuring AppArmor enhances security by limiting the actions that programs can perform.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "1.3.1.1 Ensure AppArmor is installed",
+                "Description": "AppArmor must be installed to provide mandatory access control for applications. It helps in confining programs to a limited set of resources and capabilities.",
+                "Check_Type": "apparmor_enabled",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "1.3.1.2 Ensure AppArmor is enabled in the bootloader configuration",
+                "Description": "Enabling AppArmor in the bootloader configuration ensures that it is activated during system startup, providing mandatory access control from the beginning.",
+                "Check_Type": "boot_armor",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "1.3.1.3 Ensure AppArmor profiles are in enforce mode",
+                "Description": "AppArmor profiles define the access rights for applications. Ensuring that profiles are in enforce mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
+                "Check_Type": "apparmor_profiles",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "1.3.1.4 Ensure all AppArmor profiles are in enforcing",
+                "Description": "Ensuring that all AppArmor profiles are in enforcing mode means that the restrictions defined in the profiles are actively enforced, enhancing security.",
+                "Check_Type": "apparmor_profiles_enforce",
+                "server": "Level-1",
+                "workstation": "Level-1",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "1.4 Configure Bootloader",
+        "status": "Done",
+        "Description": "The bootloader is a critical component of the system that loads the operating system kernel and initializes the system. Configuring the bootloader securely is essential to prevent unauthorized access and ensure the integrity of the system.",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "1.4.1 Ensure bootloader password is set",
+            "Description": "Setting a bootloader password prevents unauthorized users from modifying the bootloader configuration or booting into single-user mode, which can bypass security measures.",
+            "Check_Type": "boot_password",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.4.2 Ensure access to bootloader config is configured",
+            "Description": "Configuring access to the bootloader configuration file ensures that only authorized users can modify the bootloader settings, preventing unauthorized changes that could compromise system security.",
+            "Check_Type": "boot_config",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "Summary": "1.5 Configure additional Process hardening",
+        "status": "Done",
+        "Description": "Process hardening involves applying security measures to processes running on the system to reduce the risk of exploitation. This section provides guidance on how to configure additional process hardening techniques to enhance system security.",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "1.5.1 Ensure address space layout randomization is enabled",
+            "Description": "Address Space Layout Randomization (ASLR) is a security technique that randomizes the memory addresses used by system and application processes, making it more difficult for attackers to predict the location of specific code or data in memory.",
+            "Check_Type": "aslr_enabled",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.5.2 Ensure ptrace_score is restricted",
+            "Description": "Restricting ptrace_score prevents unauthorized processes from tracing or manipulating other processes, which can be used to exploit vulnerabilities or gain unauthorized access to sensitive information.",
+            "Check_Type": "ptrace_score",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.5.3 Ensure core dumps are restricted",
+            "Description": "Restricting core dumps prevents the creation of core dump files that can contain sensitive information about the system and running processes, which could be exploited by attackers.",
+            "Check_Type": "core_dumps_restricted",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.5.4 Ensure prelink is not installed",
+            "Description": "Prelinking is a technique that can improve the performance of dynamically linked applications, but it can also introduce security risks by making it easier for attackers to predict the locations of shared libraries in memory. Ensuring that prelink is not installed helps mitigate these risks.",
+            "Check_Type": "prelink_not_installed",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.5.5 Ensure Automatic Error Reporting is not enabled",
+            "Description": "Automatic Error Reporting can send sensitive information about the system and running processes to external servers, which could be exploited by attackers. Ensuring that Automatic Error Reporting is not enabled helps protect sensitive information.",
+            "Check_Type": "auto_error_reporting",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "Summary": "1.6 Configure Command Line Warning Banner",
+        "status": "Done",
+        "Description": "A command line warning banner is a message displayed to users when they log in to the system via the command line. Configuring a command line warning banner helps inform users about security policies and legal notices, and can deter unauthorized access.",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "1.6.1 Ensure message of the day is configured properly",
+            "Description": "The message of the day (MOTD) is a message displayed to users when they log in to the system. Configuring it properly helps inform users about security policies and legal notices.",
+            "Check_Type": "day_message",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.6.2 Ensure local login warning banner is configured properly",
+            "Description": "A local login warning banner is displayed to users when they log in to the system via the console. Configuring it properly helps inform users about security policies and legal notices.",
+            "Check_Type": "banner_message",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.6.3 Ensure remote login warning banner is configured properly",
+            "Description": "A remote login warning banner is displayed to users when they log in to the system via SSH or other remote access methods. Configuring it properly helps inform users about security policies and legal notices.",
+            "Check_Type": "banner_message_login",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.6.4 Ensure access to /etc/motd is configured",
+            "Description": "Configuring access to the /etc/motd file ensures that only authorized users can modify the message of the day, preventing unauthorized changes that could compromise system security.",
+            "Check_Type": "access_motd",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.6.5 Ensure access to /etc/issue is configured",
+            "Description": "Configuring access to the /etc/issue file ensures that only authorized users can modify the login banner, preventing unauthorized changes that could compromise system security.",
+            "Check_Type": "access_issue",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.6.6 Ensure access to /etc/issue.net is configured",
+            "Description": "Configuring access to the /etc/issue.net file ensures that only authorized users can modify the remote login banner, preventing unauthorized changes that could compromise system security.",
+            "Check_Type": "access_issue_net",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "Summary": "1.7 Configure GNOME Display Manager",
+        "status": "Done",
+        "Description": "The GNOME Display Manager (GDM) is the default display manager for GNOME desktop environments. Configuring GDM securely is essential to prevent unauthorized access and ensure the integrity of the graphical user interface.",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "1.7.1 Ensure GDM is removed",
+            "Description": "Removing GDM can enhance security by reducing the attack surface of the system, espeCIAlly if a different display manager is preferred or if the system does not require a graphical user interface.",
+            "Check_Type": "gdm_removed",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.2 Ensure GDM login banner is configured",
+            "Description": "Configuring the GDM login banner helps inform users about security policies and legal notices when they log in to the graphical user interface.",
+            "Check_Type": "login_banner",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.3 Ensure GDM disable-user-list option is enabled",
+            "Description": "Enabling the disable-user-list option in GDM prevents unauthorized users from viewing the list of available user accounts on the login screen, enhancing security by obscuring user information.",
+            "Check_Type": "disable_user_list_enabled",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.4 Ensure GDM screen locks when the user is idle",
+            "Description": "Configuring GDM to lock the screen when the user is idle helps protect the system from unauthorized access when users leave their workstations unattended.",
+            "Check_Type": "screen_lock_idle",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.5 Ensure GDM screen locks cannot be overridden",
+            "Description": "Configuring GDM to prevent users from overriding the screen lock settings helps ensure that the system remains secure when users leave their workstations unattended.",
+            "Check_Type": "screen_lock_not_overridden",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.6 Ensure GDM automatic mounting of removable media is disabled",
+            "Description": "Disabling the automatic mounting of removable media in GDM helps prevent unauthorized access to potentially malicious or untrusted media, enhancing system security.",
+            "Check_Type": "auto_mount_disabled",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.7 Ensure GDM disabling automatic mounting of removable media is not overridden",
+            "Description": "Ensuring that the disabling of automatic mounting of removable media cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
+            "Check_Type": "auto_mount_not_overridden",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.8 Ensure GDM autorun-never is enabled",
+            "Description": "Enabling autorun in GDM allows the system to automatically run specific applications or scripts when a user logs in, which can be useful for security monitoring or compliance purposes.",
+            "Check_Type": "autorun_never_enabled",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.9 Ensure GDM autorun-never cannot be overridden",
+            "Description": "Ensuring that the autorun-never setting cannot be overridden helps maintain the security posture of the system by preventing users from enabling potentially risky behavior.",
+            "Check_Type": "autorun_not_overridden",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "1.7.10 Ensure XDCMP is disabled",
+            "Description": "Disabling XDCMP (X Display Manager Control Protocol) prevents remote access to the graphical user interface, enhancing security by reducing the attack surface of the system.",
+            "Check_Type": "xdmcp_not_enabled",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "2 Services",
+    "Description": "While applying system updates and patches helps correct known vulnerabilities, one of the best ways to protect the system against as yet unreported vulnerabilities is to disable all services that are not required for normal system operation. This prevents the exploitation of vulnerabilities discovered at a later date. If a service is not enabled, it cannot be exploited. The actions in this section of the document provide guidance on some services which can be safely disabled and under which circumstances, greatly reducing the number of possible threats to the resulting system. Additionally, some services which should remain enabled but with secure configuration are covered as well as insecure service clients.",
+    "status": "In Progress",
+    "type": "Epics",
+    "children": [
+      {
+        "Summary": "2.1 Configure Server Services",
+        "Description": "Server services are essential for the operation of the system and should be configured to ensure security and functionality.",
+        "status": "Done",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "2.1.1 Ensure autofs services are not in use",
+            "Description": "Autofs is a service that automatically mounts filesystems on demand. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "autofs",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.2 Ensure avahi-daemon services are not in use",
+            "Description": "Avahi-daemon is a service that provides mDNS/DNS-SD services. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "avahi",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.3 Ensure dhcp services are not in use",
+            "Description": "DHCP services are used to assign IP addresses dynamically. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "dhcp",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.4 Ensure dns services are not in use",
+            "Description": "DNS services are used to resolve domain names to IP addresses. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "dns",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.5 Ensure dnsmasq services are not in use",
+            "Description": "Dnsmasq is a lightweight DNS forwarder and DHCP server. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "dnsmasq",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.6 Ensure ftp services are not in use",
+            "Description": "FTP services are used for file transfer. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "ftp",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.7 Ensure ldap services are not in use",
+            "Description": "LDAP services are used for directory services. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "ldap",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.8 Ensure message access services are not in use",
+            "Description": "Message access services are used for inter-process communication. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "dovecot",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.9 Ensure network file system services are not in use",
+            "Description": "Network file system services are used for sharing files over the network. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "nfs",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.10 Ensure nis services are not in use",
+            "Description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "nis",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.11 Ensure print server services are not in use",
+            "Description": "Print server services are used for managing printers over the network. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "cups",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.12 Ensure rpcbind services are not in use",
+            "Description": "Rpcbind is used to map RPC program numbers to universal addresses. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "rpcbind",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.13 Ensure rsync services are not in use",
+            "Description": "Rsync is used for synchronizing files and directories between systems. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "rsync",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.14 Ensure samba services are not in use",
+            "Description": "Samba is used for sharing files and printers with Windows systems. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "samba",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.15 Ensure snmp services are not in use",
+            "Description": "SNMP (Simple Network Management Protocol) is used for network management. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "snmp",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.16 Ensure tftp services are not in use",
+            "Description": "TFTP (Trivial File Transfer Protocol) is a simple file transfer protocol. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "tftp",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.17 Ensure web proxy services are not in use",
+            "Description": "Web proxy services are used for caching and filtering web traffic. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "squid",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.18 Ensure web server services are not in use",
+            "Description": "Web server services are used for hosting websites. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "apache",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.19 Ensure xinetd services are not in use",
+            "Description": "Xinetd is a super-server daemon that manages internet services. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "xinetd",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.20 Ensure X windows server services are not in use",
+            "Description": "X Windows server services are used for providing a graphical user interface. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "XWindows",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.21 Ensure mail transfer agent is configured for local-only mode",
+            "Description": "Configuring the mail transfer agent (MTA) for local-only mode ensures that it only accepts and delivers mail locally, preventing it from being used as an open relay for sending spam or malicious emails.",
+            "Check_Type": "MailTransferAgent",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.1.22 Ensure only approved services are listening on a network interface",
+            "Description": "Ensuring that only approved services are listening on a network interface helps reduce the attack surface by preventing unauthorized access to services that are not needed for normal operation.",
+            "Check_Type": "ApprovedServices",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "Summary": "2.2 Configure Client Services",
+        "Description": "Client services are used to connect to remote systems and should be configured securely to prevent unauthorized access.",
+        "status": "Done",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "2.2.1 Ensure NIS client is not installed",
+            "Description": "NIS (Network Information Service) is used for distributing system configuration data. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "NISClient",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.2.2 Ensure rsh client is not installed",
+            "Description": "RSH (Remote Shell) is an insecure protocol for remote command execution. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "RSHClient",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.2.3 Ensure talk client is not installed",
+            "Description": "Talk is a command-line utility for real-time communication between users. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "TalkClient",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.2.4 Ensure telnet client is not installed",
+            "Description": "Telnet is an insecure protocol for remote command execution. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "TelnetClient",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.2.5 Ensure ldap client is not installed",
+            "Description": "LDAP (Lightweight Directory Access Protocol) is used for accessing directory services. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "LDAPClient",
+            "status": "Done",
+            "type": "Task"
+          },
+          {
+            "Summary": "2.2.6 Ensure ftp client is not installed",
+            "Description": "FTP (File Transfer Protocol) is an insecure protocol for transferring files. If not needed, it should be disabled to reduce the attack surface.",
+            "Check_Type": "FTPClient",
+            "status": "Done",
+            "type": "Task"
+          }
+        ]
+      },
+      {
+        "Summary": "2.3 Configure Time Synchronization",
+        "Description": "Time synchronization is essential for maintaining accurate timestamps on system logs and ensuring that scheduled tasks run at the correct times. This section provides guidance on how to configure time synchronization services securely.",
+        "status": "In Progress",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "2.3.1 Ensure time syncronization is in use",
+            "Description": "Time synchronization ensures that the system clock is accurate, which is cruCIAl for logging events, scheduling tasks, and maintaining security protocols.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "2.3.1.1 Ensure a single time synchronization daemon is in use",
+                "Description": "Using a single time synchronization daemon prevents conflicts and ensures that the system clock is synchronized with a reliable time source.",
+                "Check_Type": "SingleSync",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          },
+          {
+            "Summary": "2.3.2 Configure systemd-timesyncd",
+            "Description": "systemd-timesyncd is a lightweight time synchronization service that is part of the systemd suite. Configuring it ensures that the system clock is synchronized with network time servers.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "2.3.2.1 Ensure systemd-timesyncd configured with authorized timeserver",
+                "Description": "Configuring systemd-timesyncd with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
+                "Check_Type": "TimesyncdConfig",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.3.2.2 Ensure systemd-timesyncd is enabled and running",
+                "Description": "Enabling and running systemd-timesyncd ensures that the time synchronization service is active and continuously synchronizing the system clock with the configured time server.",
+                "Check_Type": "TimesyncdEnabled",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          },
+          {
+            "Summary": "2.3.3 Configure chrony",
+            "Description": "Chrony is a versatile time synchronization service that can be used as an alternative to systemd-timesyncd. It is particularly useful for systems that are not always connected to the network.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "2.3.3.1 Ensure chrony is configured with authorized timeserver",
+                "Description": "Configuring chrony with an authorized time server ensures that the system clock is synchronized with a trusted source, enhancing the accuracy and reliability of timekeeping.",
+                "Check_Type": "ChronyConfig",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.3.3.2 Ensure chrony is running as user_chrony",
+                "Description": "Running chrony as a dedicated user (user_chrony) enhances security by isolating the time synchronization service from other system processes, reducing the risk of privilege escalation.",
+                "Check_Type": "ChronyUser",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "2.4 Job Schedulers",
+        "Description": "Job schedulers are used to automate the execution of tasks at specified times or intervals. This section provides guidance on how to configure job schedulers securely.",
+        "status": "In Progress",
+        "type": "Epics",
+        "children": [
+          {
+            "Summary": "2.4.1 Configure cron",
+            "Description": "Cron is a time-based job scheduler in Unix-like operating systems. It allows users to schedule jobs (commands or scripts) to run at specific times or intervals.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "2.4.1.1 Ensure cron daemon is enabled and active",
+                "Description": "Enabling and activating the cron daemon ensures that scheduled jobs are executed as intended, maintaining system functionality and automation.",
+                "Check_Type": "CronEnabled",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.2 Ensure permissions on /etc/crontab are configured",
+                "Description": "Configuring permissions on /etc/crontab ensures that only authorized users can modify the system-wide cron jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronTab",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.3 Ensure permissions on /etc/cron.hourly are configured",
+                "Description": "Configuring permissions on /etc/cron.hourly ensures that only authorized users can modify the hourly cron jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronHourly",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.4 Ensure permissions on /etc/cron.daily are configured",
+                "Description": "Configuring permissions on /etc/cron.daily ensures that only authorized users can modify the daily cron jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronDaily",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.5 Ensure permissions on /etc/cron.weekly are configured",
+                "Description": "Configuring permissions on /etc/cron.weekly ensures that only authorized users can modify the weekly cron jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronWeekly",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.6 Ensure permissions on /etc/cron.monthly are configured",
+                "Description": "Configuring permissions on /etc/cron.monthly ensures that only authorized users can modify the monthly cron jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronMonthly",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.7 Ensure permissions on /etc/cron.d are configured",
+                "Description": "Configuring permissions on /etc/cron.d ensures that only authorized users can modify the cron jobs defined in this directory, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronD",
+                "status": "Done",
+                "type": "Task"
+              },
+              {
+                "Summary": "2.4.1.8 Ensure crontab is restricted to authorized users",
+                "Description": "Restricting crontab access to authorized users ensures that only trusted users can create or modify scheduled jobs, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "CronRestricted",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          },
+          {
+            "Summary": "2.4.2 Configure at",
+            "Description": "At is a command-line utility that allows users to schedule one-time tasks to be executed at a specified time in the future.",
+            "status": "Done",
+            "type": "Epics",
+            "children": [
+              {
+                "Summary": "2.4.2.1 Ensure at is restricted to authorized users",
+                "Description": "Restricting at access to authorized users ensures that only trusted users can create or modify scheduled one-time tasks, preventing unauthorized changes that could compromise system security.",
+                "Check_Type": "AtRestricted",
+                "status": "Done",
+                "type": "Task"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "3 Network",
+    "Description": "This section provides guidance on for securing the network configuration of the system.",
+    "Project": "CIA",
+    "Type": "Epic",
+    "Status": "In Progress",
+    "children": [
+      {
+        "Summary": "3.1 Configure Network Devices",
+        "Description": "To reduce the attack surface of a system unused devices should be disabled.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "3.1.1 Ensure IPv6 status is identified",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Internet Protocol Version 6 (IPv6) is the most recent version of Internet Protocol (IP). It's designed to supply IP addressing and additional security to support the predicted growth of connected devices. IPv6 is based on 128-bit addressing and can support 340 undecillion, which is 340 trillion3 addresses.",
+            "Project": "CIA",
+            "Check_Type": "IPv6",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.1.2 Ensure wireless interfaces are disabled",
+            "Label": [
+              "Level 1 - Server"
+            ],
+            "Description": "Wireless networking is used when wired networks are unavailable",
+            "Project": "CIA",
+            "Type": "Subtask",
+            "Check_Type": "Wireless",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.1.3 Ensure Bluetooth services are not in use",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Bluetooth is a short-range wireless technology standard that is used for exchanging data between devices over short distances. It employs UHF radio waves in the ISM bands, from 2.402 GHz to 2.48 GHz. It is mainly used as an alternative to wire connections.",
+            "Project": "CIA",
+            "Check_Type": "Bluetooth",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "3.2 Configure Network Kernel Modules",
+        "Description": "The Linux kernel modules support several network protocols that are not commonly used. If these protocols are not needed, it is recommended that they be disabled in the kernel.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "3.2.1 Ensure dccp kernel module is not available",
+            "Label": [
+              "Level 2 - Server",
+              "Level 2 - Workstation"
+            ],
+            "Description": "The Datagram Congestion Control Protocol (DCCP) is a transport layer protocol that supports streaming media and telephony. DCCP provides a way to gain access to congestion control, without having to do it at the application layer, but does not provide in-sequence delivery.",
+            "Project": "CIA",
+            "Check_Type": "kernel_module",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.2.2 Ensure tipc kernel module is not available",
+            "Label": [
+              "Level 2 - Server",
+              "Level 2 - Workstation"
+            ],
+            "Description": "The Transparent Inter-Process Communication (TIPC) protocol is designed to provide communication between cluster nodes.",
+            "Project": "CIA",
+            "Check_Type": "kernel_module",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.2.3 Ensure rds kernel module is not available",
+            "Label": [
+              "Level 2 - Server",
+              "Level 2 - Workstation"
+            ],
+            "Description": "The Reliable Datagram Sockets (RDS) protocol is a transport layer protocol that is used to provide reliable, in-order delivery of datagrams. It is designed for high-performance computing applications.",
+            "Project": "CIA",
+            "Check_Type": "kernel_module",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.2.4 Ensure sctp kernel module is not available",
+            "Label": [
+              "Level 2 - Server",
+              "Level 2 - Workstation"
+            ],
+            "Description": "The Stream Control Transmission Protocol (SCTP) is a transport layer protocol that is used to provide reliable, in-order delivery of messages. It is designed for high-performance computing applications.",
+            "Project": "CIA",
+            "Check_Type": "kernel_module",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "3.3 Configure Network Kernel Parameters",
+        "Description": "The Linux kernel provides several parameters that can be used to configure the network stack. These parameters can be used to improve the performance and security of the network stack.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "3.3.1 Ensure ip forwarding is disabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The net.ipv4.ip_forward and net.ipv6.conf.all.forwarding flags are used to tell the system whether it can forward packets or not.",
+            "Project": "CIA",
+            "Check_Type": "ip_forward",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.2 Ensure packet redirect sending is disabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "ICMP Redirects are used to send routing information to other hosts. As a host itself does not act as a router (in a host only configuration), there is no need to send redirects.",
+            "Project": "CIA",
+            "Check_Type": "packet_redirect",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.3 Ensure bogus icmp responses are ignored",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Setting net.ipv4.icmp_ignore_bogus_error_responses to 1 prevents the kernel from logging bogus responses (RFC-1122 non-compliant) from broadcast reframes, keeping file systems from filling up with useless log messages.",
+            "Project": "CIA",
+            "Check_Type": "icmp_ignore_bogus",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.4 Ensure broadcast icmp requests are ignored",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Setting net.ipv4.icmp_echo_ignore_broadcasts to 1 prevents the kernel from responding to ICMP echo requests sent to broadcast addresses.",
+            "Project": "CIA",
+            "Check_Type": "icmp_ignore",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.5 Ensure icmp redirects are not accepted",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Setting net.ipv4.conf.all.accept_redirects to 0 prevents the kernel from accepting ICMP redirects. This is important because ICMP redirects can be used to redirect traffic to a malicious host.",
+            "Project": "CIA",
+            "Check_Type": "icmp_redirects",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.6 Ensure secure icmp redirects are not accepted",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Setting net.ipv4.conf.all.secure_redirects to 0 prevents the kernel from accepting secure ICMP redirects. This is important because secure ICMP redirects can be used to redirect traffic to a malicious host.",
+            "Project": "CIA",
+            "Check_Type": "secure_icmp_redirects",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.7 Ensure reverse path filtering is enabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Reverse Path Filtering (RPF) is a security feature that is used to prevent IP spoofing. It works by checking the source address of incoming packets against the routing table to ensure that the packet is coming from a valid source.",
+            "Project": "CIA",
+            "Check_Type": "reverse_path_filtering",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.8 Ensure source routed packets are not accepted",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Source routing is a feature that allows the sender of a packet to specify the route that the packet should take through the network. This can be used to bypass security controls and is therefore not recommended.",
+            "Project": "CIA",
+            "Check_Type": "source_routed_packets",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.9 Ensure suspicious packets are logged",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Setting net.ipv4.conf.all.log_martians to 1 enables logging of suspicious packets, which can help identify potential attacks.",
+            "Project": "CIA",
+            "Check_Type": "suspicious_packets",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.10 Ensure tcp syn cookies are enabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "TCP SYN cookies are a security feature that is used to prevent SYN flood attacks. They work by encoding the TCP sequence number in the SYN-ACK packet, which allows the server to verify that the client is legitimate.",
+            "Project": "CIA",
+            "Check_Type": "tcp_syn_cookies",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "3.3.11 Ensure ipv6 router advertisements are not accepted",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "IPv6 Router Advertisements (RAs) are used to discover the presence of routers on the network. However, they can also be used to redirect traffic to a malicious host. Therefore, it is recommended to disable them.",
+            "Project": "CIA",
+            "Check_Type": "ipv6_router_advertisements",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "4 Host Based Firewall",
+    "Description": "Host-based firewalls are software applications that monitor and control incoming and outgoing network traffic based on predetermined security rules. They are installed on individual hosts or devices, providing a layer of security that is specific to that host.",
+    "Project": "CIA",
+    "Type": "Epic",
+    "Status": "In Progress",
+    "children": [
+      {
+        "Summary": "4.1 Configure Uncomplicated Firewall (UFW)",
+        "Description": "Uncomplicated Firewall (UFW) is a user-friendly interface for managing iptables firewall rules. It is designed to make managing a netfilter firewall easier, and is particularly well-suited for host-based firewalls.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.1.1 Ensure ufw is installed",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Uncomplicated Firewall (UFW) is a user-friendly interface for managing iptables firewall rules. It is designed to make managing a netfilter firewall easier, and is particularly well-suited for host-based firewalls.",
+            "Project": "CIA",
+            "Check_Type": "ufw_installed",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.2 Ensure iptables-persistent is not installed with ufw",
+            "Label": [
+              "Level 1 - Server, Level 1 - Workstation"
+            ],
+            "Description": "The iptables-persistent package is used to save and restore iptables rules. However, it is not compatible with UFW, which manages its own rules. Therefore, it is recommended to ensure that iptables-persistent is not installed when using UFW.",
+            "Project": "CIA",
+            "Type": "Subtask",
+            "Check_Type": "iptables_persistent_not_installed",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.3 Ensure ufw service is enabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The UFW service must be enabled to ensure that the firewall rules are applied at system startup. This is important for maintaining the security posture of the host.",
+            "Project": "CIA",
+            "Check_Type": "ufw_service_enabled",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.4 Ensure ufw loopback traffic is configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The loopback interface is used for internal communication within the host. It is important to ensure that traffic on the loopback interface is allowed, as it is used by many applications for inter-process communication.",
+            "Project": "CIA",
+            "Check_Type": "ufw_loopback_traffic_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.5 Ensure ufw outbound connections are configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Outbound connections are those initiated from the host to external networks. It is important to configure outbound connections to allow necessary traffic while blocking unwanted connections.",
+            "Project": "CIA",
+            "Check_Type": "ufw_outbound_connections_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.6 Ensure ufw firewall rules exist for all open ports",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "All open ports on the host should have corresponding UFW firewall rules to ensure that only authorized traffic is allowed. This helps to prevent unauthorized access and potential attacks.",
+            "Project": "CIA",
+            "Check_Type": "ufw_firewall_rules_for_open_ports",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.1.7 Ensure ufw default deny firewall policy is configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The default deny policy for UFW ensures that all incoming traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to prevent unauthorized access to the host.",
+            "Project": "CIA",
+            "Check_Type": "ufw_default_deny_policy_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "4.2 Configure nftables",
+        "Description": "nftables is a framework provided by the Linux kernel for packet filtering, network address translation (NAT), and other packet mangling. It replaces the older iptables framework and provides a more efficient and flexible way to manage firewall rules.",
+        "Project": "CIA",
+        "Type": "Story",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.2.1 Ensure nftables is installed",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "nftables is a framework provided by the Linux kernel for packet filtering, network address translation (NAT), and other packet mangling. It replaces the older iptables framework and provides a more efficient and flexible way to manage firewall rules.",
+            "Project": "CIA",
+            "Check_Type": "nftables_installed",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.2 Ensure ufw is uninstalled or disabled with nftables",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "If nftables is being used, it is recommended to uninstall or disable UFW, as they can conflict with each other. This ensures that nftables can manage all firewall rules without interference.",
+            "Project": "CIA",
+            "Check_Type": "ufw_uninstalled_or_disabled_with_nftables",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.3 Ensure iptables are flushed with nftables",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "When switching to nftables, it is important to flush existing iptables rules to avoid conflicts. This ensures that nftables can start with a clean slate and manage all firewall rules effectively.",
+            "Project": "CIA",
+            "Check_Type": "iptables_flushed_with_nftables",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.4 Ensure a nftables table exists",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "A nftables table is a collection of chains and rules. It is important to ensure that at least one table exists to manage firewall rules effectively.",
+            "Project": "CIA",
+            "Check_Type": "nftables_table_exists",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.5 Ensure a nftables base chain exists",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "A base chain is a default chain that is used to manage incoming and outgoing traffic. It is important to ensure that a base chain exists to provide a foundation for managing firewall rules.",
+            "Project": "CIA",
+            "Check_Type": "nftables_base_chain_exists",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.6 Ensure nftables loopback traffic is configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The loopback interface is used for internal communication within the host. It is important to ensure that traffic on the loopback interface is allowed, as it is used by many applications for inter-process communication.",
+            "Project": "CIA",
+            "Check_Type": "nftables_loopback_traffic_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.7 Ensure nftables outbound and stablished connections are configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "Outbound connections are those initiated from the host to external networks. It is important to configure outbound connections to allow necessary traffic while blocking unwanted connections. Established connections should also be allowed to ensure that ongoing communications are not disrupted.",
+            "Project": "CIA",
+            "Check_Type": "nftables_outbound_established_connections_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.8 Ensure nftables default deny firewall policy is configured",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The default deny policy for nftables ensures that all incoming traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to prevent unauthorized access to the host.",
+            "Project": "CIA",
+            "Check_Type": "nftables_default_deny_policy_configured",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.9 Ensure nftables service is enabled",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "The nftables service must be enabled to ensure that the firewall rules are applied at system startup. This is important for maintaining the security posture of the host.",
+            "Project": "CIA",
+            "Check_Type": "nftables_service_enabled",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          },
+          {
+            "Summary": "4.2.10 Ensure nftables rules are permanent",
+            "Label": [
+              "Level 1 - Server",
+              "Level 1 - Workstation"
+            ],
+            "Description": "It is important to ensure that nftables rules are permanent, meaning they persist across reboots. This ensures that the firewall rules remain in effect even after the host is restarted.",
+            "Project": "CIA",
+            "Check_Type": "nftables_rules_permanent",
+            "Type": "Subtask",
+            "Status": "In Progress"
+          }
+        ]
+      },
+      {
+        "Summary": "4.3 Configure iptables",
+        "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+        "Project": "CIA",
+        "Type": "Epic",
+        "Status": "In Progress",
+        "children": [
+          {
+            "Summary": "4.3.1 Configure iptables software",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.1.1 Ensure iptables packages are installed",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel.",
+                "Project": "CIA",
+                "Check_Type": "iptables_packages_installed",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.1.2 Ensure nftables is not installed with iptables",
+                "Label": [
+                  "Level 1 - Server, Level 1 - Workstation"
+                ],
+                "Description": "If nftables is being used, it is recommended to uninstall or disable iptables, as they can conflict with each other. This ensures that nftables can manage all firewall rules without interference.",
+                "Project": "CIA",
+                "Type": "Subtask",
+                "Check_Type": "nftables_not_installed_with_iptables",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.1.3 Ensure ufw is uninstalled or disabled with iptables",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "If iptables is being used, it is recommended to uninstall or disable UFW, as they can conflict with each other. This ensures that iptables can manage all firewall rules without interference.",
+                "Project": "CIA",
+                "Check_Type": "ufw_uninstalled_or_disabled_with_iptables",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          },
+          {
+            "Summary": "4.3.2 Configure IPv4 iptables",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel. This section focuses on configuring IPv4 iptables specifically.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.2.1 Ensure iptables default deny firewall policy is configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Setting a default deny policy for iptables ensures that all incoming and outgoing traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to protect the system from unauthorized access.",
+                "Project": "CIA",
+                "Check_Type": "iptables_default_deny_firewall_policy_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.2 Ensure iptables loopback traffic is configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Configuring loopback traffic in iptables allows the system to communicate with itself. This is essential for many applications and services that rely on local communication, such as web servers and databases.",
+                "Project": "CIA",
+                "Check_Type": "iptables_loopback_traffic_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.3 Ensure iptables outbound and established connections are configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Configuring outbound and established connections in iptables allows the system to maintain active connections and initiate new ones. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Project": "CIA",
+                "Check_Type": "iptables_outbound_and_established_connections_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.2.4 Ensure iptables firewall rules exist for all open ports",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Ensuring that iptables firewall rules exist for all open ports is essential for maintaining security. This prevents unauthorized access to services running on those ports and helps to mitigate potential vulnerabilities.",
+                "Project": "CIA",
+                "Check_Type": "iptables_firewall_rules_exist_for_all_open_ports",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          },
+          {
+            "Summary": "4.3.3 Configure IPv6 iptables",
+            "Description": "Iptables is a user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall, implemented as different Netfilter modules. It is used to set up, maintain, and inspect the tables of IP packet filter rules in the Linux kernel. This section focuses on configuring IPv6 iptables specifically.",
+            "Project": "CIA",
+            "Type": "Story",
+            "Status": "In Progress",
+            "children": [
+              {
+                "Summary": "4.3.3.1 Ensure ip6tables default deny firewall policy is configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Setting a default deny policy for ip6tables ensures that all incoming and outgoing IPv6 traffic is blocked unless explicitly allowed by a rule. This is a fundamental security measure to protect the system from unauthorized access.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_default_deny_firewall_policy_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.2 Ensure ip6tables loopback traffic is configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Configuring loopback traffic in ip6tables allows the system to communicate with itself over IPv6. This is essential for many applications and services that rely on local communication, such as web servers and databases.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_loopback_traffic_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.3 Ensure ip6tables outbound and established connections are configured",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Configuring outbound and established connections in ip6tables allows the system to maintain active connections and initiate new ones over IPv6. This is cruCIAl for the functionality of many applications that require network access, such as web browsers and email clients.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_outbound_and_established_connections_configured",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              },
+              {
+                "Summary": "4.3.3.4 Ensure ip6tables firewall rules exist for all open ports",
+                "Label": [
+                  "Level 1 - Server",
+                  "Level 1 - Workstation"
+                ],
+                "Description": "Ensuring that ip6tables firewall rules exist for all open ports is essential for maintaining security. This prevents unauthorized access to services running on those ports and helps to mitigate potential vulnerabilities.",
+                "Project": "CIA",
+                "Check_Type": "ip6tables_firewall_rules_exist_for_all_open_ports",
+                "Type": "Subtask",
+                "Status": "In Progress"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   {
     "Summary": "5 Access Control",
     "Status": "Done",
@@ -65,7 +1766,7 @@
             "status": "Done",
             "Description": "To clarify, the two settings described below are only meant for idle connections from a protocol perspective and are not meant to check if the user is active or not. An idle user does not mean an idle connection. SSH does not and never had, intentionally, the capability to drop idle users. In SSH versions before 8.2p1 there was a bug that caused these values to behave in such a manner that they were abused to disconnect idle users. This bug has been resolved in 8.2p1 and thus it can no longer be abused disconnect idle users.",
             "Project": "CIA",
-            "Check_Type": "ssh_client_alive",
+            "Check_Type": "ssh_cipher",
             "Type": "Subtask"
           },
           {
@@ -693,6 +2394,744 @@
                 "type": "Subtask"
               }
             ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "6 Logging and Auditing",
+    "Status" : "Done",
+    "Description": "he items in this section describe how to configure logging, log monitoring, and auditing, using tools included in most distributions. It is recommended that rsyslog be used for logging (with logwatch providing summarization) and auditd be used for auditing (with aureport providing summarization) to automatically monitor logs for intrusion attempts and other suspicious system behavior. In addition to the local log files created by the steps in this section, it is also recommended that sites collect copies of their system logs on a secure, centralized log server via an encrypted connection. Not only does centralized logging help sites correlate events that may be occurring on multiple systems, but having a second copy of the system log information may be critical after a system compromise where the attacker has modified the local log files on the affected system(s). If a log correlation system is deployed, configure it to process the logs described in this section. Because it is often necessary to correlate log information from many different systems (particularly after a security incident) it is recommended that the time be synchronized among systems and devices connected to the local network. The standard Internet protocol for time synchronization is the Network Time Protocol (NTP), which is supported by most network-ready devices. Reference <http://chrony.tuxfamily.org/> manual page for more information on configuring chrony. It is important that all logs described in this section be monitored on a regular basis and correlated to determine trends. A seemingly innocuous entry in one log could be more significant when compared to an entry in another log.",
+    "project": "CIA",
+    "type": "Epic",
+    "children": [
+      {
+        "Summary": "6.1 Configure Filesystem Integrity Checking",
+        "Status" : "Done",
+        "Description": "AIDE is a file integrity checking tool, similar in nature to Tripwire. While it cannot prevent intrusions, it can detect unauthorized changes to configuration files by alerting when the files are changed. When setting up AIDE, decide internally what the site policy will be concerning integrity checking. Review the AIDE quick start guide and AIDE documentation before proceeding.",
+        "project": "CIA",
+        "type": "Story",
+        "children": [
+          {
+            "Summary": "6.1.1 Ensure AIDE is installed",
+            "Status" : "Done",
+            "Description": "AIDE takes a snapshot of filesystem state including modification times, permissions, and file hashes which can then be used to compare against the current state of the filesystem to detect modifications to the system.",
+            "project": "CIA",
+            "Check_Type": "AIDE_installed",
+            "type": "Subtask"
+          },
+          {
+            "Summary": "6.1.2 Ensure filesystem integrity is regularly checked",
+            "Status" : "Done",
+            "Description": "Periodic checking of the filesystem integrity is needed to detect changes to the filesystem.",
+            "project": "CIA",
+            "Check_Type": "filesystem_integrity",
+            "type": "Subtask"
+          },
+          {
+            "Summary": "6.1.3 Ensure cryptographic mechanisms are used to protect the integrity of audit tools",
+            "Status" : "Done",
+            "Description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+            "project": "CIA",
+            "Check_Type": "cryptographic_mechanisms",
+            "type": "Subtask"
+          }
+        ]
+      },
+      {
+        "Summary": "6.2 System Logging",
+        "Status" : "Done",
+        "Description": "Logging services should be configured to prevent information leaks and to aggregate logs on a remote server so that they can be reviewed in the event of a system compromise. A centralized log server provides a single point of entry for further analysis, monitoring and filtering.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "6.2.1 Configure journald",
+            "Status" : "Done",
+            "Description": "Included in the systemd suite is a journaling service called systemd-journald.service for the collection and storage of logging data.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.2.1.1 Configure systemd-journald service",
+                "Status" : "Done",
+                "Description": "The daemon will implicitly collect numerous metadata fields for each log messages in a secure and unfakeable way. See systemd.journal-fields man page for more information about the collected metadata. The journal service stores log data either persistently below /var/log/journal or in a volatile way below /run/log/journal/. By default, log data is stored persistently if /var/log/journal/ exists during boot, with an implicit fallback to volatile storage. Use Storage= in journald.conf to configure where log data is placed, independently of the existence of /var/log/journal/. On systems where /var/log/journal/ does not exist but where persistent logging is desired, and the default journald.conf is used, it is sufficient to create the directory and ensure it has the correct access modes and ownership.",
+                "project": "CIA",
+                "type": "Epic",
+                "children": [
+                  {
+                    "Summary": "6.2.1.1.1 Ensure journald service is enabled and active",
+                    "Status" : "Done",
+                    "Description": "Ensure that the systemd-journald service is enabled to allow capturing of logging events.",
+                    "project": "CIA",
+                    "Check_Type":"journald_enabled",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.2 Ensure journald log file access is configured",
+                    "Status" : "Done",
+                    "Description": "Journald will create logfiles that do not already exist on the system. This setting controls what permissions will be applied to these newly created files.",
+                    "project": "CIA",
+                    "Check_Type":"journald_access",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.3 Ensure journald log file rotation is configured",
+                    "Status" : "Done",
+                    "Description": "Journald includes the capability of rotating log files regularly to avoid filling up the system with logs or making the logs unmanageably large. The file /etc/systemd/journald.conf is the configuration file used to specify how logs generated by Journald should be rotated.",
+                    "project": "CIA",
+                    "Check_Type":"journald_rotation",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.4 Ensure journald ForwardToSyslog is disabled",
+                    "Status" : "Done",
+                    "Description": "Data from journald should be kept in the confines of the service and not forwarded to other services.",
+                    "project": "CIA",
+                    "Check_Type":"journald_ForwardToSyslog",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.5 Ensure journald Storage is configured",
+                    "Status" : "Done",
+                    "Description": "Data from journald may be stored in volatile memory or persisted locally on the server. Logs in memory will be lost upon a system reboot. By persisting logs to local disk on the server they are protected from loss due to a reboot.",
+                    "project": "CIA",
+                    "Check_Type":"journald_storage",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.1.6 Ensure journald Compress is configured",
+                    "Status" : "Done",
+                    "Description": "The journald system includes the capability of compressing overly large files to avoid filling up the system with logs or making the logs unmanageably large.",
+                    "project": "CIA",
+                    "Check_Type":"journald_compress",
+                    "type": "Epic"
+                  }
+                ]
+              },
+              {
+                "Summary": "6.2.1.2 Configure systemd-journal-remote",
+                "Status" : "Done",
+                "Description": "The systemd-journal-remote package includes systemd-journal-upload. systemd-journal-upload will upload journal entries to the URL specified with --url=. This program reads journal entries from one or more journal files, similarly to journalctl. systemd-journal-upload transfers the raw content of journal file and uses HTTP as a transport protocol. systemd-journal-upload.service is a system service that uses systemd-journal- upload to upload journal entries to a server. It uses the configuration in journal- upload.conf.",
+                "project": "CIA",
+                "type": "Epic",
+                "children": [
+                  {
+                    "Summary": "6.2.1.2.1 Ensure systemd-journal-remote is installed",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-remote supports the ability to send log events it gathers to a remote log host or to receive messages from remote hosts, thus enabling centralized log management.",
+                    "Check_Type": "systemd-journal-remote",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.2 Ensure systemd-journal-remote authentication is configured",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-upload supports the ability to send log events it gathers to a remote log host.",
+                    "Check_Type": "systemd-journal-remote_authentication",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.3 Ensure systemd-journal-upload is enabled and active",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-upload supports the ability to send log events it gathers to a remote log host.",
+                    "Check_Type": "systemd-journal-upload_enabled",
+                    "type": "Epic"
+                  },
+                  {
+                    "Summary": "6.2.1.2.4 Ensure systemd-journal-remote service is not in use",
+                    "Status" : "Done",
+                    "Description": "Journald systemd-journal-remote supports the ability to receive messages from remote hosts, thus acting as a log server. Clients should not receive data from other hosts.",
+                    "Check_Type": "systemd-journald-remote_noinuse",
+                    "type": "Epic"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "Summary": "6.2.2 Configure Logfiles",
+            "Status" : "Done",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.2.2.1 Ensure access to all logfiles has been configured",
+                "Status" : "Done",
+                "Description": "Log files contain information from many services on the the local system, or in the event of a centralized log server, others systems logs as well. In general log files are found in /var/log/, although application can be configured to store logs elsewhere. Should your application store logs in another, ensure to run the same test on that location.",
+                "project": "CIA",
+                "Check_Type": "logfiles_access",
+                "type": "Epic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Summary": "6.3 System Auditing",
+        "Status" : "Done",
+        "Description": "The Linux Auditing System operates on a set of rules that collects certain types of system activity to facilitate incident investigation, detect unauthorized access or modification of data. By default events will be logged to /var/log/audit/audit.log, which can be configured in /etc/audit/auditd.conf.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "6.3.1 Configure auditd Service`",
+            "Status" : "Done",
+            "Description": "The capturing of system events provides system administrators with information to allow them to determine if unauthorized access to their system is occurring.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.3.1.1 Ensure auditd packages are installed ",
+                "Status" : "Done",
+                "Description": "auditd is the userspace component to the Linux Auditing System. It's responsible for writing audit records to the disk",
+                "project": "CIA",
+                "Check_Type": "auditd_installed",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.2 Ensure auditd service is enabled and active",
+                "Status" : "Done",
+                "Description": "Turn on the auditd daemon to record system events.",
+                "project": "CIA",
+                "Check_Type": "auditd_enabled",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.3 Ensure auditing for processes that start prior to auditd is enabled",
+                "Status" : "Done",
+                "Description": "Configure grub2 so that processes that are capable of being audited can be audited even if they start up prior to auditd startup.",
+                "project": "CIA",
+                "Check_Type": "auditing_bfr_auditd",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.1.4 Ensure audit_backlog_limit is sufficient",
+                "Status" : "Done",
+                "Description": "In the kernel-level audit subsystem, a socket buffer queue is used to hold audit events. Whenever a new audit event is received, it is logged and prepared to be added to this queue. The kernel boot parameter audit_backlog_limit=N, with N representing the amount of messages, will ensure that a queue cannot grow beyond a certain size. If an audit event is logged which would grow the queue beyond this limit, then a failure occurs and is handled according to the system configuration",
+                "project": "CIA",
+                "Check_Type": "autidit_backlog_limit_sufficient",
+                "type": "Epic"
+              }
+            ]
+          },
+          {
+            "Summary": "6.3.2 Configure Data Retention",
+            "Status" : "Done",
+            "Description": "When auditing, it is important to carefully configure the storage requirements for audit logs. By default, auditd will max out the log files at 5MB and retain only 4 copies on them. Older versions will be deleted. It is possible on a system that the 20 MBs of audit logs may fill up the system causing loss of audit data. While the recommendations here provide guidance, check your site policy for audit storage requirements.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.3.2.1 Ensure audit log storage size is configured",
+                "Status" : "Done",
+                "Description": "Configure the maximum size of the audit log file. Once the log reaches the maximum size, it will be rotated and a new log file will be started.",
+                "project": "CIA",
+                "Check_Type": "audit_log_storage_config",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.2 Ensure audit logs are not automatically deleted",
+                "Status" : "Done",
+                "Description": "The max_log_file_action setting determines how to handle the audit log file reaching the max file size. A value of keep_logs will rotate the logs but never delete old logs.",
+                "project": "CIA",
+                "Check_Type": "audit_logs_not_automatically_deleteld",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.3 Ensure system is disabled when audit logs are full",
+                "Status" : "Done",
+                "Description": "The auditd daemon can be configured to halt the system or put the system in single user mode, if no free space is available or an error is detected on the partition that holds the audit log files.",
+                "project": "CIA",
+                "Check_Type": "system_disabled_logs_full",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.2.4 Ensure system warns when audit logs are low on space",
+                "Status" : "Done",
+                "Description": "The auditd daemon can be configured to halt the system, put the system in single user mode or send a warning message, if the partition that holds the audit log files is low on space.",
+                "project": "CIA",
+                "Check_Type": "alarm_logs_full",
+                "type": "Epic"
+              }
+            ]
+          },
+          {
+            "Summary": "6.3.3 Configure auditd Rules",
+            "Status" : "Done",
+            "Description": "The Audit system operates on a set of rules that define what is to be captured in the log files.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.3.3.1 Ensure changes to system administration scope (sudoers) is collected",
+                "Status" : "Done",
+                "Description": "Monitor scope changes for system administrators. If the system has been properly configured to force system administrators to log in as themselves first and then use th  sudo command to execute privileged commands, it is possible to monitor changes in scope. The file /etc/sudoers, or files in /etc/sudoers.d, will be written to when the file(s) or related attributes have changed. The audit records will be tagged with the identifier 'scope'.",
+                "project": "CIA",
+                "Check_Type": "sudoers",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.2 Ensure actions as another user are always logged",
+                "Status" : "Done",
+                "Description": "sudo provides users with temporary elevated privileges to perform operations, either as the superuser or another user.",
+                "project": "CIA",
+                "Check_Type": "actions_logged",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.3 Ensure events that modify the sudo log file are collected",
+                "Status" : "Done",
+                "Description": "Monitor the sudo log file. If the system has been properly configured to disable the use of the su command and force all administrators to have to log in first and then use sudo to execute privileged commands, then all administrator commands will be logged to /var/log/sudo.log . Any time a command is executed, an audit event will be triggered as the /var/log/sudo.log file will be opened for write and the executed administration command will be written to the log.",
+                "project": "CIA",
+                "Check_Type": "mod_sudo_log_file",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.4 Ensure events that modify date and time information are collected",
+                "Status" : "Done",
+                "Description": "Capture events where the system date and/or time has been modified.",
+                "project": "CIA",
+                "Check_Type": "mod_date_time",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.5 Ensure events that modify the system's network environment are collected",
+                "Status" : "Done",
+                "Description": "Record changes to network environment files or system calls.",
+                "project": "CIA",
+                "Check_Type": "system_network",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.6 Ensure use of privileged commands are collected",
+                "Status" : "Done",
+                "Description": "Monitor privileged programs, those that have the setuid and/or setgid bit set on execution, to determine if unprivileged users are running these commands.",
+                "project": "CIA",
+                "Check_Type": "priviledge_commands",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.7 Ensure unsuccessful file access attempts are collected",
+                "Status" : "Done",
+                "Description": "Monitor for unsuccessful attempts to access files.",
+                "project": "CIA",
+                "Check_Type": "unsuccessful_priv_commands",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.8 Ensure events that modify user/group information are collected",
+                "Status" : "Done",
+                "Description": "Record events affecting the modification of user or group information,",
+                "project": "CIA",
+                "Check_Type": "mod_user/group",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.9 Ensure discretionary access control permission modification events are collected",
+                "Status" : "Done",
+                "Description": "Monitor changes to file permissions, attributes, ownership and group. The parameters in this section track changes for system calls that affect file permissions and attributes. The following commands and system calls effect the permissions, ownership and various attributes of files.",
+                "project": "CIA",
+                "Check_Type": "acpm",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.10 Ensure successful file system mounts are collected",
+                "Status" : "Done",
+                "Description": "Monitor the use of the mount system call. The mount (and umount ) system call controls the mounting and unmounting of file systems. The parameters below configure the system to create an audit record when the mount system call is used by a non- privileged user",
+                "project": "CIA",
+                "Check_Type": "sys_mount",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.11 Ensure session initiation information is collected",
+                "Status" : "Done",
+                "Description": "Monitor session initiation events. The parameters in this section track changes to the files assoCIAted with session events.",
+                "project": "CIA",
+                "Check_Type": "session_init_info",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.12 Ensure login and logout events are collected",
+                "Status" : "Done",
+                "Description": "Monitor login and logout events.",
+                "project": "CIA",
+                "Check_Type": "log_logout",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.13 Ensure file deletion events by users are collected",
+                "Status" : "Done",
+                "Description": "Monitor the use of system calls assoCIAted with the deletion or renaming of files and file attributes.",
+                "project": "CIA",
+                "Check_Type": "file_deletion",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.14 Ensure events that modify the system's Mandatory Access Controls are collected",
+                "Status" : "Done",
+                "Description": "Monitor AppArmor, an implementation of mandatory access controls. The parameters below monitor any write access (potential additional, deletion or modification of files in the directory) or attribute changes to the /etc/apparmor/ and /etc/apparmor.d/ directories.",
+                "project": "CIA",
+                "Check_Type": "mod_mac",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.15 Ensure successful and unsuccessful attempts to use the chcon command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the chcon command.",
+                "project": "CIA",
+                "Check_Type": "chcon_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.16 Ensure successful and unsuccessful attempts to use the setfacl command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the setfacl command",
+                "project": "CIA",
+                "Check_Type": "setfacl_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.17 Ensure successful and unsuccessful attempts to use the chacl command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the chacl command. chacl is an IRIX-compatibility command, and is maintained for those users who are familiar with its use from either XFS or IRIX.",
+                "project": "CIA",
+                "Check_Type": "chacl_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.18 Ensure successful and unsuccessful attempts to use the usermod command are recorded",
+                "Status" : "Done",
+                "Description": "The operating system must generate audit records for successful/unsuccessful uses of the usermod command.",
+                "project": "CIA",
+                "Check_Type": "usermod_used",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.19 Ensure kernel module loading unloading and modification is collected",
+                "Status" : "Done",
+                "Description": "Monitor the loading and unloading of kernel modules. All the loading / listing / dependency checking of modules is done by kmod via symbolic links.",
+                "project": "CIA",
+                "Check_Type": "module_load_unload",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.20 Ensure the audit configuration is immutable",
+                "Status" : "Done",
+                "Description": "Set system audit so that audit rules cannot be modified with auditctl . Setting the flag '-e 2' forces audit to be put in immutable mode. Audit changes can only be made on system reboot.",
+                "project": "CIA",
+                "Check_Type": "audit_immutable",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.3.21 Ensure the running and on disk configuration is the same",
+                "Status" : "Done",
+                "Description": "The Audit system have both on disk and running configuration. It is possible for these configuration settings to differ.",
+                "project": "CIA",
+                "Check_Type": "run_disk_same",
+                "type": "Epic"
+              }
+            ]
+          },
+          {
+            "Summary": "6.3.4 Configure auditd File Access",
+            "Status" : "Done",
+            "Description": "Without the capability to restrict which roles and individuals can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events.",
+            "project": "CIA",
+            "type": "Epic",
+            "children": [
+              {
+                "Summary": "6.3.4.1 Ensure audit log files mode is configured",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.2 Ensure audit log files owner is configured (Automated)",
+                "Status" : "Done",
+                "Description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_files_owner",
+                "type": "Epic"
+              },
+              {
+                "Summary": "6.3.4.3 Ensure audit log files group owner is configured",
+                "status" : "done",
+                "description": "Audit log files contain information about the system and system activity.",
+                "project": "CIA",
+                "Check_Type": "audit_log_group_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.4 Ensure the audit log file directory mode is configured",
+                "status" : "done",
+                "description": "The audit log directory contains audit log files.",
+                "project": "CIA",
+                "Check_Type": "audit_log_file_directory",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.5 Ensure audit configuration files mode is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "Check_Type": "audit_config",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.6 Ensure audit configuration files owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "Check_Type": "audit_config_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.7 Ensure audit configuration files group owner is configured",
+                "status" : "done",
+                "description": "Audit configuration files control auditd and what events are audited.",
+                "project": "CIA",
+                "Check_Type": "audit_config_group",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.8 Ensure audit tools mode is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "Check_Type": "audit_tools",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.9 Ensure audit tools owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "Check_Type": "audit_tools_owner",
+                "type": "epic"
+              },
+              {
+                "Summary": "6.3.4.10 Ensure audit tools group owner is configured",
+                "status" : "done",
+                "description": "Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.",
+                "project": "CIA",
+                "Check_Type": "audit_tools_group",
+                "type": "epic"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Summary": "7 System Maintenance",
+    "Status" : "Done",
+    "description": "Recommendations in this section are intended as maintenance and are intended to be checked on a frequent basis to ensure system stability. Many recommendations do not have quick remediations and require investigation into the cause and best fix available and may indicate an attempted breach of system security.",
+    "project": "CIA",
+    "type": "Epic",
+    "children": [
+      {
+        "Summary": "7.1 System File Permissions",
+        "status" : "done",
+        "description": "This section provides guidance on securing aspects of system files and directories.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "7.1.1 Ensure permissions on /etc/passwd are configured",
+            "status" : "done",
+            "description": "The /etc/passwd file contains user account information that is used by many system utilities and therefore must be readable for these utilities to operate.",
+            "project": "CIA",
+            "Check_Type": "perm_passwd",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.2 Ensure permissions on /etc/passwd- are configured",
+            "status" : "done",
+            "description": "The /etc/passwd- file contains backup user account information.",
+            "project": "CIA",
+            "Check_Type": "perm_passwd-",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.3 Ensure permissions on /etc/group are configured",
+            "status" : "done",
+            "description": "The /etc/group file contains a list of all the valid groups defined in the system. The command below allows read/write access for root and read access for everyone else.",
+            "project": "CIA",
+            "Check_Type": "perm_group",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.4 Ensure permissions on /etc/group- are configured",
+            "status" : "done",
+            "description": "The /etc/group- file contains a backup list of all the valid groups defined in the system.",
+            "project": "CIA",
+            "Check_Type": "perm_group-",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.5 Ensure permissions on /etc/shadow are configured",
+            "status" : "done",
+            "description": "The /etc/shadow file is used to store the information about user accounts that is critical to the security of those accounts, such as the hashed password and other security information.",
+            "project": "CIA",
+            "Check_Type": "perm_shadow",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.6 Ensure permissions on /etc/shadow- are configured",
+            "status" : "done",
+            "description": "The /etc/shadow- file is used to store backup information about user accounts that is critical to the security of those accounts, such as the hashed password and other security information.",
+            "project": "CIA",
+            "Check_Type": "perm_shadow-",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.7 Ensure permissions on /etc/gshadow are configured",
+            "status" : "done",
+            "description": "The /etc/gshadow file is used to store the information about groups that is critical to the security of those accounts, such as the hashed password and other security information.",
+            "project": "CIA",
+            "Check_Type": "perm_gshadow",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.8 Ensure permissions on /etc/gshadow- are configured",
+            "status" : "done",
+            "description": "The /etc/gshadow- file is used to store backup information about groups that is critical to the security of those accounts, such as the hashed password and other security information.",
+            "project": "CIA",
+            "Check_Type": "perm_gshadow-",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.9 Ensure permissions on /etc/shells are configured",
+            "status" : "done",
+            "description": "/etc/shells is a text file which contains the full pathnames of valid login shells. This file is consulted by chsh and available to be queried by other programs.",
+            "project": "CIA",
+            "Check_Type": "perm_shells",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.10 Ensure permissions on /etc/security/opasswd are configured",
+            "status" : "done",
+            "description": "/etc/security/opasswd and it's backup /etc/security/opasswd.old hold user's previous passwords if pam_unix or pam_pwhistory is in use on the system",
+            "project": "CIA",
+            "Check_Type": "perm_opasswd",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.11 Ensure world writable files and directories are secured",
+            "status" : "done",
+            "description": "World writable files are the least secure. Data in world-writable files can be modified and compromised by any user on the system. World writable files may also indicate an incorrectly written script or program that could potentially be the cause of a larger compromise to the system's integrity. See the chmod(2) man page for more information. Setting the sticky bit on world writable directories prevents users from deleting or renaming files in that directory that are not owned by them.",
+            "project": "CIA",
+            "Check_Type": "world_files",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.12 Ensure no files or directories without an owner and a group exist",
+            "status" : "done",
+            "description": "Administrators may delete users or groups from the system and neglect to remove all files and/or directories owned by those users or groups.",
+            "project": "CIA",
+            "Check_Type": "no_user",
+            "type": "Epic"
+          },
+          {
+            "Summary": "7.1.13 Ensure SUID and SGID files are reviewed",
+            "status" : "done",
+            "description": "The owner of a file can set the file's permissions to run with the owner's or group's permissions, even if the user running the program is not the owner or a member of the group. The most common reason for a SUID or SGID program is to enable users to perform functions (such as changing their password) that require root privileges.",
+            "project": "CIA",
+            "Check_Type": "SUID/SGID_reviewed",
+            "type": "Epic"
+          }
+        ]
+      },
+      {
+        "Summary": "7.2 Local User and Group Settings",
+        "status" : "done",
+        "description": "This section provides guidance on securing aspects of the local users and groups.",
+        "project": "CIA",
+        "type": "Epic",
+        "children": [
+          {
+            "Summary": "7.2.1 Ensure accounts in /etc/passwd use shadowed passwords",
+            "status" : "done",
+            "description": "Local accounts can uses shadowed passwords. With shadowed passwords, The passwords are saved in shadow password file, /etc/shadow, encrypted by a salted one- way hash. Accounts with a shadowed password have an x in the second field in /etc/passwd.",
+            "project": "cia",
+            "Check_Type": "shadowed_passwd",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.2 Ensure /etc/shadow password fields are not empty",
+            "status" : "done",
+            "description": "An account with an empty password field means that anybody may log in as that user without providing a password.",
+            "project": "cia",
+            "Check_Type": "not_empty_passwd",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.3 Ensure all groups in /etc/passwd exist in /etc/group",
+            "status" : "done",
+            "description": "Over time, system administration errors and changes can lead to groups being defined in /etc/passwd but not in /etc/group.",
+            "project": "cia",
+            "Check_Type": "group_in_passwd",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.4 Ensure shadow group is empty",
+            "status" : "done",
+            "description": "The shadow group allows system programs which require access the ability to read the /etc/shadow file. No users should be assigned to the shadow group.",
+            "project": "cia",
+            "Check_Type": "shadow_group_empty",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.5 Ensure no duplicate UIDs exist",
+            "status" : "done",
+            "description": "Although the useradd program will not let you create a duplicate User ID (UID), it is possible for an administrator to manually edit the /etc/passwd file and change the UID field.",
+            "project": "cia",
+            "Check_Type": "no_dup_UID",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.6 Ensure no duplicate GIDs exist",
+            "status" : "done",
+            "description": "Although the groupadd program will not let you create a duplicate Group ID (GID), it is possible for an administrator to manually edit the /etc/group file and change the GID field.",
+            "project": "cia",
+            "Check_Type": "no_dup_GID",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.7 Ensure no duplicate user names exist",
+            "status" : "done",
+            "description": "Although the useradd program will not let you create a duplicate user name, it is possible for an administrator to manually edit the /etc/passwd file and change the user name.",
+            "project": "cia",
+            "Check_Type": "no_dub_user",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.8 Ensure no duplicate group names exist",
+            "status" : "done",
+            "description": "Although the groupadd program will not let you create a duplicate group name, it is possible for an administrator to manually edit the /etc/group file and change the group name.",
+            "project": "cia",
+            "Check_Type": "no_dup_group",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.9 Ensure local interactive user home directories are configured",
+            "status" : "done",
+            "description": "The user home directory is space defined for the particular user to set local environment variables and to store personal files. While the system administrator can establish secure permissions for users' home directories, the users can easily override these. Users can be defined in /etc/passwd without a home directory or with a home directory that does not actually exist.",
+            "project": "cia",
+            "Check_Type": "conf_user_home_dir",
+            "type": "epic"
+          },
+          {
+            "Summary": "7.2.10 Ensure local interactive user dot files access is configured",
+            "status" : "done",
+            "description": "While system administrators can enforce secure permissions on users' dotfiles, users can easily override these settings with files like `.forward`, `.rhosts`, `.netrc`, and `.bash_history`, which may expose sensitive information or allow passwordless remote access if misconfigured.",
+            "project": "cia",
+            "Check_Type": "local_dot_file_config",
+            "type": "epic"
           }
         ]
       }
