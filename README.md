@@ -26,7 +26,7 @@ Root access: required for system-level checks
 ```
 git clone https://github.com/yourusername/CISBenchmark.git
 cd CISBenchmark
-chmod +x audit.sh
+chmod +x main.sh
 ```
 ##✅ Usage
 
