@@ -14,17 +14,6 @@
 
 ---
 
-## 📂 Repository Structure
-
-```
-CISBenchmark/
-├── audit.sh               # Main script (or adjust if Python, etc.)
-├── checks/                # Directory containing individual check modules
-├── report/                # Output reports stored here
-├── README.md              # This file
-└── LICENSE
-```
-
 ## 🚀 Getting Started
 
 ## 🔧 Prerequisites
