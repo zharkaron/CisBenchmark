@@ -32,7 +32,7 @@ chmod +x main.sh
 
 Run the audit script with root privileges:
 ```
-sudo ./audit.sh
+sudo ./main.sh
 ```
 Results will be displayed in the terminal
 
